@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每週市場觀察｜2026.08.10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111C2B;
+  --ink-soft:#3D4A5C;
+  --mute:#7A8595;
+  --paper:#F2F0EB;
+  --card:#FFFFFF;
+  --seal:#A8341F;
+  --jade:#2E6152;
+  --line:#DCD8D0;
+
+  --serif:"Noto Serif TC",Georgia,"Songti TC","Times New Roman",serif;
+  --sans:"Noto Sans TC",-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --num:ui-monospace,"SF Mono",Menlo,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.85;
+  letter-spacing:.01em;
+  padding-bottom:64px;
+}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px}
+
+/* ---------- 閱讀層級標記（本頁的結構訊號） ---------- */
+.tier{
+  display:flex;align-items:center;gap:10px;
+  margin:56px 0 18px;
+}
+.tier span:first-child{
+  font-family:var(--num);font-size:11px;letter-spacing:.16em;
+  color:var(--seal);white-space:nowrap;text-transform:uppercase;
+}
+.tier span:last-child{flex:1;height:1px;background:var(--line)}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:var(--ink);color:#F2F0EB;
+  padding:44px 0 40px;
+  margin-bottom:4px;
+}
+.hero .meta{
+  font-family:var(--num);font-size:11px;letter-spacing:.18em;
+  color:#8FA0B5;margin-bottom:28px;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:31px;line-height:1.45;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:normal;color:#E8B04B;border-bottom:2px solid #E8B04B;padding-bottom:2px}
+.hero p{
+  margin-top:20px;font-size:15.5px;line-height:1.8;color:#B7C2D1;
+}
+
+/* ---------- 招牌圖：只有一根柱子的棚子 ---------- */
+.prop{margin:34px 0 4px}
+.prop svg{width:100%;height:auto;display:block}
+.prop figcaption{
+  margin-top:12px;font-size:12.5px;color:#8FA0B5;line-height:1.7;
+}
+
+/* ---------- 30 秒 ---------- */
+.flash{list-style:none}
+.flash li{
+  background:var(--card);border-radius:3px;
+  padding:18px 20px;margin-bottom:10px;
+  border-left:3px solid var(--ink);
+  font-size:16.5px;line-height:1.8;
+}
+.flash li b{font-weight:700}
+.flash li.act{border-left-color:var(--jade)}
+
+/* ---------- 內文 ---------- */
+h2{
+  font-family:var(--serif);font-weight:700;
+  font-size:23px;line-height:1.5;margin-bottom:16px;
+}
+h3{
+  font-family:var(--serif);font-weight:700;
+  font-size:18.5px;line-height:1.6;margin-bottom:10px;
+}
+p{margin-bottom:16px;color:var(--ink-soft)}
+p.lead{color:var(--ink)}
+strong{color:var(--ink);font-weight:700}
+
+/* ---------- 觀點卡 ---------- */
+.card{
+  background:var(--card);border-radius:3px;
+  padding:24px 22px;margin-bottom:14px;
+}
+.card .eyebrow{
+  font-family:var(--num);font-size:11px;letter-spacing:.14em;
+  color:var(--mute);margin-bottom:10px;
+}
+.card p{font-size:16px;margin-bottom:14px}
+.card p:last-child{margin-bottom:0}
+.stat{
+  display:flex;align-items:baseline;gap:10px;
+  padding:12px 0;margin:4px 0 16px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.stat b{font-family:var(--num);font-size:22px;font-weight:700;color:var(--ink)}
+.stat span{font-size:13px;color:var(--mute);line-height:1.5}
+.means{
+  background:#F0F5F2;border-radius:3px;
+  padding:14px 16px;
+  font-size:15.5px;line-height:1.8;color:#22483D;
+}
+.means b{
+  display:block;font-family:var(--num);font-size:10.5px;
+  letter-spacing:.14em;color:var(--jade);margin-bottom:6px;
+}
+
+/* ---------- 分歧圖 ---------- */
+.split{background:var(--card);border-radius:3px;padding:24px 22px;margin-bottom:14px}
+.split svg{width:100%;height:auto;display:block;margin:6px 0 4px}
+
+/* ---------- 行事曆 ---------- */
+.cal{list-style:none;margin-bottom:14px}
+.cal li{
+  display:flex;gap:16px;
+  background:var(--card);border-radius:3px;
+  padding:16px 20px;margin-bottom:8px;
+}
+.cal .d{
+  font-family:var(--num);font-size:13px;font-weight:700;
+  color:var(--mute);white-space:nowrap;padding-top:3px;min-width:56px;
+}
+.cal .t{font-size:16px;line-height:1.7}
+.cal .t em{font-style:normal;display:block;font-size:13.5px;color:var(--mute);margin-top:3px}
+.cal li.key{border-left:3px solid var(--seal)}
+.cal li.key .d{color:var(--seal)}
+
+/* ---------- 折疊：完整數據 ---------- */
+details{
+  background:var(--card);border-radius:3px;
+  margin-bottom:10px;overflow:hidden;
+}
+summary{
+  cursor:pointer;list-style:none;
+  padding:18px 20px;
+  font-size:16px;font-weight:500;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"＋";font-family:var(--num);color:var(--mute);font-size:16px;
+}
+details[open] summary::after{content:"－"}
+details[open] summary{border-bottom:1px solid var(--line)}
+.dbody{padding:18px 20px 22px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--mute);font-size:13px}
+td.n{font-family:var(--num);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td,tr:last-child th{border-bottom:none}
+
+/* ---------- 檢核承諾 ---------- */
+.pledge{
+  border:1px solid var(--line);border-radius:3px;
+  padding:22px;font-size:15.5px;line-height:1.85;color:var(--ink-soft);
+}
+.pledge h3{margin-bottom:10px}
+
+/* ---------- 結尾 ---------- */
+.sign{
+  margin-top:56px;padding-top:28px;border-top:1px solid var(--line);
+}
+.sign .name{font-family:var(--serif);font-size:19px;font-weight:700}
+.sign .role{font-size:14px;color:var(--mute);margin-top:4px}
+.sign a{
+  display:inline-block;margin-top:16px;
+  color:var(--ink);text-decoration:none;
+  font-family:var(--num);font-size:15px;
+  border-bottom:1px solid var(--ink);padding-bottom:2px;
+}
+.disc{
+  margin-top:36px;font-size:11.5px;line-height:1.85;color:var(--mute);
+}
+
+@media (min-width:600px){
+  body{font-size:17.5px}
+  .hero h1{font-size:38px}
+  .wrap{padding:0 32px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero p,.prop{animation:rise .7s cubic-bezier(.2,.7,.3,1) both}
+  .hero p{animation-delay:.1s}
+  .prop{animation-delay:.2s}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="meta">2026.08.10　每週市場觀察</div>
+    <h1>這週只有一件事：<br><em>週三晚上的物價數據</em>。</h1>
+    <p>上週股市走出四個月最強的一週，但整段漲勢只靠一個假設撐著。週三，那個假設要接受檢驗。</p>
+
+    <figure class="prop">
+      <svg viewBox="0 0 340 120" role="img" aria-label="示意圖：一座只有單根支柱的棚子">
+        <line x1="20" y1="34" x2="320" y2="34" stroke="#F2F0EB" stroke-width="2.5"/>
+        <line x1="70" y1="34" x2="70" y2="98" stroke="#E8B04B" stroke-width="3"/>
+        <line x1="20" y1="98" x2="320" y2="98" stroke="#43536B" stroke-width="1" stroke-dasharray="3 5"/>
+        <text x="82" y="70" fill="#E8B04B" font-size="12" font-family="ui-monospace,monospace">CPI</text>
+        <text x="182" y="24" fill="#8FA0B5" font-size="11" font-family="ui-monospace,monospace">上週漲幅</text>
+        <path d="M300 34 q10 10 6 22" stroke="#8FA0B5" stroke-width="1" fill="none"/>
+        <text x="256" y="76" fill="#8FA0B5" font-size="11" font-family="ui-monospace,monospace">沒有第二根</text>
+      </svg>
+      <figcaption>上週的漲勢＝一座棚子。目前只有一根柱子在撐，就是「九月不升息」這個預期。週三的物價數字，決定這根柱子站不站得住。</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="tier"><span>讀 30 秒　到這裡就夠了</span><span></span></div>
+  <ul class="flash">
+    <li><b>好消息：</b>上週美股創新高，台股單週上漲，黃金大漲 7%。</li>
+    <li><b>但要留意：</b>漲勢的理由只有一個 —— 就業變差，所以央行不會再升息。</li>
+    <li><b>本週關鍵：</b>週三（台灣時間 8/12 晚間）美國七月物價數據。數字溫和，這波漲勢才算站穩；數字偏高，上週的漲幅要還回去一部分。</li>
+    <li class="act"><b>我的建議：</b>本週不需要因為上週的漲勢追加部位。等週三數字出來，我們再談要不要調整。<strong>不動，本身也是一種決定。</strong></li>
+  </ul>
+
+  <div class="tier"><span>讀 3 分鐘　想懂為什麼</span><span></span></div>
+
+  <h2>壞消息，為什麼會變成好消息</h2>
+  <p class="lead">把聯準會想成一位醫生，把升息想成退燒藥。</p>
+  <p>過去一年，這位醫生擔心的是病人（通膨）還在發燒，所以桌上一直放著加藥的選項。市場最怕的，就是他真的再加一劑。</p>
+  <p>上週公布的七月就業數據非常差：不但沒有增加就業，還<strong>減少了 2.3 萬人</strong>，而市場原本預期是增加 8 萬人。這代表病人虛弱了 —— 醫生自然不敢再加藥。</p>
+  <p>於是市場鬆了一口氣，股市大漲。這就是為什麼您會看到「經濟數據很爛、股市卻大漲」這種看似矛盾的現象。</p>
+  <p><strong>問題在於：這口氣是先鬆的。</strong>市場已經先假設醫生不會加藥，並且照這個假設把股價墊高了。但真正決定醫生怎麼做的，是病人的體溫 —— 也就是週三的物價數據。體溫如果沒降，前面那口氣就白鬆了。</p>
+
+  <div class="tier"><span>三個變數　各佔一分鐘</span><span></span></div>
+
+  <section class="card">
+    <div class="eyebrow">變數一　就業</div>
+    <h3>撐住漲勢的燃料，也是它的弱點</h3>
+    <div class="stat">
+      <b>42%</b><span>市場預期九月升息的機率<br>（就業數據公布前為 58%）</span>
+    </div>
+    <p>一週之內，市場對「九月會升息」的看法從超過一半掉到不到一半。這個轉變已經反映在上週的股價裡了。</p>
+    <div class="means"><b>對您的意義</b>上週的漲幅是「先付款」。週三數據若不配合，這筆款項會被要求退還一部分。這也是我不建議此刻追高的原因。</div>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">變數二　利率</div>
+    <h3>短錢變便宜了，長錢還是很貴</h3>
+    <div class="stat">
+      <b>5.19%</b><span>30 年期美國公債殖利率<br>仍在 2006 年以來的高檔區</span>
+    </div>
+    <p>上週各天期的利率都下滑，但幅度不同：短期利率跌得多，30 年期只跌了一點點，而且還停在很高的位置。</p>
+    <p>白話說：<strong>市場相信央行管得住「這幾個月」的通膨，但不太相信管得住「未來三十年」。</strong></p>
+    <div class="means"><b>對您的意義</b>長期利率高，就是「未來的錢比較不值錢」。這對股價已經很貴、獲利卻在很多年之後的成長型公司，是一個持續存在的壓力。它不會因為某一週的上漲而消失。</div>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">變數三　記憶體</div>
+    <h3>記憶體從「零件」變成「地基」</h3>
+    <div class="stat">
+      <b>+7%</b><span>上週費城半導體相關 ETF 漲幅<br>台灣一家 DRAM 廠七月營收年增逾七倍</span>
+    </div>
+    <p>上週真正重要的不是股價，是兩家主要廠商共同發表了一項新的產業規格，把快閃記憶體從「儲存資料的地方」，推向「AI 運算架構的一環」。</p>
+    <p>如果這個定位站得住，記憶體的客戶就會從手機、電腦，變成 AI 資料中心。<strong>這是要用「季」來觀察的事，不是用「週」。</strong></p>
+    <div class="means"><b>對您的意義</b>短期股價已經反映了不少期待。真正的驗證點在 8/13 的一場產業投資人日 —— 看廠商講不講得出商業化時程。屆時我會回報。</div>
+  </section>
+
+  <div class="tier"><span>這一段和您的部位直接有關</span><span></span></div>
+
+  <section class="split">
+    <h2>同一場雨，賣傘的賺，辦露天婚禮的賠</h2>
+    <p>記憶體漲價，對記憶體廠商是<strong>收入</strong>；但對買記憶體來做電腦、遊戲主機的下游廠商，是<strong>成本</strong>。近期已經有處理器大廠在財報中，把消費端業務的衰退直接歸因於記憶體成本上升。</p>
+
+    <svg viewBox="0 0 340 150" role="img" aria-label="示意圖：記憶體漲價對上游與下游的影響方向相反">
+      <text x="170" y="16" text-anchor="middle" fill="#111C2B" font-size="13" font-weight="700" font-family="sans-serif">記憶體價格上漲</text>
+      <line x1="170" y1="26" x2="170" y2="44" stroke="#7A8595" stroke-width="1.5"/>
+      <path d="M170 44 L90 44 L90 62" stroke="#7A8595" stroke-width="1.5" fill="none"/>
+      <path d="M170 44 L250 44 L250 62" stroke="#7A8595" stroke-width="1.5" fill="none"/>
+
+      <rect x="26" y="62" width="128" height="66" rx="3" fill="#F0F5F2"/>
+      <text x="90" y="86" text-anchor="middle" fill="#2E6152" font-size="12.5" font-weight="700" font-family="sans-serif">上游　記憶體廠</text>
+      <text x="90" y="108" text-anchor="middle" fill="#2E6152" font-size="19" font-weight="700" font-family="ui-monospace,monospace">獲利 ↑</text>
+
+      <rect x="186" y="62" width="128" height="66" rx="3" fill="#FBF0EE"/>
+      <text x="250" y="86" text-anchor="middle" fill="#A8341F" font-size="12.5" font-weight="700" font-family="sans-serif">下游　電腦∕主機</text>
+      <text x="250" y="108" text-anchor="middle" fill="#A8341F" font-size="19" font-weight="700" font-family="ui-monospace,monospace">獲利 ↓</text>
+
+      <text x="170" y="146" text-anchor="middle" fill="#7A8595" font-size="11" font-family="sans-serif">同一個變數，在鏈條的不同位置，方向相反</text>
+    </svg>
+
+    <p style="margin-top:18px"><strong>所以請注意一件事：「AI 相關」不是一個同質的類別。</strong>如果您的部位同時涵蓋上游記憶體與下游終端裝置，那不是分散風險 —— 那是對「記憶體價格」這一個變數，做了方向相反的兩筆押注。</p>
+    <div class="means"><b>建議動作</b>下次見面時，我們用十分鐘把您現有部位攤開，看看是不是有這種「看起來分散、實際上重複」的情況。這是這份報告裡，唯一需要您回頭看自己帳戶的一段。</div>
+  </section>
+
+  <div class="tier"><span>本週行事曆　三個時點</span><span></span></div>
+  <ul class="cal">
+    <li class="key">
+      <span class="d">8/12 三</span>
+      <span class="t">美國七月消費者物價指數<em>台灣時間晚間 20:30｜市場預期：總體年增 3.4%、核心年增 2.5%</em></span>
+    </li>
+    <li>
+      <span class="d">8/13 四</span>
+      <span class="t">記憶體廠投資人日、半導體設備大廠財報<em>看新規格的商業化時程，以及設備廠對明年資本支出的看法</em></span>
+    </li>
+    <li>
+      <span class="d">8/14 五</span>
+      <span class="t">美國七月零售銷售<em>就業轉弱之後，消費撐不撐得住的直接檢驗</em></span>
+    </li>
+  </ul>
+  <p style="font-size:14.5px;color:var(--mute)">本週沒有利率決策會議。上一次會議（7/29）維持利率不變，這是連續第五次按兵不動，但會中有三位委員主張升息 —— 升息這個選項還在桌上。</p>
+
+  <div class="tier"><span>想看完整數據　請展開</span><span></span></div>
+
+  <details>
+    <summary>上週市場表現</summary>
+    <div class="dbody">
+      <table>
+        <tr><th>標普 500</th><td class="n">7,757.64</td><td class="n">+3.58%</td></tr>
+        <tr><th>那斯達克</th><td class="n">26,690.62</td><td class="n">+5.19%</td></tr>
+        <tr><th>道瓊工業</th><td class="n">54,036.93</td><td class="n">+2.96%</td></tr>
+        <tr><th>費半相關 ETF</th><td class="n">—</td><td class="n">逾 +7%</td></tr>
+        <tr><th>黃金</th><td class="n">4,403.90</td><td class="n">+7.22%</td></tr>
+        <tr><th>原油</th><td class="n">76.97</td><td class="n">−9.21%</td></tr>
+      </table>
+      <p style="font-size:14px;margin:16px 0 0">標普 500 收在歷史新高。黃金與原油的走勢相反，反映的是資金尋求避險、同時對景氣需求轉趨保守。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>美國公債殖利率</summary>
+    <div class="dbody">
+      <table>
+        <tr><th>天期</th><th style="text-align:right">7/31</th><th style="text-align:right">8/7</th><th style="text-align:right">週變動</th></tr>
+        <tr><th>2 年期</th><td class="n">4.291%</td><td class="n">4.195%</td><td class="n">−9.6 bp</td></tr>
+        <tr><th>10 年期</th><td class="n">4.745%</td><td class="n">4.641%</td><td class="n">−10.4 bp</td></tr>
+        <tr><th>30 年期</th><td class="n">5.275%</td><td class="n">5.192%</td><td class="n">−8.3 bp</td></tr>
+      </table>
+      <p style="font-size:14px;margin:16px 0 0">10 年期於 8/3 盤中曾觸及約 4.75%，為 18 個月高點；30 年期前一週一度達 5.28%，是 2006 年以來最高。上週的回落，是從極端位置的修正，還不足以稱為趨勢反轉。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>台股與新台幣</summary>
+    <div class="dbody">
+      <p style="font-size:15px">8/5 加權指數大漲 1,250.94 點收 44,611.60 點，外資單日買超 903.08 億元，為史上第三大單日買超。但隨後兩個交易日連續回落，8/7 收 44,225.91 點。</p>
+      <table>
+        <tr><th>成交值遞減</th><td class="n">1.14 兆 → 9,400 億 → 8,192 億</td></tr>
+      </table>
+      <p style="font-size:14px;margin:16px 0 0"><strong>價格回落搭配量能萎縮</strong>，通常代表反彈的參與意願在週末前已降溫，而不是賣壓大舉出籠。這兩者的差別，決定本週能不能延續。</p>
+      <p style="font-size:15px;margin-top:16px">新台幣全週幾乎持平（32.292 → 32.288），但週間一度貶至 32.447。八月是股利發放旺季，外資股利匯出與資金回補在同一時間互相抵銷 —— 波動放大、方向不明，是這個月的典型結構。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>就業與企業獲利細節</summary>
+    <div class="dbody">
+      <table>
+        <tr><th>7 月非農就業</th><td class="n">−23,000</td><td class="n">預期 +80,000</td></tr>
+        <tr><th>7 月失業率</th><td class="n">4.1%</td><td class="n">前值 4.2%</td></tr>
+        <tr><th>勞動參與率</th><td class="n">61.4%</td><td class="n">−0.1 pp</td></tr>
+        <tr><th>平均時薪年增</th><td class="n">+3.2%</td><td class="n">37.62 美元</td></tr>
+        <tr><th>5、6 月修正</th><td class="n">−103,000</td><td class="n">合計下修</td></tr>
+        <tr><th>6 月工廠訂單</th><td class="n">−0.3%</td><td class="n">連二月下滑</td></tr>
+        <tr><th>6 月核心資本財訂單</th><td class="n">+1.2%</td><td class="n">出貨 +2.0%</td></tr>
+      </table>
+      <p style="font-size:14px;margin:16px 0 0">標普 500 已公布約 300 家，其中約 85% 優於市場預期，整體獲利年增率追蹤在 40% 以上。<strong>企業本身賺錢的能力並不弱，市場現在爭論的是「這個價格合不合理」，不是「公司好不好」。</strong></p>
+    </div>
+  </details>
+
+  <div class="tier"><span>我對這份報告的承諾</span><span></span></div>
+  <div class="pledge">
+    <h3>下週我會回頭認錯或認帳</h3>
+    <p style="margin-bottom:14px">這份報告裡提出的每一個判斷，我會在下一期回頭檢視是否成立。本期的三個檢核基準：</p>
+    <table>
+      <tr><th>漲勢地基單薄</th><td>週三 CPI 公布後，指數與升息機率的反應方向</td></tr>
+      <tr><th>長期利率仍高</th><td>30 年期是否回落至 5.00% 以下</td></tr>
+      <tr><th>記憶體規格</th><td>8/13 投資人日對商業化時程的著墨程度</td></tr>
+    </table>
+    <p style="margin:14px 0 0;font-size:14.5px">您可以據此檢驗這份報告的判斷品質，而不只是接收資訊。</p>
+  </div>
+
+  <div class="sign">
+    <div class="name">陳弈翔　Sean Chen</div>
+    <p style="margin-top:20px;font-size:15.5px">看完有任何一段想討論，直接回我訊息就好，不必客氣。若您只想知道「這週要不要動」，答案在最上面第四點。</p>
+  </div>
+
+  <p class="disc">重要聲明｜本文件由國際金融私人銀行團隊整理，內容取材自公開財經資訊，僅供參考，不構成任何投資建議、要約或招攬。文中所述之個股或標的僅為市場現況說明，非推介買賣之依據。過去績效不代表未來表現，任何投資均涉及風險，可能導致本金損失。匯率、利率與市場價格可能大幅波動。投資人應審慎評估自身財務狀況、投資目標與風險承受能力，並就個別情形諮詢專業意見後自行作成投資決策。本文件之資訊可能因市場變動而未及更新，本團隊不對其完整性與即時性負責。</p>
+
+</main>
+</body>
+</html>
