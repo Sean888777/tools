@@ -46,6 +46,12 @@ body{color:var(--paper);font-family:"Noto Serif TC","Songti TC",serif;-webkit-fo
 #veil.in{opacity:1}
 .cta-btn.going{opacity:.35;pointer-events:none}
 
+#skipBtn{position:fixed;right:3vw;bottom:9vh;z-index:5;background:rgba(3,7,13,.5);
+  border:1px solid rgba(195,218,236,.22);color:#8FA6B4;border-radius:100px;
+  padding:9px 17px;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;letter-spacing:.14em;
+  cursor:pointer;opacity:0;pointer-events:none;transition:opacity 1s ease,color .3s,border-color .3s}
+#skipBtn.in{opacity:.62;pointer-events:auto}
+#skipBtn:hover{opacity:1;color:#E3C98A;border-color:rgba(227,201,138,.5)}
 #navbar{position:fixed;right:3vw;bottom:3.2vh;z-index:4;display:flex;gap:10px;align-items:center}
 #navbar button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(195,218,236,.3);background:rgba(3,7,13,.5);color:#C9D6E1;cursor:pointer;font-size:15px;opacity:.55;transition:opacity .4s,border-color .4s;font-family:inherit;padding:0;line-height:1}
 #navbar button:hover{opacity:1;border-color:rgba(227,201,138,.55)}
@@ -63,6 +69,7 @@ body{color:var(--paper);font-family:"Noto Serif TC","Songti TC",serif;-webkit-fo
 <div id="calcLayer"><iframe id="calcFrame" title="財務規劃試算"></iframe></div>
 <div id="optbox" class="opts"></div>
 <div id="trail"><i></i><i></i><i></i><i></i><i></i></div>
+<button id="skipBtn" title="略過情境問答">直接進入試算</button>
 <div id="navbar">
   <button id="btnHome" title="回到開頭">⌂</button>
   <button id="btnBack" title="上一題">‹</button>
@@ -330,6 +337,9 @@ function finaleMusic(key){
   endSrc.connect(endGain).connect(master);
   endSrc.start(now,off);
 }
+document.getElementById('skipBtn').addEventListener('click',function(){
+  this.classList.remove('in'); enterCalc(null);
+});
 document.getElementById('btnHome').addEventListener('click',goHome);
 document.getElementById('btnBack').addEventListener('click',goBack);
 document.getElementById('mute').addEventListener('click',e=>{
@@ -538,10 +548,15 @@ function intro(){
     const btn=document.createElement('button');btn.className='begin-btn';btn.textContent='啟 程';
     btn.addEventListener('click',()=>{
       initAudio();
+      document.getElementById('skipBtn').classList.remove('in');
       clearStage(()=>{fallTo('q1',()=>askQuestion())});
     });
     stage.appendChild(btn);
     setTimeout(()=>btn.classList.add('in'),650);
+    /* 不需要問答的客戶，直接進計算器 */
+    const sk=document.getElementById('skipBtn');
+    preloadCalc('two');
+    setTimeout(()=>sk.classList.add('in'),1100);
   });
 }
 loadAll(()=>{

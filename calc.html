@@ -135,6 +135,37 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 .law b{color:var(--blue3);font-weight:600;}
 
 .pivot{background:linear-gradient(135deg,rgba(201,162,39,.09),transparent);border:1px solid rgba(201,162,39,.3);border-radius:6px;padding:1.8vh 1.4vw;margin-top:1.3vh;}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:.6vw;margin-top:1.1vh}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1.1vh .7vw;
+  cursor:pointer;transition:.22s;text-align:center;position:relative}
+.plan:hover{border-color:var(--blue2)}
+.plan.on{border-color:var(--green);background:rgba(0,168,98,.10);box-shadow:0 0 0 1px var(--green) inset}
+.plan-n{font-size:calc(clamp(12px,.95vw,17px) * var(--fs));font-weight:600;margin-bottom:.5vh}
+.plan.on .plan-n{color:var(--green-bright)}
+.plan-r{font-family:"Noto Serif TC",Georgia,serif;font-variant-numeric:tabular-nums;
+  font-size:calc(clamp(17px,1.6vw,30px) * var(--fs));color:var(--blue3);line-height:1.1}
+.plan.on .plan-r{color:var(--green-bright)}
+.plan-r small{font-size:.42em;color:var(--text2);margin-left:.12em}
+.plan-mix{display:flex;height:5px;border-radius:3px;overflow:hidden;margin:.8vh 0 .5vh;background:#132C38}
+.plan-mix i{display:block}
+.plan-lab{font-size:calc(clamp(8px,.6vw,11px) * var(--fs));color:var(--text3);line-height:1.5}
+.plan-tag{font-size:calc(clamp(8px,.58vw,11px) * var(--fs));color:var(--text3);margin-top:.5vh;
+  padding-top:.5vh;border-top:1px dashed var(--line);line-height:1.5}
+.plan.on .plan-tag{color:var(--text2)}
+.plan-cur{position:absolute;top:-.7vh;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;font-size:calc(clamp(7px,.52vw,10px) * var(--fs));
+  padding:.15vh .5vw;border-radius:3px;letter-spacing:.08em;white-space:nowrap}
+.alloc-list{display:flex;flex-wrap:wrap;gap:.4vh 1.1vw;margin-top:.9vh}
+.alloc-list div{font-size:calc(clamp(10px,.76vw,14px) * var(--fs));color:var(--text2)}
+.alloc-list i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:.35vw;vertical-align:middle}
+.alloc-list b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.ins-strip{display:flex;gap:.8vw;align-items:flex-start;margin-top:1.2vh;padding-top:1.1vh;
+  border-top:1px dashed var(--line)}
+.ins-l{flex:0 0 auto;background:rgba(0,168,98,.15);border:1px solid rgba(0,168,98,.45);
+  color:var(--green-bright);border-radius:4px;padding:.35vh .6vw;
+  font-size:calc(clamp(10px,.76vw,14px) * var(--fs));font-weight:600}
+.ins-b{font-size:calc(clamp(9px,.7vw,13px) * var(--fs));color:var(--text3);line-height:1.7}
+.ins-b b{color:var(--text2)}
 .pivot p{font-size:calc(clamp(12px,.93vw,18px) * var(--fs));line-height:1.75;}
 .pivot p b{color:var(--gold-bright);font-weight:600;}
 .cta{margin-top:1.3vh;background:transparent;border:1px solid var(--gold);color:var(--gold-bright);padding:.85vh 1.5vw;border-radius:4px;font-size:calc(clamp(11px,.84vw,15px) * var(--fs));font-family:inherit;cursor:pointer;letter-spacing:.06em;transition:.2s;}
@@ -197,6 +228,45 @@ footer{flex:0 0 auto;border-top:1px solid var(--line);background:var(--bg2);padd
 .nav button.pri{background:var(--blue);border-color:var(--blue);}
 .nav button:disabled{opacity:.3;cursor:default;}
 .disc{font-size:calc(clamp(8px,.57vw,10.5px) * var(--fs));color:var(--text3);text-align:right;line-height:1.5;}
+
+/* ═══════════════ 單頁報告 ═══════════════ */
+#report{display:none}
+#printBtn{position:fixed;right:1.4vw;bottom:1.6vh;z-index:30;background:var(--panel);
+  border:1px solid var(--line);color:var(--text2);border-radius:5px;cursor:pointer;
+  padding:.8vh 1.1vw;font-family:inherit;font-size:calc(clamp(10px,.76vw,14px) * var(--fs));
+  letter-spacing:.08em;transition:.2s}
+#printBtn:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+@media print{
+  @page{size:A4 portrait;margin:11mm 12mm}
+  html,body{background:#fff !important;height:auto !important;overflow:visible !important}
+  body{font-size:10pt}
+  #app,#printBtn{display:none !important}
+  #report{display:block !important}
+  #report,#report *{color:#000 !important;background:transparent;
+    font-family:"Noto Serif TC",Georgia,"Times New Roman",serif}
+  .rp-h{text-align:center;border-bottom:2pt solid #000;padding-bottom:8pt;margin-bottom:12pt}
+  .rp-h h1{font-size:17pt;letter-spacing:.12em;margin-bottom:3pt}
+  .rp-h .rp-sub{font-size:8.5pt}
+  .rp-t{width:100%;border-collapse:collapse;margin-bottom:11pt;font-size:9.5pt}
+  .rp-t th,.rp-t td{border:.6pt solid #000;padding:4.5pt 6pt;text-align:right}
+  .rp-t th{background:#e6e6e6 !important;text-align:center;font-weight:700;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp-t td:first-child,.rp-t th:first-child{text-align:left}
+  .rp-t tr.sec td{background:#f1f1f1 !important;font-weight:700;text-align:left;letter-spacing:.1em;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp-t tr.tot td{border-top:1.6pt solid #000;font-weight:700;font-size:11.5pt}
+  .rp-t .idt{padding-left:15pt}
+  .rp-note{font-size:7.6pt;line-height:1.7;border-top:.6pt solid #666;padding-top:6pt}
+  .rp-t td.hl{font-weight:700}
+  .rp-t tr.tot td.hl{font-size:13pt}
+  .rp-mult{font-size:7.6pt;font-weight:400;margin-top:1pt}
+  .rp-t tr.dif td{text-align:center;font-size:8.6pt;background:#f7f7f7 !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rp-warn{border:.8pt solid #000;padding:5pt 7pt;margin-bottom:9pt;font-size:8pt;line-height:1.65}
+  .rp-note ul{margin:2pt 0 5pt 15pt}
+  .rp-note li{margin-bottom:1.5pt}
+}
 </style>
 </head>
 <body>
@@ -306,7 +376,7 @@ footer{flex:0 0 auto;border-top:1px solid var(--line);background:var(--bg2);padd
   </div>
   <div class="grid g2">
     <div class="panel">
-      <div class="panel-t">本金與報酬</div>
+      <div class="panel-t">本金與配置</div>
       <div class="ctl">
         <div class="ctl-row"><div class="ctl-label">目前創造這筆收入的本金</div><div class="ctl-val" id="baseV">—</div></div>
         <input type="range" id="base" min="0" max="10" step="1" value="5">
@@ -317,24 +387,47 @@ footer{flex:0 0 auto;border-top:1px solid var(--line);background:var(--bg2);padd
         <div class="result-n" id="yieldN" style="color:var(--blue3);font-size:calc(clamp(23px,2.3vw,42px) * var(--fs))">—<small>%</small></div>
         <div class="result-f" id="yieldFoot">目前被動收入 ÷ 生息本金</div>
       </div>
-      <div class="ctl">
-        <div class="ctl-row"><div class="ctl-label">期望年化報酬率</div><div class="ctl-val" id="roiV">5.0<small>%</small></div></div>
-        <input type="range" id="roi" min="1" max="12" step="0.5" value="5">
+      <div class="ctl" style="margin-top:1.6vh">
+        <div class="ctl-row">
+          <div class="ctl-label">目標年化報酬率 <small id="bandTag"></small></div>
+          <div class="ctl-val" id="roiV">—</div>
+        </div>
+        <input type="range" id="roi" min="5" max="15" step="0.1" value="6.5">
+        <div class="ctl-hint">拖動以檢視對應的資產配置</div>
+      </div>
+      <div id="allocWrap">
+        <div class="plan-mix" id="allocBar" style="height:9px;margin-top:1.4vh"></div>
+        <div class="alloc-list" id="allocList"></div>
+      </div>
+      <div class="alertbox" id="custBox" style="margin-top:1.1vh">
+        <div class="alertbox-t">需搭配客製化商品配置</div>
+        <div class="alertbox-b" id="custTxt"></div>
+      </div>
+      <div class="ins-strip">
+        <div class="ins-l">保單</div>
+        <div class="ins-b">不創造現金流，但它是唯一不列入遺產計算的部位。<br>配置金額於<b>幕肆</b>單獨試算。</div>
       </div>
     </div>
 
     <div>
       <div class="result hero">
-        <div class="result-l">尚需增加的投資本金</div>
-        <div class="result-n" id="needN">—</div>
-        <div class="result-f" id="needFoot">這筆錢必須長期躺在市場裡，持續運轉。</div>
+        <div class="result-l" id="resGapL">轉換後仍存在的缺口</div>
+        <div class="result-n" id="resGapN">—</div>
+        <div class="result-f" id="resGapF">—</div>
       </div>
       <div class="ledger boxed">
-        <div class="ledger-r"><span>現金流缺口</span><span id="lg2Gap">—</span></div>
-        <div class="ledger-r"><span>÷ 期望年化報酬率</span><span id="lg2Roi">—</span></div>
-        <div class="ledger-r sum"><span>尚需增加本金</span><span id="lg2Need">—</span></div>
-        <div class="ledger-r" style="margin-top:.45vh"><span>目前生息本金</span><span id="lg2Base">—</span></div>
-        <div class="ledger-r sum"><span>目標總本金</span><span id="lg2Total">—</span></div>
+        <div class="ledger-r"><span>目前生息本金</span><span id="lg2Base">—</span></div>
+        <div class="ledger-r"><span>× 方案年化報酬率</span><span id="lg2Roi">—</span></div>
+        <div class="ledger-r" id="lg2ConvRow"><span>轉換後投資收入</span><span id="lg2Conv">—</span></div>
+        <div class="ledger-r" id="lg2NonRow"><span>＋ 租金與退休金</span><span id="lg2Non">—</span></div>
+        <div class="ledger-r sum"><span id="lg2NewHaveL">轉換後投資收入</span><span id="lg2NewHave">—</span></div>
+        <div class="ledger-r" style="margin-top:.45vh"><span>期望被動收入</span><span id="lg2Want">—</span></div>
+        <div class="ledger-r sum"><span id="lg2ResL">剩餘缺口</span><span id="lg2Res">—</span></div>
+      </div>
+      <div class="result" id="needCard" style="margin-top:1.3vh;border-left-color:var(--gold)">
+        <div class="result-l">尚需增加的投資本金</div>
+        <div class="result-n" id="needN" style="font-size:calc(clamp(23px,2.3vw,42px) * var(--fs));color:var(--gold-bright)">—</div>
+        <div class="result-f" id="needFoot">剩餘缺口 ÷ 方案年化報酬率</div>
       </div>
       <div class="pivot">
         <p id="pivotTxt"></p>
@@ -691,6 +784,22 @@ footer{flex:0 0 auto;border-top:1px solid var(--line);background:var(--bg2);padd
 </footer>
 </div>
 
+<button id="printBtn" onclick="buildReport()">產出報告</button>
+
+<div id="report">
+  <div class="rp-h">
+    <h1>財務規劃試算摘要</h1>
+    <div class="rp-sub">現金流與傳承 ‧ 規劃前後對照</div>
+  </div>
+  <table class="rp-t">
+    <thead><tr><th style="width:40%">比較項目</th><th style="width:30%">現狀（不規劃）</th><th style="width:30%">規劃方案</th></tr></thead>
+    <tbody id="rpBody"></tbody>
+    <tbody id="rpGrow"></tbody>
+  </table>
+  <div class="rp-warn" id="rpWarn" style="display:none"></div>
+  <div class="rp-note" id="rpNote"></div>
+</div>
+
 <script>
 /* ═══════════ 法定參數 ── 每年依財政部公告更新 ═══════════ */
 const TAX = {
@@ -707,6 +816,8 @@ const TAX = {
   marginal(n){ if(n<=59)return 5; if(n<=133)return 12; if(n<=266)return 20; if(n<=498)return 30; return 40; }
 };
 const FX = 31.5, USD_CAP = 500;
+
+
 
 /* 保障倍數 ── 佔位示意值，待實際商品試算表替換 */
 const MUL=[{a:50,m:2.50},{a:60,m:2.35},{a:70,m:2.25},{a:75,m:2.00},{a:78,m:1.80}];
@@ -737,7 +848,7 @@ function idxOf(sc,v){ let b=0,d=Infinity; sc.forEach((x,i)=>{const t=Math.abs(x-
 /* ═══════════ 狀態 ═══════════ */
 const S={ unit:'y', want:600, have:180, haveTouched:false, rawHave:null,
   c1:120,c2:60,c3:24,c4:0,c5:0, pro:false,
-  base:8000, roi:5,
+  base:8000, roi:6.5,
   est:12000, grow:5, growTouched:false, yrs:25, spouse:true, kids:2, par:0, sib:0, sibDep:0,
   alloc:3000, age:60, cover:7050, coverTouched:false,
   term:3, pos:10000, ltv:70, br:2, ir:6,
@@ -808,20 +919,73 @@ function render(){
   const iy=S.base>0?S.have/S.base*100:0;
   $('yieldN').innerHTML=`<span class="num">${pct(iy)}</span><small>%</small>`;
   $('yieldFoot').textContent=S.base>0?`${M(S.have)} ÷ ${M(S.base)}`:'請先填入目前生息本金';
+
+  S.roi = Math.max(5, Math.min(15, S.roi));
+  const BAND = S.roi<6 ? '保守' : S.roi<7.5 ? '平衡' : S.roi<=9 ? '積極' : '客製化';
   $('roiV').innerHTML=`${pct(S.roi)}<small>%</small>`;
-  const need=gap>0?gap/(S.roi/100):0;
-  $('needN').innerHTML=MH(need);
-  $('lg2Gap').innerHTML=gap>0?MH(gap):'—';
-  $('lg2Roi').textContent=pct(S.roi)+' %';
-  $('lg2Need').innerHTML=MH(need);
+  $('bandTag').textContent = BAND;
+  $('bandTag').style.color = BAND==='客製化'?'var(--gold-bright)':'var(--text3)';
+
+  /* 9% 以內：由三類基礎資產連續加權；股息型基金佔比隨目標報酬線性上升
+     （5% = 全債券部位，9% = 全股息型基金）。9% 以上不揭露商品比例。 */
+  const capped = Math.min(S.roi, 9);
+  const feq = (capped-5)/4*100, rem = 100-feq;
+  const ALLOC = [
+    {n:'債券',        p:rem*0.6, c:'#0F87D8'},
+    {n:'基金（債券型）', p:rem*0.4, c:'#2AA5DC'},
+    {n:'基金（股息型）', p:feq,     c:'#C9A227'},
+  ];
+  $('allocBar').innerHTML = ALLOC.map(a=>`<i style="width:${a.p}%;background:${a.c}"></i>`).join('');
+  $('allocList').innerHTML = ALLOC.filter(a=>a.p>0.05).map(a=>
+    `<div><i style="background:${a.c}"></i>${a.n} <b>${pct(a.p)}％</b></div>`).join('');
+
+  const cust = S.roi>9;
+  $('custBox').className = 'alertbox'+(cust?' on':'');
+  $('custTxt').innerHTML = cust
+    ? `此目標已超出基礎配置（債券與基金）所能達成的上限 <b>9.0％</b>，`
+      +`需另行搭配客製化商品，並以個案評估後決定。<br>`
+      +`客製化商品僅專業投資人得承作；<b>專業投資人須符合財力與專業知識條件並以書面同意，`
+      +`簽署後該範圍內之金融商品或服務不受金融消費者保護法保障，且資格須逐年重新檢視。</b>`
+      +`如需了解資格條件，請與您的顧問討論。`
+    : '';
+
+  /* 轉換：生息本金改採目標配置後的收入；租金與退休金不受配置影響，另計 */
+  const nonInv  = S.haveTouched ? (S.c3+S.c4) : 0;
+  const convInc = S.base*S.roi/100;
+  const newHave = convInc + nonInv;
+  const resGap  = S.want - newHave;
+  const need    = resGap>0 ? resGap/(S.roi/100) : 0;
+
+  $('resGapL').textContent = resGap>0?'轉換後仍存在的缺口':'轉換後已無缺口';
+  $('resGapN').innerHTML   = inc(Math.abs(resGap));
+  $('resGapF').textContent = resGap>0
+    ? '僅調整配置還不夠 ── 還差這些現金流'
+    : '這筆本金換個配置方式，就足以支撐您要的生活';
+  $('resGapN').style.color = resGap>0?'var(--red)':'var(--green-bright)';
+
   $('lg2Base').innerHTML=MH(S.base);
-  $('lg2Total').innerHTML=MH(S.base+need);
-  $('needFoot').textContent=gap>0?'這筆錢必須長期躺在市場裡，持續運轉。':'您手上的資產，已足以撐起這筆現金流。';
+  $('lg2Roi').textContent=pct(S.roi)+' %';
+  /* 沒有租金退休金時，兩個小計會完全相同 ── 合併成一列，不並排兩個一樣的數字 */
+  const hasNon = nonInv>0;
+  $('lg2ConvRow').style.display = hasNon?'flex':'none';
+  $('lg2NonRow').style.display  = hasNon?'flex':'none';
+  $('lg2Conv').innerHTML=MH(convInc);
+  $('lg2Non').innerHTML=MH(nonInv);
+  $('lg2NewHaveL').textContent = hasNon?'轉換後被動收入':'轉換後投資收入';
+  $('lg2NewHave').innerHTML=MH(newHave);
+  $('lg2Want').innerHTML=MH(S.want);
+  $('lg2ResL').textContent = resGap>0?'剩餘缺口':'盈餘';
+  $('lg2Res').innerHTML=MH(Math.abs(resGap));
+
+  $('needCard').style.display = resGap>0?'block':'none';
+  $('needN').innerHTML=MH(need);
+
   const totalCap=S.base+need;
-  $('pivotTxt').innerHTML=gap>0
-    ? `這 <b>${M(totalCap)}</b> 要長期躺在那裡，每年生出 <b>${M(totalCap*S.roi/100)}</b>。<br>
-       利息先課一次所得稅，本金再課一次遺產稅 ──<br><b>它不是為您工作，是在替國稅局工作。</b>`
-    : `您的現金流已經到位。<br>那麼真正的課題是 ── <b>這些資產，最後會去哪裡？</b>`;
+  $('pivotTxt').innerHTML = resGap>0
+    ? `這筆 <b>${M(totalCap)}</b> 會一直放在那裡，每年生出 <b>${M(totalCap*S.roi/100)}</b>。<br>
+       花不完的那部分，會滾回本金，繼續長大。`
+    : `這筆 <b>${M(S.base)}</b> 每年生出 <b>${M(S.base*S.roi/100)}</b>，<br>
+       花不完的那部分，會滾回本金，繼續長大。`;
 
   /* ─── 參 ─── */
   if(!S.growTouched){ S.grow=S.roi; $('grow').value=S.grow; }
@@ -883,6 +1047,8 @@ function render(){
   for(let i=0;i<44;i++){ const md=(lo+hi)/2;
     if(md*im < TAX.estate.calc(Math.max(0,S.est-md)*gm-ded)) lo=md; else hi=md; }
   $('covNeed').innerHTML=MH((lo+hi)/2);
+
+
 
   /* ─── 伍 ─── */
   $('f5A').innerHTML=MH(S.est); $('f5B').innerHTML=MH(Math.max(0,S.est-S.alloc));
@@ -966,6 +1132,29 @@ function render(){
     ? `同樣多賺一塊錢 ──<br>放在境內，課 <b>${mr}%</b>；放在海外、超出稅盾之後，只課 <b>20%</b>。<br>這個差距，不因額度用完而消失。`
     : `您目前的邊際稅率為 <b>${mr}%</b>，低於最低稅負制的 20%。<br>海外所得的優勢，要在所得級距更高時才會顯現。`;
 
+  /* ═══ 報告快照 ═══
+     全部沿用畫面上已算好的變數，報告不重算。
+     傳承一律用「現值基準」，與幕肆畫面同一把尺 ──
+     先前把資產複利成長、保額卻固定不動，兩邊基準不一致，
+     才會出現「規劃後反而更少」的錯誤結果。 */
+  RP = {
+    /* 現金流（幕壹／貳） */
+    haveNow:S.have, haveNew:newHave,
+    gapNow:Math.max(0,S.want-S.have), gapNew:Math.max(0,resGap),
+    want:S.want, base:S.base, roi:S.roi, band:BAND,
+    /* 傳承 ── 現值基準（幕肆） */
+    estBefore:bA,        estAfter:aA,
+    taxBefore:bT,        taxAfter:aT,
+    netBefore:bNet,      netAfter:aNet,
+    cover:S.cover, alloc:S.alloc, age:S.age, ded:ded,
+    /* 質借與套利（幕伍） */
+    loan:loan, arb:net, prem:prem, term:S.term,
+    /* 成長情境（幕參）── 兩欄用同一個成長率，保額不成長 */
+    yrs:S.yrs, grow:S.grow, gm:gm,
+    futBefore:futA, futTaxBefore:futT,
+    futAfter:aA*gm,  futTaxAfter:futTa
+  };
+
   document.querySelectorAll('input[type=range]').forEach(x=>{
     x.style.setProperty('--p',(x.value-x.min)/(x.max-x.min)*100+'%');
   });
@@ -986,6 +1175,76 @@ bindS('have','have',SC_INC,()=>{ S.haveTouched=false; S.rawHave=null; });
   if(!S.haveTouched){ S.rawHave=S.have; S.haveTouched=true; } }));
 bindS('base','base',SC_BASE);
 bindN('roi','roi');
+
+/* ═══════════════ 單頁報告 ═══════════════ */
+let RP = null;
+function buildReport(){
+  render();
+  if(!RP){ alert('請先完成試算'); return; }
+  const R=RP;
+  const d=new Date();
+  const ymd=`${d.getFullYear()} 年 ${d.getMonth()+1} 月 ${d.getDate()} 日`;
+  const mult = R.netBefore>0 ? R.netAfter/R.netBefore : 0;
+  const dlt  = v => (v>=0?'＋':'−')+M(Math.abs(v));
+
+  const row=(l,a,b,cls='')=>`<tr class="${cls}"><td>${l}</td><td>${a}</td><td class="hl">${b}</td></tr>`;
+  const sec=t=>`<tr class="sec"><td colspan="3">${t}</td></tr>`;
+
+  /* ── 主表：現值基準，與幕肆／幕伍畫面同一把尺 ── */
+  $('rpBody').innerHTML =
+    sec('現金流')
+  + row('年被動收入',        M(R.haveNow), M(R.haveNew))
+  + row('距離目標缺口',      M(R.gapNow),  M(R.gapNew))
+  + sec('資產與傳承（現值基準）')
+  + row('本金殘值',          M(R.estBefore), M(R.estAfter))
+  + row('保單配置',          '0',            M(R.alloc))
+  + row('銀行質借金額',      '0',            M(R.loan))
+  + row('每年套利現金流',    '0',            M(R.arb))
+  + row('人壽理賠金（免稅）','0',            M(R.cover))
+  + row('預估遺產稅',        '−'+M(R.taxBefore), '−'+M(R.taxAfter))
+  + `<tr class="tot"><td>子女實際繼承總額</td><td>${M(R.netBefore)}</td>`
+  + `<td class="hl">${M(R.netAfter)}`
+  + (mult>0?`<div class="rp-mult">約 ${(Math.round(mult*100)/100).toFixed(2)} 倍傳承效益</div>`:'')
+  + `</td></tr>`
+  + `<tr class="dif"><td>差異</td><td colspan="2">`
+  + `被動收入 ${dlt(R.haveNew-R.haveNow)}　│　`
+  + `遺產稅 ${dlt(-(R.taxBefore-R.taxAfter))}　│　`
+  + `子女實得 ${dlt(R.netAfter-R.netBefore)}</td></tr>`;
+
+  /* ── 成長情境：兩欄用同一成長率；保額為固定給付、不隨市場成長 ── */
+  const fnB = R.futBefore - R.futTaxBefore;
+  const fnA = R.futAfter  - R.futTaxAfter + R.cover;
+  $('rpGrow').innerHTML =
+    `<tr class="sec"><td colspan="3">${R.yrs} 年後（資產成長率 ${pct(R.grow)}％）</td></tr>`
+  + row('資產總額',   M(R.futBefore), M(R.futAfter))
+  + row('預估遺產稅', '−'+M(R.futTaxBefore), '−'+M(R.futTaxAfter))
+  + row('人壽理賠金', '0', M(R.cover))
+  + `<tr class="tot"><td>子女實際繼承總額</td><td>${M(fnB)}</td><td class="hl">${M(fnA)}</td></tr>`;
+
+  /* 保額不成長，長年期＋高成長率下可能被資產複利追過 ── 據實揭露，不隱藏 */
+  $('rpWarn').style.display = fnA<fnB ? 'block' : 'none';
+  $('rpWarn').innerHTML = fnA<fnB
+    ? `<b>提醒：</b>在 ${pct(R.grow)}％ 成長率、${R.yrs} 年的假設下，未配置部位的複利成長`
+      +`超過固定保額所提供的給付，故長期情境下規劃方案之子女實得低於現狀。`
+      +`保單之效益集中於<b>提前發生保險事故</b>、<b>稅源即時性</b>與<b>給付確定性</b>，`
+      +`非以長期累積報酬與市場投資比較為目的。` : '';
+
+  $('rpNote').innerHTML =
+    `<b>假設條件</b><ul>`
+  + `<li>目標年化報酬率 ${pct(R.roi)}％（${R.band}）；基礎配置由債券 5.0％、基金（債券型）5.0％、基金（股息型）9.0％加權，上限 9.0％。</li>`
+  + (R.roi>9?`<li>本試算目標報酬率超過基礎配置上限，需另行搭配客製化商品；該類商品僅專業投資人得承作。<b>專業投資人須符合財力與專業知識條件並以書面同意；簽署後該範圍內之金融商品或服務不受金融消費者保護法保障，且資格須逐年重新檢視。</b></li>`:'')
+  + `<li>目前生息本金 ${M(R.base)}；期望被動收入 ${M(R.want)}／年。租金與退休金不受配置調整影響，另計。</li>`
+  + `<li>保單：配置 ${M(R.alloc)}（${R.term} 年期，年繳 ${M(R.prem)}），投保年齡 ${R.age} 歲，身故保險金 ${M(R.cover)}。保單不創造現金流，未計入報酬率加權。</li>`
+  + `<li>質借：借款 ${M(R.loan)}，套利現金流為標的收益減借款利息後之淨額，需負擔利率變動與追繳風險。</li>`
+  + `<li>遺產稅扣除額合計 ${M(R.ded)}（含免稅額、配偶、直系血親卑親屬、父母、受扶養兄弟姊妹及喪葬費）。</li>`
+  + `<li>金額單位為新臺幣萬元；稅法參數依 2026／115 年度規定。</li></ul>`
+  + `<b>重要聲明</b>　本表為依上述假設所作之情境模擬，非投資建議，亦不構成任何收益、報酬或稅負結果之保證。`
+  + `所列報酬率為長期假設值，實際投資結果將隨市場波動而異，並可能發生本金損失。`
+  + `遺產稅及相關稅負之實際金額，視最終資產認定、繼承人結構、遺產分割方式及主管機關最新規定而定，`
+  + `執行前請諮詢律師、地政士或會計師。　製表日期：${ymd}`;
+
+  setTimeout(()=>window.print(),60);
+}
 bindS('est','est',SC_EST);
 bindN('grow','grow',()=>S.growTouched=true);
 bindN('yrs','yrs');
