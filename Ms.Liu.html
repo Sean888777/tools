@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>劉寶瑞女士 專屬配息規劃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0F3D4C;        /* 深藍綠 主文字 */
+    --teal:#1B7A8C;        /* 主調藍綠 */
+    --teal-mid:#2E9BAF;
+    --teal-soft:#E4F2F4;   /* 淺藍綠底 */
+    --teal-line:#BBDDE2;
+    --white:#FFFFFF;
+    --page:#F5FAFB;
+    --grey:#5C7078;
+    --amber:#9A6B12;
+    --amber-soft:#FBF3E2;
+    --amber-line:#E3CE9C;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--deep);
+    font-family:'Noto Sans TC',sans-serif;
+    font-size:20px;          /* 長者基準字級 */
+    line-height:1.95;
+    letter-spacing:0.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    max-width:840px;
+    margin:0 auto;
+    background:var(--white);
+    padding:0 0 56px;
+  }
+
+  /* ── 頁首 ── */
+  header{
+    background:linear-gradient(160deg,var(--teal) 0%,var(--deep) 100%);
+    color:#fff;
+    padding:38px 40px 34px;
+  }
+  .kicker{
+    font-size:15px;
+    letter-spacing:0.42em;
+    opacity:.82;
+    margin-bottom:14px;
+  }
+  header h1{
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:40px;
+    line-height:1.4;
+    margin:0 0 10px;
+  }
+  header .lede{
+    font-size:22px;
+    font-weight:500;
+    opacity:.95;
+    margin:0;
+  }
+  .stamp{
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.28);
+    font-size:16px;
+    opacity:.8;
+  }
+
+  /* ── 開場信 ── */
+  .letter{
+    padding:34px 40px 6px;
+    font-size:21px;
+    line-height:2.1;
+  }
+  .letter p{margin:0 0 18px;}
+  .letter b{
+    color:var(--teal);
+    font-weight:700;
+    border-bottom:3px solid var(--teal-line);
+  }
+
+  /* ── 區塊 ── */
+  section{padding:26px 40px 0;}
+  .sec-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:22px 0 20px;
+  }
+  .sec-num{
+    flex:none;
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--teal);
+    color:#fff;
+    font-family:'Noto Serif TC',serif;
+    font-weight:700;
+    font-size:24px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sec-head h2{
+    font-family:'Noto Serif TC',serif;
+    font-weight:700;
+    font-size:27px;
+    margin:0;
+    line-height:1.4;
+  }
+
+  /* ── 1 對照 ── */
+  .compare{
+    display:flex;
+    align-items:stretch;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .card{
+    flex:1 1 280px;
+    border-radius:16px;
+    padding:26px 24px;
+    text-align:center;
+  }
+  .card.now{
+    background:#F2F5F6;
+    border:2px solid #D5DEE1;
+  }
+  .card.after{
+    background:var(--teal-soft);
+    border:3px solid var(--teal);
+  }
+  .card .tag{
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.3em;
+    margin-bottom:12px;
+  }
+  .card.now .tag{color:var(--grey);}
+  .card.after .tag{color:var(--teal);}
+  .card .big{
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:52px;
+    line-height:1.25;
+    margin-bottom:6px;
+  }
+  .card.now .big{color:#4A5C63;}
+  .card.after .big{color:var(--teal);}
+  .card .cap{
+    font-size:17px;
+    color:var(--grey);
+    line-height:1.7;
+  }
+  .card .note{
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px dashed #C4D2D6;
+    font-size:19px;
+    line-height:1.75;
+  }
+  .card.after .note{border-top-color:var(--teal-line);color:var(--teal);font-weight:700;}
+  .arrow{
+    flex:none;
+    align-self:center;
+    font-size:40px;
+    color:var(--teal-mid);
+    font-weight:700;
+  }
+
+  /* ── 表格 ── */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:20px;
+  }
+  th,td{
+    padding:16px 14px;
+    border-bottom:1px solid var(--teal-line);
+    text-align:left;
+    line-height:1.7;
+  }
+  td.num{
+    text-align:right;
+    font-family:'Noto Serif TC',serif;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  tr.hl td{
+    background:var(--teal-soft);
+    color:var(--teal);
+    font-weight:700;
+    border-bottom:2px solid var(--teal);
+  }
+  tr.hl td.num{font-size:24px;}
+
+  /* ── 3 成本 ── */
+  .cost-box{
+    background:var(--teal-soft);
+    border-left:8px solid var(--teal);
+    border-radius:12px;
+    padding:26px 28px;
+  }
+  .cost-box p{margin:0 0 16px;font-size:21px;line-height:2.05;}
+  .cost-box p:last-child{margin-bottom:0;}
+  .cost-figure{
+    display:block;
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:44px;
+    color:var(--teal);
+    line-height:1.35;
+    margin:8px 0 2px;
+  }
+  .cost-figure small{
+    display:block;
+    font-family:'Noto Sans TC',sans-serif;
+    font-weight:500;
+    font-size:19px;
+    color:var(--grey);
+  }
+
+  /* ── 4 時程 ── */
+  .timeline{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .stop{
+    flex:1 1 150px;
+    background:var(--white);
+    border:2px solid var(--teal-line);
+    border-top:7px solid var(--teal);
+    border-radius:12px;
+    padding:18px 12px;
+    text-align:center;
+  }
+  .stop .yr{
+    font-size:19px;
+    font-weight:700;
+    color:var(--deep);
+    margin-bottom:6px;
+  }
+  .stop .amt{
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:26px;
+    color:var(--teal);
+  }
+  .timeline-note{
+    margin-top:18px;
+    font-size:20px;
+    line-height:2;
+  }
+
+  /* ── 5 方案比較 ── */
+  .plan-table th{
+    background:var(--deep);
+    color:#fff;
+    font-size:19px;
+    text-align:center;
+    line-height:1.6;
+    border-bottom:none;
+  }
+  .plan-table th:first-child{text-align:left;}
+  .plan-table th small{
+    display:block;
+    font-weight:400;
+    opacity:.82;
+    font-size:16px;
+  }
+  .plan-table td{text-align:center;font-size:19px;}
+  .plan-table td:first-child{text-align:left;font-weight:500;}
+  .plan-table td b{
+    display:block;
+    font-family:'Noto Serif TC',serif;
+    font-size:23px;
+  }
+  .plan-table td small{
+    display:block;
+    color:var(--grey);
+    font-size:16px;
+  }
+  .colA{background:#F7FBFC;}
+  .colB{background:#FBFDFD;}
+  .ok{color:var(--teal);font-weight:700;}
+  .short{color:var(--amber);font-weight:700;}
+
+  .caution{
+    margin-top:22px;
+    background:var(--amber-soft);
+    border:2px solid var(--amber-line);
+    border-radius:14px;
+    padding:24px 26px;
+    font-size:20px;
+    line-height:2.05;
+  }
+  .caution .ct{
+    font-family:'Noto Serif TC',serif;
+    font-weight:700;
+    font-size:23px;
+    color:var(--amber);
+    margin-bottom:10px;
+  }
+
+  /* ── 結尾 ── */
+  .closing{
+    margin:34px 40px 0;
+    background:var(--teal-soft);
+    border-radius:16px;
+    padding:28px 30px;
+    font-size:21px;
+    line-height:2.05;
+  }
+  footer{
+    margin:30px 40px 0;
+    padding-top:22px;
+    border-top:2px solid var(--teal-line);
+    font-size:15.5px;
+    color:var(--grey);
+    line-height:1.95;
+  }
+  footer li{margin-bottom:8px;}
+  footer ul{padding-left:20px;margin:0;}
+
+  @media (max-width:640px){
+    body{font-size:19px;}
+    header{padding:30px 22px 26px;}
+    header h1{font-size:31px;}
+    header .lede{font-size:20px;}
+    .letter,section{padding-left:22px;padding-right:22px;}
+    .closing,footer{margin-left:22px;margin-right:22px;}
+    .card .big{font-size:44px;}
+    .arrow{transform:rotate(90deg);width:100%;font-size:34px;}
+    .cost-figure{font-size:36px;}
+    table{font-size:18px;}
+    th,td{padding:13px 8px;}
+    .plan-table td b{font-size:20px;}
+  }
+  @media print{
+    body{background:#fff;font-size:16px;}
+    .sheet{max-width:100%;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="kicker">私 人 銀 行 專 屬 規 劃</div>
+    <h1>劉寶瑞女士 專屬配息規劃</h1>
+    <p class="lede">用基金配息，穩穩接住每年的美元保費</p>
+    <div class="stamp">製表日期：2026年8月12日</div>
+  </header>
+
+  <div class="letter">
+    <p>劉女士您好：</p>
+    <p>您手上的 PIMCO 收益增長基金，每年都會配發一筆穩定的配息。我們幫您試算過：<b>只要再增加一些持有單位，這筆配息就能對上您每年要繳的 US$33,000 保費</b>。</p>
+    <p>未來繳保費時，不用另外從口袋拿錢出來，資金來源會更清楚、也更安心。以下用五個段落，把整件事一步一步說明給您聽。</p>
+  </div>
+
+  <section>
+    <div class="sec-head"><div class="sec-num">1</div><h2>現在 與 調整後，一眼看懂</h2></div>
+    <div class="compare">
+      <div class="card now">
+        <div class="tag">現 在</div>
+        <div class="big">US$6,413</div>
+        <div class="cap">每年配息<br>（持有 6,142.691 單位）</div>
+        <div class="note">保費 US$33,000<br>配息還差 <b>US$26,587</b><br><span style="font-size:17px;color:#5C7078;">這段差額目前需要另外準備</span></div>
+      </div>
+      <div class="arrow">➜</div>
+      <div class="card after">
+        <div class="tag">調 整 後</div>
+        <div class="big">US$33,001</div>
+        <div class="cap">每年配息<br>（約 31,610 單位）</div>
+        <div class="note">幾乎剛好對上 US$33,000 保費<br><span style="font-size:17px;color:#5C7078;font-weight:400;">每年繳保費，配息就能直接支應</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="sec-num">2</div><h2>試算怎麼來的</h2></div>
+    <table>
+      <tr><td>目前持有單位數</td><td class="num">6,142.691 單位</td></tr>
+      <tr><td>每單位每年配息（維持不變）</td><td class="num">US$1.044</td></tr>
+      <tr><td>目前每年配息</td><td class="num">US$6,413</td></tr>
+      <tr><td>目標每年配息（＝每年美元保費）</td><td class="num">US$33,000</td></tr>
+      <tr><td>需要再增加的單位數</td><td class="num">約 25,467 單位</td></tr>
+      <tr><td>增加後，總持有單位數</td><td class="num">約 31,610 單位</td></tr>
+      <tr class="hl"><td>增加後，預估每年配息</td><td class="num">US$33,001</td></tr>
+      <tr><td>預估申購金額（以現在淨值試算）</td><td class="num">約 US$298,000<br><span style="font-weight:400;font-size:17px;color:#5C7078;">約 NT$962.4萬</span></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="sec-num">3</div><h2>錢從哪裡來．真正的成本是什麼</h2></div>
+    <div class="cost-box">
+      <p>這筆加碼，規劃動用您手上的<b>理財型房屋增貸額度</b>（隨借隨還、按日計息、年利率 2.83%）來支付，不需要動用您其他的現金。</p>
+      <p>所以，真正每年需要另外準備的，並不是 US$33,000 的保費，而是這筆貸款的利息：</p>
+      <span class="cost-figure">US$8,432<small>約 NT$27.2萬 ／ 每年</small></span>
+      <p style="margin-top:14px;">這個金額，比原本要自己準備的保費小很多。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="sec-num">4</div><h2>這筆規劃，要維持多久</h2></div>
+    <div class="timeline">
+      <div class="stop"><div class="yr">2026年12月</div><div class="amt">US$33,000</div></div>
+      <div class="stop"><div class="yr">2027年12月</div><div class="amt">US$33,000</div></div>
+      <div class="stop"><div class="yr">2028年12月</div><div class="amt">US$33,000</div></div>
+      <div class="stop"><div class="yr">2029年12月</div><div class="amt">US$33,000</div></div>
+    </div>
+    <p class="timeline-note">保費固定在每年 12 月繳交，連同 2026 年，<b>總共還剩 4 次</b>。也就是說，這個配息計畫只需要穩定運作到 2029 年，之後就可以重新檢視這筆額度要償還或保留。</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="sec-num">5</div><h2>如果連貸款利息，也要讓配息一起打平</h2></div>
+    <p style="margin-top:0;">新增的單位是用貸款買的，每多買 1 單位，每年就多一筆利息要付，會侵蝕掉一部分配息。所以如果希望「<b>配息扣掉利息之後，還能剛好對上保費</b>」，需要拉高的單位數會明顯更多。以下兩個方案供您參考：</p>
+    <table class="plan-table">
+      <tr>
+        <th style="width:32%;"></th>
+        <th class="colA">方案 A<small>配息對上保費</small></th>
+        <th class="colB">方案 B<small>連利息也一起打平</small></th>
+      </tr>
+      <tr><td>需新增單位數</td><td class="colA">25,467 單位</td><td class="colB">37,295 單位</td></tr>
+      <tr><td>增加後總單位數</td><td class="colA">約 31,610 單位</td><td class="colB">約 43,438 單位</td></tr>
+      <tr><td>預估申購金額</td>
+        <td class="colA"><b>US$298,000</b><small>約 NT$962.4萬</small></td>
+        <td class="colB"><b>US$436,000</b><small>約 NT$1,409.4萬</small></td></tr>
+      <tr><td>每年配息（毛額）</td><td class="colA">US$33,001</td><td class="colB">US$45,349</td></tr>
+      <tr><td>每年貸款利息</td>
+        <td class="colA"><b>US$8,432</b><small>約 NT$27.2萬</small></td>
+        <td class="colB"><b>US$12,349</b><small>約 NT$39.9萬</small></td></tr>
+      <tr class="hl"><td>配息扣掉利息後</td>
+        <td class="colA"><b class="short">US$24,569</b><small>距保費還差 US$8,431</small></td>
+        <td class="colB"><b class="ok">US$33,000</b><small>剛好打平</small></td></tr>
+    </table>
+
+    <div class="caution">
+      <div class="ct">方案 B 要請您特別留意的地方</div>
+      方案 B 需要比方案 A 多投入約 <b>US$138,000（約 NT$447萬）</b>，增貸規模會拉高到 <b>約 NT$1,409萬</b>，等於把更多的資產集中在同一檔基金上。<br>
+      萬一未來基金淨值下跌，部位的波動與增貸的還款壓力都會同步放大。這一點請您務必納入考量，我們也會當面再為您詳細說明，再由您決定要採用方案 A 或方案 B。
+    </div>
+  </section>
+
+  <div class="closing">
+    以上試算，希望能讓您更清楚看懂整個規劃的全貌。若您方便，我們可以再約一個時間，當面為您說明並確認所有細節。
+  </div>
+
+  <footer>
+    <ul>
+      <li>配息金額為基金過往分配狀況試算，非保證收益；配息可能包含本金分配，本金亦有可能因市場波動而增減。</li>
+      <li>基金淨值每日變動，實際申購單位數與金額，以申購當日之淨值及匯率為準，本文件僅供試算參考。</li>
+      <li>房屋增貸為機動利率，實際利率與可動用額度以銀行核定為準，未來利率變動將影響實際利息成本。</li>
+      <li>本文件為規劃討論之試算資料，非投資建議或收益保證，實際執行前請與您的專屬顧問再次確認所有條件。</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
