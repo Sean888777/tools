@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050C1C">
+<title>活化不動產｜創造比租金更好的現金流</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#050C1C; --navy:#0A1A38; --navy2:#0E2450;
+  --blue:#2E90F5; --blue-d:#0473EA;
+  --green:#4FE01E; --green-d:#1E8F3C;
+  --amber:#F0B44C; --red:#F0604D;
+  --white:#FFFFFF; --text:#DCE5F2; --dim:#93A3BE;
+  --line:rgba(220,229,242,.18);
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"IBM Plex Mono","Roboto Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#050C1C;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:#050C1C;color:var(--text);font-family:var(--sans);font-weight:300;
+  line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative;
+}
+#backdrop{position:fixed;inset:0;z-index:-2;background:#050C1C;pointer-events:none}
+#glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(760px 560px at 82% 8%,rgba(4,115,234,.24),transparent 62%),
+             radial-gradient(620px 520px at 6% 92%,rgba(56,210,0,.10),transparent 66%)}
+::selection{background:var(--green);color:#050C1C}
+
+#bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;
+  background:linear-gradient(90deg,var(--blue),var(--green))}
+
+section{position:relative;padding:110px 24px;max-width:1080px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--blue);
+  margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line);max-width:160px}
+h2{font-family:var(--serif);font-weight:900;color:var(--white);
+  font-size:clamp(28px,6.4vw,46px);line-height:1.3;margin-bottom:18px}
+h2 em{font-style:normal;color:var(--green)}
+p{font-size:15.5px;max-width:56ch;color:var(--text)}
+.sub{color:var(--dim);font-size:14.5px}
+.mono{font-family:var(--mono)}
+
+/* fallback-safe reveal: hidden only when JS is alive */
+.js .rv{opacity:0;transform:translateY(26px);
+  transition:opacity .85s cubic-bezier(.16,.8,.3,1),transform .85s cubic-bezier(.16,.8,.3,1)}
+.js .rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ---------- HERO ---------- */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:90px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:44px}
+.brand b{display:block;width:8px;height:24px;border-radius:4px;background:var(--blue-d)}
+.brand b+b{background:var(--green);height:16px;align-self:flex-end}
+.brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--dim);margin-left:6px}
+#hero h1{font-family:var(--serif);font-weight:900;color:var(--white);
+  font-size:clamp(34px,9.5vw,72px);line-height:1.2}
+#hero h1 em{font-style:normal;color:var(--green)}
+.heroline{margin-top:26px;font-size:clamp(15px,4vw,19px);color:var(--dim);max-width:26ch}
+
+/* house → stream diagram */
+.hero-viz{margin-top:52px;position:relative;height:170px}
+.hero-viz svg{width:100%;height:100%;overflow:visible}
+.draw{stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 2s .3s cubic-bezier(.3,.7,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.flowdot{opacity:0;animation:dotrun 2.6s linear 1.6s infinite}
+@keyframes dotrun{0%{opacity:0;transform:translateX(0)}8%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translateX(210px)}}
+.pulse{animation:pl 2.4s ease-in-out infinite}
+@keyframes pl{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* ---------- BIG COMPARE ---------- */
+.vs{margin-top:44px;display:grid;gap:20px}
+.vsrow{border:1px solid var(--line);border-radius:4px;padding:24px 22px;background:rgba(10,26,56,.55)}
+.vsrow.hi{border-color:rgba(79,224,30,.45);background:linear-gradient(160deg,rgba(30,143,60,.20),rgba(10,26,56,.5))}
+.vslab{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--dim);margin-bottom:12px}
+.vsrow.hi .vslab{color:var(--green)}
+.vsnum{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-weight:600;
+  font-size:clamp(34px,11vw,62px);color:var(--white);line-height:1;letter-spacing:-.02em}
+.vsnum small{font-size:15px;font-weight:400;color:var(--dim);font-family:var(--sans)}
+.vsrow.hi .vsnum{color:var(--green)}
+.track{margin-top:18px;height:12px;background:rgba(220,229,242,.08);border-radius:2px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:2px;transition:width 1.5s cubic-bezier(.2,.8,.25,1)}
+.fill.b{background:linear-gradient(90deg,var(--blue-d),var(--blue))}
+.fill.g{background:linear-gradient(90deg,var(--green-d),var(--green))}
+.vsnote{margin-top:12px;font-size:13px;color:var(--dim)}
+.multi{margin-top:30px;text-align:center;font-family:var(--serif);font-weight:900;color:var(--white);
+  font-size:clamp(24px,7vw,40px)}
+.multi em{font-style:normal;color:var(--green);font-family:var(--mono);font-size:1.5em}
+
+/* ---------- PATH ---------- */
+.path{margin-top:46px;display:grid;gap:0}
+.node{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;position:relative;padding-bottom:34px}
+.node:last-child{padding-bottom:0}
+.node::before{content:"";position:absolute;left:27px;top:52px;bottom:-4px;width:2px;
+  background:linear-gradient(var(--blue-d),rgba(4,115,234,.15));transform:scaleY(0);transform-origin:top;
+  transition:transform .8s ease}
+.node.in::before{transform:scaleY(1)}
+.node:last-child::before{display:none}
+.dot{width:56px;height:56px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;background:var(--navy);
+  font-family:var(--mono);font-size:15px;color:var(--blue);position:relative;z-index:2}
+.node.in .dot{border-color:rgba(46,144,245,.6);box-shadow:0 0 0 6px rgba(4,115,234,.10)}
+.node h3{font-family:var(--serif);font-size:19px;color:var(--white);font-weight:700;margin-top:12px}
+.node p{font-size:14px;color:var(--dim);margin-top:6px}
+.node .amt{font-family:var(--mono);font-size:22px;color:var(--white);margin-top:8px;font-weight:600}
+.node .amt.g{color:var(--green)}
+
+/* ---------- WATERFALL ---------- */
+.wf{margin-top:44px;display:flex;align-items:flex-end;gap:12px;height:250px;
+  border-bottom:1px solid var(--line);padding-bottom:0}
+.wfbar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.wfbar i{display:block;width:100%;height:0;border-radius:3px 3px 0 0;transition:height 1.3s cubic-bezier(.2,.8,.25,1)}
+.wfbar.a i{background:linear-gradient(180deg,var(--blue),var(--blue-d))}
+.wfbar.b i{background:linear-gradient(180deg,rgba(240,96,77,.85),rgba(240,96,77,.35))}
+.wfbar.c i{background:linear-gradient(180deg,var(--green),var(--green-d))}
+.wfbar u{text-decoration:none;position:absolute;bottom:calc(100% + 0px);left:0;right:0;
+  font-family:var(--mono);font-size:clamp(13px,3.6vw,19px);color:var(--white);text-align:center;
+  padding-bottom:8px;opacity:0;transition:opacity .5s .9s}
+.wfbar.in u{opacity:1}
+.wflab{display:flex;gap:12px;margin-top:14px}
+.wflab span{flex:1;text-align:center;font-size:12.5px;color:var(--dim);line-height:1.5}
+.wflab b{display:block;color:var(--text);font-weight:400;font-size:13px}
+
+/* ---------- MONTHS ---------- */
+.months{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mo{aspect-ratio:1;border:1px solid var(--line);border-radius:3px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;background:rgba(10,26,56,.5);
+  opacity:.18;transform:scale(.92);transition:opacity .5s,transform .5s,border-color .5s,background .5s}
+.mo.on{opacity:1;transform:none;border-color:rgba(79,224,30,.4);background:rgba(30,143,60,.16)}
+.mo b{font-family:var(--mono);font-size:clamp(13px,3.6vw,17px);color:var(--green);font-weight:600}
+.mo span{font-size:10px;color:var(--dim);margin-top:2px;font-family:var(--mono)}
+.mototal{margin-top:26px;padding:22px;border:1px solid rgba(79,224,30,.35);border-radius:4px;
+  background:rgba(30,143,60,.10);text-align:center}
+.mototal span{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--dim)}
+.mototal b{display:block;font-family:var(--mono);font-size:clamp(28px,8.5vw,46px);color:var(--green);
+  font-weight:600;margin-top:8px;line-height:1}
+
+/* ---------- SHIELD CHART ---------- */
+.chart{margin-top:42px;border:1px solid var(--line);border-radius:4px;background:rgba(10,26,56,.45);
+  padding:26px 18px 18px;position:relative}
+.chart svg{width:100%;height:220px;overflow:visible;display:block}
+.legend2{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:18px;font-size:12.5px;color:var(--dim)}
+.legend2 s{text-decoration:none;display:inline-block;width:14px;height:3px;margin-right:7px;vertical-align:middle;border-radius:2px}
+
+/* ---------- PERKS ---------- */
+.perks{display:grid;grid-template-columns:1fr;gap:16px;margin-top:36px}
+.perk{border:1px solid var(--line);border-radius:4px;padding:26px 22px;background:rgba(10,26,56,.5)}
+.perk.top{border-color:rgba(79,224,30,.4);background:linear-gradient(165deg,rgba(30,143,60,.16),rgba(10,26,56,.45))}
+.perk .tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--blue)}
+.perk.top .tag{color:var(--green)}
+.perk .nm{font-family:var(--serif);font-weight:900;font-size:26px;color:var(--white);margin:6px 0 4px}
+.perk .rule{font-size:12.5px;color:var(--dim);padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.perk ul{list-style:none;display:grid;gap:9px}
+.perk li{font-size:13.5px;color:var(--text);padding-left:16px;position:relative;line-height:1.65}
+.perk li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--blue)}
+.perk.top li::before{background:var(--green)}
+.perk li b{color:var(--white);font-weight:500}
+.svcs{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.svcs div{background:#071129;padding:18px 16px}
+.svcs h4{font-size:13.5px;color:var(--white);font-weight:500}
+.svcs span{font-size:11.5px;color:var(--dim);display:block;margin-top:4px;line-height:1.6}
+
+/* ---------- RISK ---------- */
+.rk{margin-top:32px;border-top:1px solid var(--line)}
+.rk div{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid rgba(220,229,242,.09)}
+.rk i{font-family:var(--mono);font-size:11px;color:var(--amber);font-style:normal;padding-top:4px}
+.rk p{font-size:14px;color:var(--dim);max-width:62ch}
+.rk p b{color:var(--text);font-weight:500}
+
+footer{border-top:1px solid var(--line);padding:44px 24px 80px;max-width:1080px;margin:0 auto}
+footer h4{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);margin-bottom:14px}
+footer p{font-size:11.5px;line-height:1.95;color:#7F8FA9;max-width:none;margin-bottom:10px}
+footer p b{color:#A3B2CA;font-weight:400}
+
+@media(min-width:760px){
+  section{padding:130px 48px}
+  .vs{grid-template-columns:1fr 1fr;gap:24px}
+  .multi{grid-column:1/-1}
+  .months{grid-template-columns:repeat(6,1fr)}
+  .perks{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js .rv{opacity:1;transform:none}
+  .mo{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div id="backdrop"></div><div id="glow"></div>
+<div id="bar"></div>
+<script>document.documentElement.classList.add("js");</script>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="brand rv"><b></b><b></b><span>STANDARD CHARTERED&nbsp;·&nbsp;PRIORITY PRIVATE</span></div>
+  <h1 class="rv d1">房子每個月<br>只給你 <em>5 萬</em>。<br>它可以給你更多。</h1>
+  <p class="heroline rv d2">不動產不必賣掉才有價值。<br>它可以一邊住、一邊工作。</p>
+
+  <div class="hero-viz rv d3">
+    <svg viewBox="0 0 340 170" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <!-- house -->
+      <path class="draw" d="M20 96 L48 68 L76 96" fill="none" stroke="#2E90F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="draw" d="M28 94 L28 128 L68 128 L68 94" fill="none" stroke="#2E90F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="42" y="110" width="12" height="18" fill="none" stroke="#2E90F5" stroke-width="1.6"/>
+      <!-- flow line -->
+      <path class="draw" d="M84 112 C140 112 160 112 214 112" fill="none" stroke="#4FE01E" stroke-width="1.6" stroke-dasharray="4 6" opacity=".7" style="animation-delay:.9s"/>
+      <g class="flowdot"><circle cx="90" cy="112" r="3.4" fill="#4FE01E"/></g>
+      <g class="flowdot" style="animation-delay:2.5s"><circle cx="90" cy="112" r="3.4" fill="#4FE01E"/></g>
+      <g class="flowdot" style="animation-delay:3.4s"><circle cx="90" cy="112" r="3.4" fill="#4FE01E"/></g>
+      <!-- coin stack -->
+      <g class="pulse">
+        <ellipse cx="248" cy="124" rx="26" ry="8" fill="none" stroke="#4FE01E" stroke-width="1.6"/>
+        <ellipse cx="248" cy="112" rx="26" ry="8" fill="none" stroke="#4FE01E" stroke-width="1.6"/>
+        <ellipse cx="248" cy="100" rx="26" ry="8" fill="none" stroke="#4FE01E" stroke-width="1.6"/>
+      </g>
+      <text x="292" y="106" fill="#93A3BE" font-size="11" font-family="IBM Plex Mono, monospace">月</text>
+      <text x="292" y="122" fill="#93A3BE" font-size="11" font-family="IBM Plex Mono, monospace">現金流</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== COMPARE ===== -->
+<section id="compare">
+  <div class="eyebrow rv">同一棟房子</div>
+  <h2 class="rv">收租，<br>還是<em>活化</em>？</h2>
+  <p class="sub rv d1">以市值 NT$3,000 萬的不動產為例。</p>
+
+  <div class="vs">
+    <div class="vsrow rv d1" data-fill=".38">
+      <div class="vslab">收租　月租金收入（毛）</div>
+      <div class="vsnum"><span data-count="5.0" data-dec="1">0</span><small>萬 / 月</small></div>
+      <div class="track"><i class="fill b"></i></div>
+      <div class="vsnote">年化毛報酬約 2.0%，尚未扣除稅費、空置與修繕。</div>
+    </div>
+
+    <div class="vsrow hi rv d2" data-fill="1">
+      <div class="vslab">活化　淨月現金流</div>
+      <div class="vsnum"><span data-count="26.75" data-dec="2">0</span><small>萬 / 月</small></div>
+      <div class="track"><i class="fill g"></i></div>
+      <div class="vsnote">增貸 3,000 萬配置 FCN，票息 13% 扣除 2.3% 資金成本後。</div>
+    </div>
+
+    <div class="multi rv d3">現金流放大 <em data-count="5.35" data-dec="2">0</em> 倍</div>
+  </div>
+</section>
+
+<!-- ===== PATH ===== -->
+<section id="path">
+  <div class="eyebrow rv">資金路徑</div>
+  <h2 class="rv">三步，<br>房子開始上工。</h2>
+
+  <div class="path">
+    <div class="node rv">
+      <div class="dot">01</div>
+      <div>
+        <h3>釋出淨值</h3>
+        <p>不動產增貸，房子照住，所有權不動。</p>
+        <div class="amt">NT$3,000 萬 <span style="font-size:14px;color:var(--dim)">／年息 2.30%</span></div>
+      </div>
+    </div>
+    <div class="node rv d1">
+      <div class="dot">02</div>
+      <div>
+        <h3>配置 FCN</h3>
+        <p>連結指標型科技權值股，設定深度保護的 KI 價位，領取固定票息。</p>
+        <div class="amt g">年化票息 13.0%</div>
+      </div>
+    </div>
+    <div class="node rv d2">
+      <div class="dot">03</div>
+      <div>
+        <h3>現金流入袋</h3>
+        <p>票息扣除貸款利息後，即為淨現金流。</p>
+        <div class="amt g">NT$26.75 萬 / 月</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WATERFALL ===== -->
+<section id="waterfall">
+  <div class="eyebrow rv">數字怎麼來的</div>
+  <h2 class="rv">收 13，<br>付 2.3，<br>留下 <em>10.7</em>。</h2>
+
+  <div class="wf rv d1">
+    <div class="wfbar a" data-h="100"><u>390<small style="font-size:.55em">萬</small></u><i></i></div>
+    <div class="wfbar b" data-h="17.7"><u>−69<small style="font-size:.55em">萬</small></u><i></i></div>
+    <div class="wfbar c" data-h="82.3"><u>321<small style="font-size:.55em">萬</small></u><i></i></div>
+  </div>
+  <div class="wflab">
+    <span><b>票息收入</b>13.0%</span>
+    <span><b>貸款利息</b>2.30%</span>
+    <span><b>淨現金流</b>10.70%</span>
+  </div>
+</section>
+
+<!-- ===== MONTHS ===== -->
+<section id="months">
+  <div class="eyebrow rv">一年的樣子</div>
+  <h2 class="rv">十二個月，<br>每個月都有錢進來。</h2>
+
+  <div class="months rv d1" id="mogrid"></div>
+
+  <div class="mototal rv d2">
+    <span>ANNUAL NET CASH FLOW</span>
+    <b>NT$ <span data-count="321" data-dec="0">0</span> 萬</b>
+  </div>
+</section>
+
+<!-- ===== SHIELD ===== -->
+<section id="shield">
+  <div class="eyebrow rv">結構設計</div>
+  <h2 class="rv">保護區間，<br>設在你<em>願意接手</em>的價位。</h2>
+  <p class="sub rv d1">選擇具長期基本面的科技權值股，將 KI 設在深度折價位置。
+    未跌破保護線即持續領息；跌破則以履約價取得股票——那是你原本就想持有的部位。</p>
+
+  <div class="chart rv d2">
+    <svg viewBox="0 0 340 200" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="safe" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1E8F3C" stop-opacity=".26"/>
+          <stop offset="100%" stop-color="#1E8F3C" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="20" width="340" height="120" fill="url(#safe)"/>
+      <line x1="0" y1="20" x2="340" y2="20" stroke="#93A3BE" stroke-width="1" stroke-dasharray="3 5" opacity=".5"/>
+      <line x1="0" y1="140" x2="340" y2="140" stroke="#F0604D" stroke-width="1.4" stroke-dasharray="6 5"/>
+      <polyline class="draw" style="animation-duration:2.4s"
+        points="0,72 28,60 56,84 84,52 112,76 140,44 168,66 196,38 224,70 252,46 280,58 308,36 340,50"
+        fill="none" stroke="#4FE01E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="pulse" cx="340" cy="50" r="4.5" fill="#4FE01E"/>
+      <text x="6" y="14" fill="#93A3BE" font-size="10" font-family="IBM Plex Mono, monospace">期初價 100%</text>
+      <text x="6" y="156" fill="#F0604D" font-size="10" font-family="IBM Plex Mono, monospace">KI 保護線</text>
+    </svg>
+    <div class="legend2">
+      <span><s style="background:#4FE01E"></s>標的價格路徑</span>
+      <span><s style="background:#F0604D"></s>保護線（跌破才交割）</span>
+      <span><s style="background:rgba(30,143,60,.4)"></s>持續領息區間</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PERKS ===== -->
+<section id="perks">
+  <div class="eyebrow rv">附帶效果</div>
+  <h2 class="rv">資產部位到位後，<br>服務層級一起升等。</h2>
+  <p class="sub rv d1">以月平均往來資產餘額認定，連續三個月達標，第四個月 20 日開放兌換。</p>
+
+  <div class="perks">
+    <div class="perk rv d1">
+      <div class="tag">AUM ≥ NT$3,000 萬</div>
+      <div class="nm">貴賓禮遇</div>
+      <div class="rule">出國／餐飲／交通　三擇一</div>
+      <ul>
+        <li><b>出國</b>　機場接送 10 點＋貴賓室無限次＋禮遇通關 1 次</li>
+        <li><b>餐飲</b>　精選飯店／餐廳用餐，最高 4 客</li>
+        <li><b>交通</b>　高鐵商務艙單程票 4 張</li>
+        <li><b>臨櫃</b>　每月 10 次手續費減免</li>
+      </ul>
+    </div>
+    <div class="perk top rv d2">
+      <div class="tag">AUM ≥ NT$1 億</div>
+      <div class="nm">頂緻禮遇</div>
+      <div class="rule">出國／餐飲　二擇一　＋　交通禮遇（另給）</div>
+      <ul>
+        <li><b>出國</b>　機場接送 16 點＋貴賓室無限次＋禮遇通關 4 次</li>
+        <li><b>餐飲</b>　精選飯店／餐廳用餐，最高 8 客</li>
+        <li><b>交通</b>　高鐵商務艙單程票 4 張</li>
+        <li><b>臨櫃</b>　每月 20 次手續費減免</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="svcs">
+    <div class="rv"><h4>全球禮賓秘書</h4><span>24 小時預訂與代辦</span></div>
+    <div class="rv d1"><h4>專屬生活管家</h4><span>清潔、修繕、收送</span></div>
+    <div class="rv d2"><h4>VIP 門診醫療</h4><span>專人陪診與門診預約</span></div>
+    <div class="rv"><h4>全球急難救助</h4><span>200 多國醫療網絡</span></div>
+    <div class="rv d1"><h4>國際私人理財中心</h4><span>松高・天母・台中市政</span></div>
+    <div class="rv d2"><h4>換匯優惠</h4><span>美金／台幣牌告優惠 4 分</span></div>
+  </div>
+</section>
+
+<!-- ===== RISK ===== -->
+<section id="risk">
+  <div class="eyebrow rv">請一併確認</div>
+  <h2 class="rv" style="font-size:clamp(22px,5.4vw,32px)">六項須知</h2>
+  <div class="rk rv d1">
+    <div><i>01</i><p><b>票息非利息</b>　FCN 票息為權利金性質，本金與連結標的價格連動，不受保障。</p></div>
+    <div><i>02</i><p><b>最壞情境</b>　跌破保護線時，將依履約價取得連結標的股票，市值可能低於原始投入金額。</p></div>
+    <div><i>03</i><p><b>票息不保證延續</b>　商品提前出場後，次一檔票息水準依當時市況而定。</p></div>
+    <div><i>04</i><p><b>利率浮動</b>　房貸多為指數型，將隨基準利率重設，資金成本非固定。</p></div>
+    <div><i>05</i><p><b>稅務</b>　增貸投資之利息支出不得列報購屋借款利息扣除額；境外所得應計入個人基本所得額。</p></div>
+    <div><i>06</i><p><b>還款來源</b>　貸款本息之償還須獨立於投資收益之外。外幣計價商品另有匯率風險。</p></div>
+  </div>
+</section>
+
+<footer>
+  <h4>重要聲明</h4>
+  <p><b>本簡報僅供一般性說明與討論使用，不構成要約、招攬或個別投資建議。</b>所載利率、票息、租金報酬率與禮遇內容皆為情境假設或製作時之參考資料，實際條件依本行核准結果與最新公告為準。</p>
+  <p>固定配息結構型商品（FCN）非存款，不受存款保險保障，具本金損失風險，投資人可能於到期時按履約價取得連結標的股票，最大損失可能達全部本金。以借入資金投資將同時放大獲利與損失，標的下跌時仍須依約清償貸款，抵押不動產有遭處分之可能。</p>
+  <p>臺、外幣匯率有漲有跌，兌換時可能發生損失。稅務處理請諮詢專業顧問。<b>謹慎理財　信用至上</b></p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- reveal ---- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var t = e.target;
+      t.classList.add("in");
+      io.unobserve(t);
+      if(t.dataset.fill) t.querySelector(".fill").style.width = (parseFloat(t.dataset.fill)*100)+"%";
+      t.querySelectorAll("[data-count]").forEach(count);
+      if(t.classList.contains("wf")) t.querySelectorAll(".wfbar").forEach(function(b,i){
+        b.classList.add("in");
+        setTimeout(function(){ b.querySelector("i").style.height = b.dataset.h+"%"; }, i*220);
+      });
+      if(t.id==="mogrid") runMonths();
+    });
+  },{threshold:.2,rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".rv,.node").forEach(function(el){ io.observe(el); });
+
+  /* ---- count up ---- */
+  function count(el){
+    var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||"0",10);
+    if(RM){ el.textContent = target.toFixed(dec); return; }
+    var t0 = null, dur = 1300;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts-t0)/dur,1);
+      var e = 1 - Math.pow(1-p,3);
+      el.textContent = (target*e).toFixed(dec);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---- months grid ---- */
+  var grid = document.getElementById("mogrid"), built=false;
+  var names = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+  names.forEach(function(n){
+    var d = document.createElement("div");
+    d.className = "mo";
+    d.innerHTML = "<b>26.75</b><span>"+n+"</span>";
+    grid.appendChild(d);
+  });
+  function runMonths(){
+    if(built) return; built = true;
+    var cells = grid.querySelectorAll(".mo");
+    cells.forEach(function(c,i){ setTimeout(function(){ c.classList.add("on"); }, RM?0:i*110); });
+  }
+  io.observe(grid);
+
+  /* ---- progress ---- */
+  var bar = document.getElementById("bar");
+  window.addEventListener("scroll", function(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h>0 ? (window.scrollY/h)*100 : 0) + "%";
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
