@@ -136,11 +136,16 @@ p{font-size:15.5px;max-width:56ch;color:var(--text)}
 .mo.on{opacity:1;transform:none;border-color:rgba(79,224,30,.4);background:rgba(30,143,60,.16)}
 .mo b{font-family:var(--mono);font-size:clamp(13px,3.6vw,17px);color:var(--green);font-weight:600}
 .mo span{font-size:10px;color:var(--dim);margin-top:2px;font-family:var(--mono)}
-.mototal{margin-top:26px;padding:22px;border:1px solid rgba(79,224,30,.35);border-radius:4px;
+.mototal{margin-top:26px;padding:26px 22px 30px;border:1px solid rgba(79,224,30,.35);border-radius:4px;
   background:rgba(30,143,60,.10);text-align:center}
-.mototal span{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--dim)}
-.mototal b{display:block;font-family:var(--mono);font-size:clamp(28px,8.5vw,46px);color:var(--green);
-  font-weight:600;margin-top:8px;line-height:1}
+.mototal .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--dim)}
+.mototal .figure{display:flex;align-items:baseline;justify-content:center;gap:.16em;margin-top:14px;
+  font-family:var(--mono);color:var(--green);line-height:1}
+.mototal .figure .cur{font-size:clamp(16px,4.5vw,22px);font-weight:500;color:var(--dim);
+  align-self:flex-start;margin-top:.5em}
+.mototal .figure .num{font-size:clamp(52px,17vw,88px);font-weight:600;letter-spacing:-.02em}
+.mototal .figure .unit{font-size:clamp(18px,5vw,26px);font-weight:400;color:var(--dim);
+  font-family:var(--sans);align-self:flex-end;margin-bottom:.14em}
 
 /* ---------- SHIELD CHART ---------- */
 .chart{margin-top:42px;border:1px solid var(--line);border-radius:4px;background:rgba(10,26,56,.45);
@@ -312,8 +317,12 @@ footer p b{color:#A3B2CA;font-weight:400}
   <div class="months rv d1" id="mogrid"></div>
 
   <div class="mototal rv d2">
-    <span>ANNUAL NET CASH FLOW</span>
-    <b>NT$ <span data-count="321" data-dec="0">0</span> 萬</b>
+    <span class="lbl">ANNUAL NET CASH FLOW　年度淨現金流</span>
+    <div class="figure">
+      <span class="cur">NT$</span>
+      <span class="num" data-count="321" data-dec="0">0</span>
+      <span class="unit">萬</span>
+    </div>
   </div>
 </section>
 
