@@ -3,464 +3,566 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>劉寶瑞女士 專屬配息規劃</title>
+<title>劉寶瑞女士 配息規劃完整報告</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --deep:#0F3D4C;        /* 深藍綠 主文字 */
-    --teal:#1B7A8C;        /* 主調藍綠 */
-    --teal-mid:#2E9BAF;
-    --teal-soft:#E4F2F4;   /* 淺藍綠底 */
-    --teal-line:#BBDDE2;
-    --white:#FFFFFF;
-    --page:#F5FAFB;
-    --grey:#5C7078;
-    --amber:#9A6B12;
-    --amber-soft:#FBF3E2;
-    --amber-line:#E3CE9C;
-  }
-  *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
-  body{
-    margin:0;
-    background:var(--page);
-    color:var(--deep);
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:20px;          /* 長者基準字級 */
-    line-height:1.95;
-    letter-spacing:0.02em;
-    -webkit-font-smoothing:antialiased;
-  }
-  .sheet{
-    max-width:840px;
-    margin:0 auto;
-    background:var(--white);
-    padding:0 0 56px;
-  }
+:root{
+  --ink:#0D1117;        /* 黑 */
+  --navy:#0B2545;       /* 深藍 */
+  --blue:#14508F;       /* 主藍 */
+  --blue2:#2E74C4;
+  --bluebg:#EAF1FA;
+  --blueline:#C2D6EE;
+  --green:#1B6E45;      /* 主綠 */
+  --green2:#2E9160;
+  --greenbg:#E7F2EB;
+  --greenline:#BCDCC8;
+  --white:#FFFFFF;
+  --page:#F7F9FC;
+  --grey:#55606B;
+  --grey2:#8892A0;
+  --greybg:#F0F2F5;
+  --greyline:#DDE2E8;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:20px;line-height:1.95;letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.sheet{max-width:880px;margin:0 auto;background:var(--white);}
+#bar{position:fixed;top:0;left:0;height:5px;width:0;
+  background:linear-gradient(90deg,var(--green2),var(--blue));z-index:99;transition:width .1s;}
+.rv{opacity:0;transform:translateY(32px);
+  transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
-  /* ── 頁首 ── */
-  header{
-    background:linear-gradient(160deg,var(--teal) 0%,var(--deep) 100%);
-    color:#fff;
-    padding:38px 40px 34px;
-  }
-  .kicker{
-    font-size:15px;
-    letter-spacing:0.42em;
-    opacity:.82;
-    margin-bottom:14px;
-  }
-  header h1{
-    font-family:'Noto Serif TC',serif;
-    font-weight:900;
-    font-size:40px;
-    line-height:1.4;
-    margin:0 0 10px;
-  }
-  header .lede{
-    font-size:22px;
-    font-weight:500;
-    opacity:.95;
-    margin:0;
-  }
-  .stamp{
-    margin-top:22px;
-    padding-top:16px;
-    border-top:1px solid rgba(255,255,255,.28);
-    font-size:16px;
-    opacity:.8;
-  }
+/* ── header ── */
+header{background:linear-gradient(155deg,#14508F 0%,#0B2545 62%,#070F1C 100%);
+  color:#fff;padding:62px 44px 52px;position:relative;overflow:hidden;}
+header::after{content:"";position:absolute;right:-100px;top:-100px;width:330px;height:330px;
+  border-radius:50%;background:radial-gradient(circle,rgba(46,145,96,.30),transparent 68%);}
+.kick{font-size:15px;letter-spacing:.44em;opacity:.82;margin-bottom:18px;}
+header h1{font-family:'Noto Serif TC',serif;font-weight:900;font-size:42px;line-height:1.38;margin:0 0 14px;}
+header .lede{font-size:22px;opacity:.94;margin:0;font-weight:500;}
+.stamp{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.26);font-size:16px;opacity:.78;}
 
-  /* ── 開場信 ── */
-  .letter{
-    padding:34px 40px 6px;
-    font-size:21px;
-    line-height:2.1;
-  }
-  .letter p{margin:0 0 18px;}
-  .letter b{
-    color:var(--teal);
-    font-weight:700;
-    border-bottom:3px solid var(--teal-line);
-  }
+.toc{background:var(--bluebg);padding:24px 44px;border-bottom:1px solid var(--blueline);}
+.toc ol{margin:0;padding-left:24px;font-size:18px;line-height:2.1;}
+.toc a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blueline);}
 
-  /* ── 區塊 ── */
-  section{padding:26px 40px 0;}
-  .sec-head{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    margin:22px 0 20px;
-  }
-  .sec-num{
-    flex:none;
-    width:46px;height:46px;
-    border-radius:50%;
-    background:var(--teal);
-    color:#fff;
-    font-family:'Noto Serif TC',serif;
-    font-weight:700;
-    font-size:24px;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .sec-head h2{
-    font-family:'Noto Serif TC',serif;
-    font-weight:700;
-    font-size:27px;
-    margin:0;
-    line-height:1.4;
-  }
+/* ── sections ── */
+section{padding:52px 44px 8px;}
+.shead{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+.snum{flex:none;width:52px;height:52px;border-radius:12px;background:var(--navy);color:#fff;
+  font-family:'Noto Serif TC',serif;font-weight:700;font-size:25px;
+  display:flex;align-items:center;justify-content:center;}
+.shead h2{font-family:'Noto Serif TC',serif;font-weight:700;font-size:29px;margin:0;line-height:1.4;}
+h3.sub{font-family:'Noto Serif TC',serif;font-size:22px;margin:36px 0 14px;
+  padding-left:12px;border-left:5px solid var(--green);}
+.lead{font-size:21px;line-height:2.05;margin:0 0 22px;}
+b.hb{color:var(--blue);font-weight:700;border-bottom:3px solid var(--blueline);}
+b.hg{color:var(--green);font-weight:700;border-bottom:3px solid var(--greenline);}
 
-  /* ── 1 對照 ── */
-  .compare{
-    display:flex;
-    align-items:stretch;
-    gap:18px;
-    flex-wrap:wrap;
-  }
-  .card{
-    flex:1 1 280px;
-    border-radius:16px;
-    padding:26px 24px;
-    text-align:center;
-  }
-  .card.now{
-    background:#F2F5F6;
-    border:2px solid #D5DEE1;
-  }
-  .card.after{
-    background:var(--teal-soft);
-    border:3px solid var(--teal);
-  }
-  .card .tag{
-    font-size:18px;
-    font-weight:700;
-    letter-spacing:.3em;
-    margin-bottom:12px;
-  }
-  .card.now .tag{color:var(--grey);}
-  .card.after .tag{color:var(--teal);}
-  .card .big{
-    font-family:'Noto Serif TC',serif;
-    font-weight:900;
-    font-size:52px;
-    line-height:1.25;
-    margin-bottom:6px;
-  }
-  .card.now .big{color:#4A5C63;}
-  .card.after .big{color:var(--teal);}
-  .card .cap{
-    font-size:17px;
-    color:var(--grey);
-    line-height:1.7;
-  }
-  .card .note{
-    margin-top:16px;
-    padding-top:14px;
-    border-top:1px dashed #C4D2D6;
-    font-size:19px;
-    line-height:1.75;
-  }
-  .card.after .note{border-top-color:var(--teal-line);color:var(--teal);font-weight:700;}
-  .arrow{
-    flex:none;
-    align-self:center;
-    font-size:40px;
-    color:var(--teal-mid);
-    font-weight:700;
-  }
+/* ── calc note ── */
+.calc{background:var(--greybg);border:1px solid var(--greyline);border-left:5px solid var(--blue2);
+  border-radius:10px;padding:15px 18px;margin:14px 0 22px;font-size:16.5px;line-height:1.85;color:var(--grey);}
+.calc .ct{font-weight:700;color:var(--navy);font-size:16px;letter-spacing:.06em;margin-bottom:4px;}
+.calc .fm{font-family:'IBM Plex Mono',monospace;color:var(--ink);
+  background:#fff;border:1px solid var(--greyline);border-radius:6px;
+  padding:8px 12px;margin:6px 0;display:block;font-size:16px;overflow-x:auto;white-space:nowrap;}
 
-  /* ── 表格 ── */
-  table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:20px;
-  }
-  th,td{
-    padding:16px 14px;
-    border-bottom:1px solid var(--teal-line);
-    text-align:left;
-    line-height:1.7;
-  }
-  td.num{
-    text-align:right;
-    font-family:'Noto Serif TC',serif;
-    font-weight:700;
-    white-space:nowrap;
-  }
-  tr.hl td{
-    background:var(--teal-soft);
-    color:var(--teal);
-    font-weight:700;
-    border-bottom:2px solid var(--teal);
-  }
-  tr.hl td.num{font-size:24px;}
+/* ── cards ── */
+.duo{display:flex;gap:18px;flex-wrap:wrap;align-items:stretch;}
+.cd{flex:1 1 260px;border-radius:16px;padding:26px 22px;text-align:center;}
+.cd.a{background:var(--greybg);border:2px solid var(--greyline);}
+.cd.b{background:var(--greenbg);border:3px solid var(--green);}
+.cd .tg{font-size:17px;font-weight:700;letter-spacing:.3em;margin-bottom:10px;}
+.cd.a .tg{color:var(--grey);}.cd.b .tg{color:var(--green);}
+.cd .bg{font-family:'Noto Serif TC',serif;font-weight:900;font-size:48px;line-height:1.25;}
+.cd.a .bg{color:#4A555F;}.cd.b .bg{color:var(--green);}
+.cd .cp{font-size:17px;color:var(--grey);line-height:1.7;margin-top:4px;}
+.cd .nt{margin-top:15px;padding-top:13px;border-top:1px dashed var(--greyline);font-size:18px;line-height:1.75;}
+.cd.b .nt{border-top-color:var(--greenline);color:var(--green);font-weight:700;}
+.arh{flex:none;align-self:center;font-size:36px;color:var(--blue2);font-weight:700;line-height:1;}
+.arv{display:none;}
 
-  /* ── 3 成本 ── */
-  .cost-box{
-    background:var(--teal-soft);
-    border-left:8px solid var(--teal);
-    border-radius:12px;
-    padding:26px 28px;
-  }
-  .cost-box p{margin:0 0 16px;font-size:21px;line-height:2.05;}
-  .cost-box p:last-child{margin-bottom:0;}
-  .cost-figure{
-    display:block;
-    font-family:'Noto Serif TC',serif;
-    font-weight:900;
-    font-size:44px;
-    color:var(--teal);
-    line-height:1.35;
-    margin:8px 0 2px;
-  }
-  .cost-figure small{
-    display:block;
-    font-family:'Noto Sans TC',sans-serif;
-    font-weight:500;
-    font-size:19px;
-    color:var(--grey);
-  }
+/* ── tables ── */
+table{width:100%;border-collapse:collapse;font-size:19px;}
+th,td{padding:15px 12px;border-bottom:1px solid var(--greyline);text-align:left;line-height:1.65;}
+td.n{text-align:right;font-family:'Noto Serif TC',serif;font-weight:700;white-space:nowrap;}
+td.n small,th small,td small{display:block;font-family:'Noto Sans TC',sans-serif;
+  font-weight:400;font-size:15px;color:var(--grey);}
+tr.hl td{background:var(--bluebg);color:var(--navy);font-weight:700;border-bottom:2px solid var(--blue);}
+tr.hl td.n{font-size:23px;}
+tr.hlg td{background:var(--greenbg);color:var(--green);font-weight:700;border-bottom:2px solid var(--green);}
+tr.hlg td.n{font-size:23px;}
+.ctb th{background:var(--navy);color:#fff;text-align:center;font-size:18px;border-bottom:none;}
+.ctb th:first-child{text-align:left;}
+.ctb th small{color:rgba(255,255,255,.78);}
+.ctb td{text-align:center;font-size:18px;}
+.ctb td:first-child{text-align:left;font-weight:500;}
+.ctb td b{display:block;font-family:'Noto Serif TC',serif;font-size:22px;}
+.win{color:var(--green);font-weight:700;}
+.cost{color:#9A5B12;font-weight:700;}
+.colw{background:#F3F8FD;}
+.stepgrid td:first-child{color:var(--grey);font-size:17px;}
 
-  /* ── 4 時程 ── */
-  .timeline{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .stop{
-    flex:1 1 150px;
-    background:var(--white);
-    border:2px solid var(--teal-line);
-    border-top:7px solid var(--teal);
-    border-radius:12px;
-    padding:18px 12px;
-    text-align:center;
-  }
-  .stop .yr{
-    font-size:19px;
-    font-weight:700;
-    color:var(--deep);
-    margin-bottom:6px;
-  }
-  .stop .amt{
-    font-family:'Noto Serif TC',serif;
-    font-weight:900;
-    font-size:26px;
-    color:var(--teal);
-  }
-  .timeline-note{
-    margin-top:18px;
-    font-size:20px;
-    line-height:2;
-  }
+/* ── bars ── */
+.brow{display:flex;align-items:center;gap:14px;margin-bottom:15px;}
+.blab{flex:0 0 132px;font-size:17px;line-height:1.4;text-align:right;color:var(--grey);}
+.btrk{flex:1;height:34px;background:var(--greybg);border-radius:7px;overflow:hidden;}
+.bfil{height:100%;width:0;border-radius:7px;transition:width 1.4s cubic-bezier(.2,.8,.3,1);
+  display:flex;align-items:center;justify-content:flex-end;padding-right:12px;
+  color:#fff;font-weight:700;font-size:16px;font-family:'Noto Serif TC',serif;}
+.on .bfil{width:var(--w);}
+.fg{background:linear-gradient(90deg,#A8B2BD,#7A8794);}
+.fb{background:linear-gradient(90deg,#2E74C4,#14508F);}
+.fn{background:linear-gradient(90deg,#2E9160,#1B6E45);}
 
-  /* ── 5 方案比較 ── */
-  .plan-table th{
-    background:var(--deep);
-    color:#fff;
-    font-size:19px;
-    text-align:center;
-    line-height:1.6;
-    border-bottom:none;
-  }
-  .plan-table th:first-child{text-align:left;}
-  .plan-table th small{
-    display:block;
-    font-weight:400;
-    opacity:.82;
-    font-size:16px;
-  }
-  .plan-table td{text-align:center;font-size:19px;}
-  .plan-table td:first-child{text-align:left;font-weight:500;}
-  .plan-table td b{
-    display:block;
-    font-family:'Noto Serif TC',serif;
-    font-size:23px;
-  }
-  .plan-table td small{
-    display:block;
-    color:var(--grey);
-    font-size:16px;
-  }
-  .colA{background:#F7FBFC;}
-  .colB{background:#FBFDFD;}
-  .ok{color:var(--teal);font-weight:700;}
-  .short{color:var(--amber);font-weight:700;}
+/* ── stats ── */
+.strip{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0 6px;}
+.st{flex:1 1 150px;background:#fff;border:2px solid var(--blueline);border-top:7px solid var(--blue);
+  border-radius:12px;padding:18px 12px;text-align:center;}
+.st.g{border-color:var(--greenline);border-top-color:var(--green);}
+.st .v{font-family:'Noto Serif TC',serif;font-weight:900;font-size:29px;color:var(--blue);line-height:1.3;}
+.st.g .v{color:var(--green);}
+.st .k{font-size:16px;color:var(--grey);line-height:1.55;margin-top:4px;}
 
-  .caution{
-    margin-top:22px;
-    background:var(--amber-soft);
-    border:2px solid var(--amber-line);
-    border-radius:14px;
-    padding:24px 26px;
-    font-size:20px;
-    line-height:2.05;
-  }
-  .caution .ct{
-    font-family:'Noto Serif TC',serif;
-    font-weight:700;
-    font-size:23px;
-    color:var(--amber);
-    margin-bottom:10px;
-  }
+/* ── boxes ── */
+.box{background:var(--bluebg);border-left:8px solid var(--blue);border-radius:12px;padding:26px 28px;margin:22px 0;}
+.box.g{background:var(--greenbg);border-left-color:var(--green);}
+.box p{margin:0 0 14px;font-size:20px;line-height:2.05;} .box p:last-child{margin:0;}
+.fig{display:block;font-family:'Noto Serif TC',serif;font-weight:900;font-size:40px;
+  color:var(--blue);line-height:1.35;margin:8px 0 2px;}
+.box.g .fig{color:var(--green);}
+.fig small{display:block;font-family:'Noto Sans TC',sans-serif;font-weight:500;font-size:18px;color:var(--grey);}
+.warn{background:#FBF4E6;border:2px solid #E0CDA4;border-radius:12px;padding:24px 26px;margin:22px 0;
+  font-size:19px;line-height:2;}
+.warn .wt{font-family:'Noto Serif TC',serif;font-weight:700;font-size:22px;color:#8A5A10;margin-bottom:8px;}
+.neutral{background:var(--greybg);border:2px solid var(--greyline);border-radius:12px;
+  padding:22px 24px;margin:22px 0;font-size:18px;line-height:1.95;color:#3B444D;}
+.neutral .nt2{font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;color:var(--navy);margin-bottom:8px;}
 
-  /* ── 結尾 ── */
-  .closing{
-    margin:34px 40px 0;
-    background:var(--teal-soft);
-    border-radius:16px;
-    padding:28px 30px;
-    font-size:21px;
-    line-height:2.05;
-  }
-  footer{
-    margin:30px 40px 0;
-    padding-top:22px;
-    border-top:2px solid var(--teal-line);
-    font-size:15.5px;
-    color:var(--grey);
-    line-height:1.95;
-  }
-  footer li{margin-bottom:8px;}
-  footer ul{padding-left:20px;margin:0;}
+.tl{display:flex;gap:12px;flex-wrap:wrap;}
+.tp{flex:1 1 145px;background:#fff;border:2px solid var(--blueline);border-top:7px solid var(--blue);
+  border-radius:10px;padding:17px 10px;text-align:center;}
+.tp .y{font-size:18px;font-weight:700;margin-bottom:5px;}
+.tp .a{font-family:'Noto Serif TC',serif;font-weight:900;font-size:24px;color:var(--blue);}
 
-  @media (max-width:640px){
-    body{font-size:19px;}
-    header{padding:30px 22px 26px;}
-    header h1{font-size:31px;}
-    header .lede{font-size:20px;}
-    .letter,section{padding-left:22px;padding-right:22px;}
-    .closing,footer{margin-left:22px;margin-right:22px;}
-    .card .big{font-size:44px;}
-    .arrow{transform:rotate(90deg);width:100%;font-size:34px;}
-    .cost-figure{font-size:36px;}
-    table{font-size:18px;}
-    th,td{padding:13px 8px;}
-    .plan-table td b{font-size:20px;}
-  }
-  @media print{
-    body{background:#fff;font-size:16px;}
-    .sheet{max-width:100%;}
-    section{page-break-inside:avoid;}
-  }
+/* ── glossary ── */
+.gloss{background:#fff;border:2px solid var(--blueline);border-radius:14px;padding:8px 26px 20px;margin:20px 0;}
+.gitem{padding:18px 0;border-bottom:1px dashed var(--greyline);}
+.gitem:last-child{border-bottom:none;}
+.gitem .gt{font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;color:var(--navy);margin-bottom:4px;}
+.gitem .gd{font-size:17.5px;line-height:1.9;color:#3B444D;}
+
+.verdict{margin:36px 44px 0;background:linear-gradient(150deg,#14508F,#0B2545);color:#fff;
+  border-radius:18px;padding:38px 34px;}
+.verdict h3{font-family:'Noto Serif TC',serif;font-weight:900;font-size:27px;margin:0 0 18px;}
+.verdict p{font-size:20px;line-height:2.05;margin:0 0 14px;opacity:.96;} .verdict p:last-child{margin:0;}
+.verdict .pill{display:inline-block;background:rgba(46,145,96,.3);border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;padding:5px 16px;font-size:17px;margin-right:8px;}
+
+footer{margin:40px 44px 60px;padding-top:24px;border-top:2px solid var(--blueline);
+  font-size:15px;color:var(--grey);line-height:1.9;}
+footer ul{padding-left:20px;margin:0;} footer li{margin-bottom:8px;}
+.src{font-size:14px;color:var(--grey2);margin-top:10px;}
+
+@media(max-width:680px){
+  body{font-size:19px;}
+  header{padding:44px 22px 38px;} header h1{font-size:30px;} header .lede{font-size:19px;}
+  .toc,section{padding-left:22px;padding-right:22px;}
+  .verdict,footer{margin-left:22px;margin-right:22px;}
+  .shead h2{font-size:23px;} .snum{width:44px;height:44px;font-size:21px;}
+  .cd .bg{font-size:42px;} .fig{font-size:33px;}
+  .arh{display:none;}
+  .arv{display:block;flex:0 0 100%;text-align:center;font-size:32px;color:var(--blue2);
+    line-height:1.2;padding:4px 0;font-weight:700;}
+  table{font-size:17px;} th,td{padding:12px 7px;}
+  .ctb td b{font-size:19px;}
+  .blab{flex:0 0 92px;font-size:14px;}
+  .st .v{font-size:25px;}
+  .calc{font-size:15.5px;} .calc .fm{font-size:14px;}
+}
+@media print{
+  body{background:#fff;font-size:15px;} .rv{opacity:1;transform:none;}
+  .bfil{width:var(--w)!important;} #bar{display:none;} section{page-break-inside:avoid;}
+}
 </style>
 </head>
 <body>
+<div id="bar"></div>
 <div class="sheet">
 
-  <header>
-    <div class="kicker">私 人 銀 行 專 屬 規 劃</div>
-    <h1>劉寶瑞女士 專屬配息規劃</h1>
-    <p class="lede">用基金配息，穩穩接住每年的美元保費</p>
-    <div class="stamp">製表日期：2026年8月12日</div>
-  </header>
+<header>
+  <div class="kick">私 人 銀 行 專 屬 規 劃</div>
+  <h1>劉寶瑞女士<br>配息繳付保費 完整規劃報告</h1>
+  <p class="lede">用基金配息，穩穩接住每年的美元保費</p>
+  <div class="stamp">製表日期：2026年8月21日　│　淨值基準日：2026/08/20</div>
+</header>
 
-  <div class="letter">
-    <p>劉女士您好：</p>
-    <p>您手上的 PIMCO 收益增長基金，每年都會配發一筆穩定的配息。我們幫您試算過：<b>只要再增加一些持有單位，這筆配息就能對上您每年要繳的 US$33,000 保費</b>。</p>
-    <p>未來繳保費時，不用另外從口袋拿錢出來，資金來源會更清楚、也更安心。以下用五個段落，把整件事一步一步說明給您聽。</p>
+<div class="toc rv">
+  <ol>
+    <li><a href="#s1">規劃內容：這件事要怎麼做</a></li>
+    <li><a href="#s2">分批進場 或 單筆進場</a></li>
+    <li><a href="#s3">這檔基金 過去的實際表現</a></li>
+    <li><a href="#s4">未來情境模擬</a></li>
+    <li><a href="#s5">結論與建議</a></li>
+    <li><a href="#s6">名詞與計算方式說明</a></li>
+  </ol>
+</div>
+
+<!-- ═══ 1 ═══ -->
+<section id="s1">
+  <div class="shead rv"><div class="snum">1</div><h2>規劃內容：這件事要怎麼做</h2></div>
+  <p class="lead rv d1">您手上的 PIMCO 收益增長基金，每年都會配發一筆配息。我們的規劃是：<b class="hb">再增加一筆持有單位，讓這筆配息直接用來繳交您每年的美元保費</b>，未來繳費時不必再另外從口袋拿錢。</p>
+
+  <div class="duo rv d2">
+    <div class="cd a">
+      <div class="tg">現 在</div>
+      <div class="bg">US$6,413</div>
+      <div class="cp">每年配息<br>（持有 6,142.691 單位）</div>
+      <div class="nt">保費 US$33,000<br>目前需要另外準備<br><b>US$26,587</b></div>
+    </div>
+    <div class="arh">➜</div><div class="arv">▼</div>
+    <div class="cd b">
+      <div class="tg">調 整 後</div>
+      <div class="bg">US$33,460</div>
+      <div class="cp">每年配息<br>（約 32,049 單位）</div>
+      <div class="nt">已可支應<br>US$33,000 保費</div>
+    </div>
   </div>
 
-  <section>
-    <div class="sec-head"><div class="sec-num">1</div><h2>現在 與 調整後，一眼看懂</h2></div>
-    <div class="compare">
-      <div class="card now">
-        <div class="tag">現 在</div>
-        <div class="big">US$6,413</div>
-        <div class="cap">每年配息<br>（持有 6,142.691 單位）</div>
-        <div class="note">保費 US$33,000<br>配息還差 <b>US$26,587</b><br><span style="font-size:17px;color:#5C7078;">這段差額目前需要另外準備</span></div>
-      </div>
-      <div class="arrow">➜</div>
-      <div class="card after">
-        <div class="tag">調 整 後</div>
-        <div class="big">US$33,001</div>
-        <div class="cap">每年配息<br>（約 31,610 單位）</div>
-        <div class="note">幾乎剛好對上 US$33,000 保費<br><span style="font-size:17px;color:#5C7078;font-weight:400;">每年繳保費，配息就能直接支應</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head"><div class="sec-num">2</div><h2>試算怎麼來的</h2></div>
-    <table>
-      <tr><td>目前持有單位數</td><td class="num">6,142.691 單位</td></tr>
-      <tr><td>每單位每年配息（維持不變）</td><td class="num">US$1.044</td></tr>
-      <tr><td>目前每年配息</td><td class="num">US$6,413</td></tr>
-      <tr><td>目標每年配息（＝每年美元保費）</td><td class="num">US$33,000</td></tr>
-      <tr><td>需要再增加的單位數</td><td class="num">約 25,467 單位</td></tr>
-      <tr><td>增加後，總持有單位數</td><td class="num">約 31,610 單位</td></tr>
-      <tr class="hl"><td>增加後，預估每年配息</td><td class="num">US$33,001</td></tr>
-      <tr><td>預估申購金額（以現在淨值試算）</td><td class="num">約 US$298,000<br><span style="font-weight:400;font-size:17px;color:#5C7078;">約 NT$962.4萬</span></td></tr>
-    </table>
-  </section>
-
-  <section>
-    <div class="sec-head"><div class="sec-num">3</div><h2>錢從哪裡來．真正的成本是什麼</h2></div>
-    <div class="cost-box">
-      <p>這筆加碼，規劃動用您手上的<b>理財型房屋增貸額度</b>（隨借隨還、按日計息、年利率 2.83%）來支付，不需要動用您其他的現金。</p>
-      <p>所以，真正每年需要另外準備的，並不是 US$33,000 的保費，而是這筆貸款的利息：</p>
-      <span class="cost-figure">US$8,432<small>約 NT$27.2萬 ／ 每年</small></span>
-      <p style="margin-top:14px;">這個金額，比原本要自己準備的保費小很多。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head"><div class="sec-num">4</div><h2>這筆規劃，要維持多久</h2></div>
-    <div class="timeline">
-      <div class="stop"><div class="yr">2026年12月</div><div class="amt">US$33,000</div></div>
-      <div class="stop"><div class="yr">2027年12月</div><div class="amt">US$33,000</div></div>
-      <div class="stop"><div class="yr">2028年12月</div><div class="amt">US$33,000</div></div>
-      <div class="stop"><div class="yr">2029年12月</div><div class="amt">US$33,000</div></div>
-    </div>
-    <p class="timeline-note">保費固定在每年 12 月繳交，連同 2026 年，<b>總共還剩 4 次</b>。也就是說，這個配息計畫只需要穩定運作到 2029 年，之後就可以重新檢視這筆額度要償還或保留。</p>
-  </section>
-
-  <section>
-    <div class="sec-head"><div class="sec-num">5</div><h2>如果連貸款利息，也要讓配息一起打平</h2></div>
-    <p style="margin-top:0;">新增的單位是用貸款買的，每多買 1 單位，每年就多一筆利息要付，會侵蝕掉一部分配息。所以如果希望「<b>配息扣掉利息之後，還能剛好對上保費</b>」，需要拉高的單位數會明顯更多。以下兩個方案供您參考：</p>
-    <table class="plan-table">
-      <tr>
-        <th style="width:32%;"></th>
-        <th class="colA">方案 A<small>配息對上保費</small></th>
-        <th class="colB">方案 B<small>連利息也一起打平</small></th>
-      </tr>
-      <tr><td>需新增單位數</td><td class="colA">25,467 單位</td><td class="colB">37,295 單位</td></tr>
-      <tr><td>增加後總單位數</td><td class="colA">約 31,610 單位</td><td class="colB">約 43,438 單位</td></tr>
-      <tr><td>預估申購金額</td>
-        <td class="colA"><b>US$298,000</b><small>約 NT$962.4萬</small></td>
-        <td class="colB"><b>US$436,000</b><small>約 NT$1,409.4萬</small></td></tr>
-      <tr><td>每年配息（毛額）</td><td class="colA">US$33,001</td><td class="colB">US$45,349</td></tr>
-      <tr><td>每年貸款利息</td>
-        <td class="colA"><b>US$8,432</b><small>約 NT$27.2萬</small></td>
-        <td class="colB"><b>US$12,349</b><small>約 NT$39.9萬</small></td></tr>
-      <tr class="hl"><td>配息扣掉利息後</td>
-        <td class="colA"><b class="short">US$24,569</b><small>距保費還差 US$8,431</small></td>
-        <td class="colB"><b class="ok">US$33,000</b><small>剛好打平</small></td></tr>
-    </table>
-
-    <div class="caution">
-      <div class="ct">方案 B 要請您特別留意的地方</div>
-      方案 B 需要比方案 A 多投入約 <b>US$138,000（約 NT$447萬）</b>，增貸規模會拉高到 <b>約 NT$1,409萬</b>，等於把更多的資產集中在同一檔基金上。<br>
-      萬一未來基金淨值下跌，部位的波動與增貸的還款壓力都會同步放大。這一點請您務必納入考量，我們也會當面再為您詳細說明，再由您決定要採用方案 A 或方案 B。
-    </div>
-  </section>
-
-  <div class="closing">
-    以上試算，希望能讓您更清楚看懂整個規劃的全貌。若您方便，我們可以再約一個時間，當面為您說明並確認所有細節。
+  <div class="calc rv d3">
+    <div class="ct">◆ 這兩個數字怎麼算出來的</div>
+    這檔基金目前每一單位、每個月配發 US$0.087，一年 12 個月即為每單位 US$1.044。<br>
+    <span class="fm">現在：6,142.691 單位 × US$1.044 ＝ US$6,413</span>
+    <span class="fm">調整後：32,049.43 單位 × US$1.044 ＝ US$33,460</span>
   </div>
 
-  <footer>
-    <ul>
-      <li>配息金額為基金過往分配狀況試算，非保證收益；配息可能包含本金分配，本金亦有可能因市場波動而增減。</li>
-      <li>基金淨值每日變動，實際申購單位數與金額，以申購當日之淨值及匯率為準，本文件僅供試算參考。</li>
-      <li>房屋增貸為機動利率，實際利率與可動用額度以銀行核定為準，未來利率變動將影響實際利息成本。</li>
-      <li>本文件為規劃討論之試算資料，非投資建議或收益保證，實際執行前請與您的專屬顧問再次確認所有條件。</li>
-    </ul>
-  </footer>
+  <h3 class="sub rv">試算明細</h3>
+  <table class="rv d1 stepgrid">
+    <tr><td>目前持有單位數</td><td class="n">6,142.691 單位</td></tr>
+    <tr><td>基金淨值（2026/08/20）</td><td class="n">US$11.58</td></tr>
+    <tr><td>每單位每月配息</td><td class="n">US$0.087</td></tr>
+    <tr><td>每單位每年配息</td><td class="n">US$1.044<small>＝ 0.087 × 12 個月</small></td></tr>
+    <tr><td>年化配息率</td><td class="n">約 9.02%<small>＝ 1.044 ÷ 11.58</small></td></tr>
+    <tr><td>本次規劃投入金額</td><td class="n">US$300,000<small>約 NT$969萬</small></td></tr>
+    <tr><td>可新增單位數</td><td class="n">約 25,907 單位<small>＝ 300,000 ÷ 11.58</small></td></tr>
+    <tr><td>調整後總持有單位</td><td class="n">約 32,049 單位<small>＝ 25,907 ＋ 6,142.691</small></td></tr>
+    <tr class="hlg"><td>調整後 每年配息</td><td class="n">US$33,460<small>＝ 32,049 × 1.044</small></td></tr>
+  </table>
+
+  <h3 class="sub rv">資金來源與真正的成本</h3>
+  <div class="box rv d1">
+    <p>這筆投入，規劃動用您手上的<b class="hb">理財型房屋增貸額度</b>（隨借隨還、按日計息、年利率 2.83%），不需要動用其他現金。</p>
+    <p>因此每年真正需要另外準備的，並不是 US$33,000 的保費，而是這筆貸款的利息：</p>
+    <span class="fig">US$8,490<small>約 NT$27.4萬 ／ 每年</small></span>
+  </div>
+  <div class="calc rv d2">
+    <div class="ct">◆ 利息怎麼算</div>
+    <span class="fm">US$300,000 × 年利率 2.83% ＝ US$8,490／年</span>
+    理財型額度為按日計息，實際利息依動用天數計算，此處以整年度動用試算。
+  </div>
+
+  <table class="rv d2">
+    <tr><td>每年配息收入</td><td class="n" style="color:var(--green);">＋US$33,460</td></tr>
+    <tr><td>減：每年貸款利息</td><td class="n" style="color:#9A5B12;">－US$8,490</td></tr>
+    <tr class="hl"><td>配息扣除利息後 淨額</td><td class="n">US$24,970</td></tr>
+    <tr><td>每年保費</td><td class="n">US$33,000</td></tr>
+    <tr class="hl"><td>每年仍需另外準備</td><td class="n" style="color:#9A5B12;">US$8,030<small>約 NT$25.9萬</small></td></tr>
+  </table>
+  <p class="lead rv d3">相較於原本每年要全額自付 <b>US$33,000</b>，調整後僅需準備 <b class="hg">US$8,030</b>，負擔降低約 <b class="hg">四分之三</b>。</p>
+
+  <h3 class="sub rv">這筆規劃要維持多久</h3>
+  <div class="tl rv d1">
+    <div class="tp"><div class="y">2026年12月</div><div class="a">US$33,000</div></div>
+    <div class="tp"><div class="y">2027年12月</div><div class="a">US$33,000</div></div>
+    <div class="tp"><div class="y">2028年12月</div><div class="a">US$33,000</div></div>
+    <div class="tp"><div class="y">2029年12月</div><div class="a">US$33,000</div></div>
+  </div>
+  <p class="lead rv d2" style="margin-top:18px;">保費固定於每年 12 月繳交，連同 2026 年<b class="hb">總共還剩 4 次</b>。此計畫只需穩定運作至 2029 年，之後即可重新檢視這筆額度要償還或保留。</p>
+</section>
+
+<!-- ═══ 2 ═══ -->
+<section id="s2">
+  <div class="shead rv"><div class="snum">2</div><h2>分批進場 或 單筆進場</h2></div>
+  <p class="lead rv d1">您提到希望分批進場，<b class="hb">每次 5 萬美元、分 6 次投入</b>。這個想法很合理，我們也做了完整試算。以下把兩種做法的差別，誠實呈現。</p>
+
+  <div class="box rv d2">
+    <p style="margin-bottom:6px;"><b class="hb">首先說明一個常見的誤解</b></p>
+    <p>分批進場<b class="hb">並不會讓您買得比較便宜</b>。它真正的作用，是避免一次全部買在最不理想的一天。換句話說，分批是一種「保險」——而保險，是有成本的。</p>
+  </div>
+
+  <h3 class="sub rv">分批的成本從哪裡來</h3>
+  <p class="lead rv d1">分 6 期投入，代表有一部分的錢在前幾個月還沒進場。這段期間這些錢<b class="hb">領不到配息</b>；但因為是隨借隨還的額度，沒動用的部分也<b class="hb">不必付利息</b>。</p>
+
+  <div class="calc rv d2">
+    <div class="ct">◆「平均未投入金額 US$125,000」是這樣算出來的</div>
+    每月投入 5 萬，共 6 期。每個月「還沒進場」的金額如下：
+  </div>
+  <table class="rv d2" style="margin-top:-10px;">
+    <tr><td>第 1 個月　已投入 5 萬</td><td class="n">尚未投入 US$250,000</td></tr>
+    <tr><td>第 2 個月　已投入 10 萬</td><td class="n">尚未投入 US$200,000</td></tr>
+    <tr><td>第 3 個月　已投入 15 萬</td><td class="n">尚未投入 US$150,000</td></tr>
+    <tr><td>第 4 個月　已投入 20 萬</td><td class="n">尚未投入 US$100,000</td></tr>
+    <tr><td>第 5 個月　已投入 25 萬</td><td class="n">尚未投入 US$50,000</td></tr>
+    <tr><td>第 6 個月　已投入 30 萬</td><td class="n">尚未投入 US$0</td></tr>
+    <tr class="hl"><td>六個月平均</td><td class="n">US$125,000</td></tr>
+  </table>
+  <div class="calc rv d1">
+    <span class="fm">(250,000＋200,000＋150,000＋100,000＋50,000＋0) ÷ 6 ＝ US$125,000</span>
+    這代表「平均而言，有 12.5 萬美元在這半年當中是閒置、沒有在賺配息的」。
+  </div>
+
+  <table class="rv d2">
+    <tr><td>分批期間平均未投入金額</td><td class="n">US$125,000</td></tr>
+    <tr><td>因此少領的配息<small>125,000 × 9.02% × 0.5 年</small></td><td class="n" style="color:#9A5B12;">－US$5,638</td></tr>
+    <tr><td>因此省下的貸款利息<small>125,000 × 2.83% × 0.5 年</small></td><td class="n" style="color:var(--green);">＋US$1,769</td></tr>
+    <tr class="hl"><td>分批的淨成本</td><td class="n" style="color:#9A5B12;">－US$3,869<small>約 NT$12.5萬</small></td></tr>
+  </table>
+  <div class="calc rv d1">
+    <div class="ct">◆ 為什麼要乘以 0.5 年</div>
+    因為分批期間共 6 個月，等於半年。上述「平均未投入 12.5 萬」是持續半年的狀態，故以半年計算配息與利息。
+  </div>
+
+  <div class="warn rv d1">
+    <div class="wt">這筆成本，未來補不回來</div>
+    這 US$3,869 是<b>時間造成的</b>，不是價格造成的。無論之後基金漲或跌，這段沒有領到的配息都無法追回。
+  </div>
+
+  <h3 class="sub rv">那麼，分批真的能買得比較便宜嗎</h3>
+  <p class="lead rv d1">我們用電腦模擬了 <b class="hb">50,000 種</b>可能的市場走勢，計算分批 6 期實際買到的平均成本：</p>
+
+  <div class="strip rv d2">
+    <div class="st"><div class="v">51.5%</div><div class="k">平均成本<br>低於今日淨值的機率</div></div>
+    <div class="st"><div class="v">11.561</div><div class="k">平均成本中位數<br>（今日淨值 11.58）</div></div>
+    <div class="st"><div class="v">0.16%</div><div class="k">與今日淨值<br>的差距</div></div>
+  </div>
+
+  <div class="calc rv d3">
+    <div class="ct">◆ 這三個數字的意思</div>
+    我們讓電腦模擬 50,000 種不同的未來走勢，每一種都跑一次「分 6 期買進」，算出那一次買到的平均價格。<br>
+    ・在 50,000 次當中，有 <b>51.5%</b> 的次數，平均價格比今天的 11.58 便宜；其餘 48.5% 比今天貴。<br>
+    ・把 50,000 個平均價格由小排到大，正中間那一個是 <b>11.561</b>，比今天便宜 0.16%。
+  </div>
+
+  <p class="lead rv d1">機率 51.5%，<b class="hb">幾乎等同於擲銅板</b>；即使買得比較便宜，平均也只便宜約 0.16%，換算金額約 US$480，<b class="hb">遠低於分批所付出的 US$3,869 成本</b>。</p>
+
+  <div class="neutral rv d2">
+    <div class="nt2">如果市場延續近期走勢</div>
+    若未來表現接近這檔基金過去兩年的實際情況（詳見第 3 節），分批買到較低成本的機率會下降到約 <b>36%</b>——也就是有將近三分之二的機會是<b>越買越貴</b>。
+  </div>
+</section>
+
+<!-- ═══ 3 ═══ -->
+<section id="s3">
+  <div class="shead rv"><div class="snum">3</div><h2>這檔基金 過去的實際表現</h2></div>
+  <p class="lead rv d1">以下是這檔基金<b class="hb">實際已經發生</b>的數字，並非預測。資料來源為 MoneyDJ 理財網，資料日期 2026/08/20。</p>
+
+  <div class="strip rv d2">
+    <div class="st g"><div class="v">20.33%</div><div class="k">近一年報酬</div></div>
+    <div class="st g"><div class="v">34.93%</div><div class="k">近二年累積報酬</div></div>
+    <div class="st g"><div class="v">12.06%</div><div class="k">今年以來報酬</div></div>
+    <div class="st"><div class="v">0.48</div><div class="k">Sharpe 值<br>（風險調整後報酬）</div></div>
+  </div>
+
+  <h3 class="sub rv">實際歷史中，單筆與分批的差距</h3>
+  <p class="lead rv d1">這是最直接的證據——<b class="hb">同一檔基金、同一段期間</b>，一次投入與分批投入的實際報酬：</p>
+  <div class="rv d2">
+    <div class="brow"><div class="blab">近一年<br>單筆投入</div><div class="btrk"><div class="bfil fb" style="--w:58%">20.33%</div></div></div>
+    <div class="brow"><div class="blab">近一年<br>分批投入</div><div class="btrk"><div class="bfil fg" style="--w:30%">10.51%</div></div></div>
+    <div class="brow"><div class="blab">近二年<br>單筆投入</div><div class="btrk"><div class="bfil fn" style="--w:100%">34.93%</div></div></div>
+    <div class="brow"><div class="blab">近二年<br>分批投入</div><div class="btrk"><div class="bfil fg" style="--w:60%">20.83%</div></div></div>
+  </div>
+  <div class="calc rv d1">
+    <div class="ct">◆ 資料說明</div>
+    此為 MoneyDJ 公布之基金報酬率統計。「單筆投入」指期初一次投入並持有至今；「分批投入」（定期定額）指該期間內每月固定投入相同金額的累積報酬率。兩者皆以原幣（美元）計算。
+  </div>
+
+  <div class="neutral rv d1">
+    <div class="nt2">這個結果要如何解讀</div>
+    單筆投入之所以明顯領先，是因為<b>過去兩年這檔基金持續上漲</b>——分批進場等於用越來越高的價格買進。<br><br>
+    必須誠實說明：<b>如果未來是下跌行情，這個結論會相反。</b>過去的表現無法保證未來。
+  </div>
+
+  <h3 class="sub rv">波動程度：與同類型商品比較</h3>
+  <p class="lead rv d1">這檔基金屬於<b class="hb">股債平衡型</b>，波動高於純債券基金，但低於股票市場。以下為<b>年化標準差</b>（數字越大代表價格起伏越大）：</p>
+  <div class="rv d2">
+    <div class="brow"><div class="blab">一般債券型<br>基金</div><div class="btrk"><div class="bfil fg" style="--w:40%">約 6%</div></div></div>
+    <div class="brow"><div class="blab">同類型競品<br>安聯收益成長</div><div class="btrk"><div class="bfil fg" style="--w:52%">7.76%</div></div></div>
+    <div class="brow"><div class="blab">本基金<br>PIMCO收益增長</div><div class="btrk"><div class="bfil fb" style="--w:73%">10.91%</div></div></div>
+    <div class="brow"><div class="blab">股票市場<br>（美國大盤）</div><div class="btrk"><div class="bfil fg" style="--w:100%">約 15%</div></div></div>
+  </div>
+  <div class="calc rv d1">
+    <div class="ct">◆ 年化標準差是什麼</div>
+    這是衡量「價格起伏程度」的統計指標。數字越大，代表價格上下波動的幅度越大。<br>
+    以本基金 10.91% 為例，統計上約有<b>三分之二</b>的年度，報酬會落在「平均值上下 10.91%」的範圍內。<br>
+    <span style="color:var(--grey2);font-size:15px;">※ 本基金與安聯收益成長為 MoneyDJ 實際統計值；債券型基金與股票市場為市場一般水準之參考值。</span>
+  </div>
+
+  <table class="ctb rv d1" style="margin-top:26px;">
+    <tr><th style="width:34%;"></th>
+      <th class="colw">本基金<small>PIMCO 收益增長</small></th>
+      <th>同類型競品<small>安聯收益成長</small></th></tr>
+    <tr><td>年化標準差<small>波動程度</small></td><td class="colw"><b>10.91</b></td><td><b>7.76</b></td></tr>
+    <tr><td>近一年報酬</td><td class="colw"><b class="win">20.33%</b></td><td><b>11.50%</b></td></tr>
+    <tr><td>近二年報酬</td><td class="colw"><b class="win">34.93%</b></td><td><b>21.41%</b></td></tr>
+    <tr class="hlg"><td>Sharpe 值<small>每承擔一單位風險<br>所換得的報酬</small></td>
+      <td class="colw"><b>0.48</b></td><td><b>0.37</b></td></tr>
+  </table>
+  <div class="calc rv d2">
+    <div class="ct">◆ Sharpe 值是什麼</div>
+    投資報酬必然伴隨風險。Sharpe 值衡量的是「<b>每承擔一分風險，能換到多少報酬</b>」，數字越高代表效率越好。<br>
+    本基金 0.48 高於同類競品的 0.37，代表<b>雖然波動較大，但所換得的報酬也相對更多</b>。
+  </div>
+
+</section>
+
+<!-- ═══ 4 ═══ -->
+<section id="s4">
+  <div class="shead rv"><div class="snum">4</div><h2>未來情境模擬</h2></div>
+  <p class="lead rv d1">我們以電腦模擬 <b class="hb">50,000 種</b>可能的市場路徑，比較「單筆一次投入」與「分批 6 期投入」在 3 年與 5 年後的結果。投入本金皆為 US$300,000。</p>
+
+  <div class="calc rv d2">
+    <div class="ct">◆ 什麼是「模擬 50,000 種市場路徑」</div>
+    這是金融業常用的「蒙地卡羅模擬」。作法是：依據這檔基金<b>實際的波動幅度</b>（年化標準差 10.91%），讓電腦隨機產生 50,000 種未來可能的走勢——有的一路上漲、有的先跌後漲、有的持續下跌——再分別計算兩種進場方式的結果。<br>
+    數量大到 50,000 種，是為了讓統計結果穩定，不會因為少數極端狀況而失真。
+  </div>
+
+  <div class="box rv d1">
+    <p style="margin-bottom:6px;"><b class="hb">我們刻意採用保守假設</b></p>
+    <p>模擬的預期總報酬設定為 <b class="hb">9.02%</b>，也就是假設<b>基金淨值長期持平、報酬完全來自配息</b>。<br>
+    但這檔基金近一年實際報酬為 <b class="hg">20.33%</b>、近二年累積 <b class="hg">34.93%</b>（年化約 16.2%）。<br>
+    換言之，<b class="hb">我們的預估明顯低於它過去的實際表現</b>；在正常情況下，實際結果有機會優於本報告所呈現的數字。</p>
+  </div>
+
+  <h3 class="sub rv">模擬結果（保守假設）</h3>
+  <table class="ctb rv d1">
+    <tr><th style="width:32%;"></th><th class="colw">單筆一次投入</th><th>分批 6 期投入</th></tr>
+    <tr><td>3 年後<small>資產中位數</small></td><td class="colw"><b class="win">US$349,472</b></td><td><b>US$346,607</b></td></tr>
+    <tr><td>5 年後<small>資產中位數</small></td><td class="colw"><b class="win">US$382,585</b></td><td><b>US$379,112</b></td></tr>
+    <tr class="hl"><td>分批相對單筆<small>5 年後差額</small></td><td class="colw" colspan="2"><b class="cost">分批少了 US$3,473</b></td></tr>
+  </table>
+  <div class="calc rv d2">
+    <div class="ct">◆「中位數」是什麼意思</div>
+    把 50,000 次模擬的結果，由小到大排成一列，<b>正中間那一個數字</b>就是中位數。<br>
+    它代表「最典型、最可能發生」的情況——有一半的機會結果比它好，也有一半的機會比它差。<br>
+    此處採用中位數而非平均值，是因為中位數較不受少數極端結果影響，對一般情況的描述更貼近實際。
+  </div>
+
+  <h3 class="sub rv">若表現接近過去兩年（樂觀假設）</h3>
+  <table class="ctb rv d1">
+    <tr><th style="width:32%;"></th><th class="colw">單筆一次投入</th><th>分批 6 期投入</th></tr>
+    <tr><td>3 年後<small>資產中位數</small></td><td class="colw"><b class="win">US$429,800</b></td><td><b>US$420,181</b></td></tr>
+    <tr><td>5 年後<small>資產中位數</small></td><td class="colw"><b class="win">US$535,426</b></td><td><b>US$525,092</b></td></tr>
+    <tr class="hl"><td>分批相對單筆<small>5 年後差額</small></td><td class="colw" colspan="2"><b class="cost">分批少了 US$10,334</b></td></tr>
+  </table>
+
+  <h3 class="sub rv">分批確實有保護作用，但保護會隨時間消失</h3>
+  <div class="calc rv d1">
+    <div class="ct">◆ 什麼是「最差的 5% 情境」</div>
+    把 50,000 次模擬結果由差到好排列，取<b>倒數第 5% 的位置</b>那個數字。<br>
+    意思是：<b>有 95% 的情況會比這個數字好，只有 5% 的情況會比它更差。</b><br>
+    這是金融業評估「不順利時大概是什麼狀況」的標準做法，用來檢視風險，而非預測結果。
+  </div>
+  <table class="ctb rv d2">
+    <tr><th style="width:32%;">最差 5% 情境<small>保守假設</small></th><th class="colw">單筆一次投入</th><th>分批 6 期投入</th></tr>
+    <tr><td>持有 3 年</td><td class="colw"><b>US$259,173</b></td><td><b class="win">US$260,836</b></td></tr>
+    <tr><td>分批多保住</td><td class="colw" colspan="2"><b class="win">＋US$1,663</b></td></tr>
+    <tr><td>持有 5 年</td><td class="colw"><b>US$262,006</b></td><td><b class="win">US$262,460</b></td></tr>
+    <tr class="hl"><td>分批多保住</td><td class="colw" colspan="2"><b>＋US$454</b></td></tr>
+  </table>
+  <div class="neutral rv d1">
+    <div class="nt2">這組數字說明了什麼</div>
+    在不順利的情況下，分批確實有保護作用——持有 3 年時多保住約 <b>US$1,663</b>。<br><br>
+    但同一組情境中，分批的中位數少了 <b>US$2,866</b>；也就是說，<b>付出的成本大於買到的保護</b>。<br><br>
+    更關鍵的是：持有拉長到 <b>5 年</b>時，保護只剩約 <b>US$454</b>，成本卻擴大到 <b>US$3,473</b>。<br><br>
+    原因很單純：<b>分批只保護最初的 6 個月，對第 7 個月之後的風險沒有任何幫助。</b>若您計畫持有 3 至 5 年，這 6 個月所佔的比重相當有限。
+  </div>
+</section>
+
+<!-- ═══ 5 ═══ -->
+<section id="s5">
+  <div class="shead rv"><div class="snum">5</div><h2>結論與建議</h2></div>
+  <table class="rv d1">
+    <tr><td>分批 6 期的淨成本</td><td class="n" style="color:#9A5B12;">－US$3,869</td></tr>
+    <tr><td>分批買到較低成本的機率</td><td class="n">51.5%<small>接近擲銅板</small></td></tr>
+    <tr><td>分批在最差情境的保護（3 年）</td><td class="n">＋US$1,663</td></tr>
+    <tr><td>分批在最差情境的保護（5 年）</td><td class="n">＋US$454</td></tr>
+    <tr class="hl"><td>5 年後 分批相對單筆</td><td class="n" style="color:#9A5B12;">－US$3,473</td></tr>
+  </table>
+</section>
+
+<div class="verdict rv">
+  <h3>我們的建議</h3>
+  <p>綜合以上分析，<b>建議採用單筆一次投入</b>，或至少縮短為<b>分 4 期、每 6 週投入一次</b>。</p>
+  <p>主要理由有三：</p>
+  <p><span class="pill">一</span>配息從進場第一天開始計算，越晚投入領到的配息越少，而這筆損失無法追回。</p>
+  <p><span class="pill">二</span>分批降低成本的機率僅約五成，效果接近隨機；但成本 US$3,869 是確定的。</p>
+  <p><span class="pill">三</span>您計畫持有 3 至 5 年，分批只能保護最初 6 個月，保護範圍相當有限。</p>
+  <p style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.3);">
+  最終仍請由您決定。若您希望保留分批的心理緩衝，<b>分 4 期、每 6 週一次</b>是我們認為較平衡的折衷方案，成本可降低至約 US$3,482。</p>
+</div>
+
+<!-- ═══ 6 ═══ -->
+<section id="s6">
+  <div class="shead rv"><div class="snum">6</div><h2>名詞與計算方式說明</h2></div>
+  <p class="lead rv d1">本報告所有數字均有明確計算依據，以下彙整說明，供您與家人一併檢視。</p>
+  <div class="gloss rv d2">
+    <div class="gitem"><div class="gt">基金淨值（NAV）</div>
+      <div class="gd">每一單位基金的價格，每日變動。同樣的金額，在淨值較低時可買到較多單位。</div></div>
+    <div class="gitem"><div class="gt">年化配息率 9.02%</div>
+      <div class="gd">每單位每年配息 US$1.044 ÷ 每單位價格 US$11.58 ＝ 9.02%。此為依現行配息水準計算，並非保證。</div></div>
+    <div class="gitem"><div class="gt">年化標準差</div>
+      <div class="gd">衡量價格起伏程度的統計指標，數字越大代表波動越大。本基金為 10.91%。</div></div>
+    <div class="gitem"><div class="gt">Sharpe 值</div>
+      <div class="gd">每承擔一單位風險所換得的報酬，數字越高代表投資效率越好。本基金為 0.48。</div></div>
+    <div class="gitem"><div class="gt">蒙地卡羅模擬</div>
+      <div class="gd">依據基金實際波動幅度，由電腦隨機產生大量（本報告為 50,000 種）可能的未來走勢，藉此觀察各種情況下的結果分布。屬統計推估，非預測。</div></div>
+    <div class="gitem"><div class="gt">中位數</div>
+      <div class="gd">所有模擬結果由小到大排列後，位於正中間的數值。代表最典型的情況：有一半機會比它好、一半比它差。</div></div>
+    <div class="gitem"><div class="gt">最差 5% 情境</div>
+      <div class="gd">所有模擬結果中，位於最差那 5% 位置的數值。代表有 95% 的情況會比它好，僅 5% 的情況會更差。用於檢視風險承受度。</div></div>
+    <div class="gitem"><div class="gt">定期定額報酬率</div>
+      <div class="gd">指在該期間內每月固定投入相同金額所累積的報酬率，與「單筆投入」（期初一次投入並持有）計算方式不同，故兩者數字不可直接相減比較，僅供進場方式之參考對照。</div></div>
+  </div>
+</section>
+
+<footer>
+  <ul>
+    <li>本報告引用之基金淨值、報酬率、年化標準差、Sharpe 值等數據，來源為 MoneyDJ 理財網，資料日期 2026/08/20；同類型比較對象為安聯收益成長基金 AM 穩定月收類股（美元）。</li>
+    <li>「一般債券型基金約 6%」與「股票市場約 15%」為市場長期一般水準之參考值，非特定商品之實際統計，僅供理解相對位置之用。</li>
+    <li>本基金（PIMCO 收益增長基金 BM 級類別）成立時間較短，尚無滿三年之完整績效紀錄，故報酬率統計僅呈現至近二年。</li>
+    <li>情境模擬採蒙地卡羅方法，路徑數 50,000 次，波動率參數採實測年化標準差 10.91%，貸款成本 2.83%，保守情境預期總報酬 9.02%、樂觀情境 16.2%。模擬結果為統計推估，非實際收益預測，亦不構成任何保證。</li>
+    <li>配息金額係依現行每單位配息水準試算，非保證收益；配息可能包含本金分配，本金亦可能因市場波動而增減。</li>
+    <li>基金淨值每日變動，實際申購單位數與金額以申購當日之淨值及匯率為準。新台幣換算採試算匯率，僅供參考。</li>
+    <li>房屋增貸為機動利率，實際利率與可動用額度以銀行核定為準，未來利率變動將影響實際利息成本。貸款本金於保費繳畢後仍須償還或續存，請一併納入考量。</li>
+    <li>本文件為規劃討論之試算資料，非投資建議或收益保證，實際執行前請與您的專屬顧問再次確認所有條件。</li>
+  </ul>
+  <div class="src">本報告僅供劉寶瑞女士參考使用。</div>
+</footer>
 
 </div>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function prog(){var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';}
+  window.addEventListener('scroll',prog,{passive:true});prog();
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){
+    if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});},
+    {threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
 </body>
 </html>
