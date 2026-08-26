@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>保費現金流方案｜Single Range Accrual Note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#050D18;
+  --ink2:#0B1B2E;
+  --surface:#132943;
+  --surface2:#17314F;
+  --line:rgba(168,199,230,.24);
+  --jade:#00D18A;
+  --azure:#4D9BFF;
+  --amber:#FFB84D;
+  --rose:#FF7A8F;
+  --fg:#F2F7FC;
+  --mute:#B6CCE2;
+  --dim:#93AECA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink);scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--fg);
+  font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+  font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.num{font-family:"JetBrains Mono","Roboto Mono",monospace;font-variant-numeric:tabular-nums;font-weight:700}
+.disp{font-family:"Noto Serif TC",Georgia,"Songti TC",serif}
+b,strong{font-weight:700;color:var(--fg)}
+
+#rail{position:fixed;left:0;top:0;height:100vh;width:52px;z-index:60;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;
+  background:linear-gradient(90deg,rgba(5,13,24,.96),transparent)}
+#rail a{width:7px;height:7px;border-radius:50%;background:var(--dim);opacity:.5;transition:.35s;position:relative}
+#rail a.on{background:var(--jade);opacity:1;height:26px;border-radius:4px;box-shadow:0 0 14px rgba(0,209,138,.8)}
+#rail a span{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:11px;
+  letter-spacing:.12em;color:var(--mute);white-space:nowrap;opacity:0;transition:.3s;pointer-events:none}
+#rail a:hover span{opacity:1}
+
+section{background:var(--ink);min-height:100vh;padding:56px 72px 56px 116px;
+  display:flex;flex-direction:column;justify-content:center;position:relative;border-bottom:1px solid var(--line)}
+.wrap{width:100%;max-width:1380px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.3em;color:var(--jade);font-weight:700;
+  margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--jade),transparent);max-width:200px}
+h1{font-size:clamp(34px,4.2vw,62px);line-height:1.14;font-weight:900;letter-spacing:-.01em;color:#fff}
+h2{font-size:clamp(25px,2.6vw,40px);line-height:1.26;font-weight:700;margin-bottom:14px;color:#fff}
+.lede{font-size:clamp(15px,1.15vw,17px);color:var(--mute);line-height:1.9;max-width:74ch}
+.small{font-size:13px;color:var(--dim);line-height:1.85}
+
+.grid{display:grid;gap:15px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:linear-gradient(158deg,var(--surface2),var(--ink2));border:1px solid var(--line);
+  border-radius:13px;padding:22px 22px 20px;position:relative;overflow:hidden;min-width:0}
+.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--jade),transparent)}
+.card.blue::before{background:linear-gradient(90deg,var(--azure),transparent)}
+.card.warn::before{background:linear-gradient(90deg,var(--amber),transparent)}
+.card.risk::before{background:linear-gradient(90deg,var(--rose),transparent)}
+.k{font-size:12.5px;letter-spacing:.1em;color:var(--mute);margin-bottom:8px;font-weight:500}
+.v{font-size:clamp(22px,2.15vw,32px);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff}
+.v.sm{font-size:clamp(17px,1.5vw,22px)}
+.v.jade{color:var(--jade)} .v.azure{color:var(--azure)} .v.amber{color:var(--amber)} .v.rose{color:var(--rose)}
+.u{font-size:13.5px;color:var(--mute);margin-top:8px;line-height:1.7}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line);color:var(--fg)}
+th{font-size:12.5px;letter-spacing:.1em;color:var(--mute);font-weight:700}
+td.n{text-align:right}
+tr.hi td{background:rgba(0,209,138,.13)}
+tr.bad td{background:rgba(255,122,143,.12)}
+
+.ctrl{margin-bottom:19px}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--mute);margin-bottom:9px}
+.ctrl label b{font-size:20px;color:#fff}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;
+  background:rgba(168,199,230,.3);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--jade);cursor:pointer;border:3px solid var(--ink);box-shadow:0 0 0 1px var(--jade),0 0 16px rgba(0,209,138,.7)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--jade);
+  cursor:pointer;border:3px solid var(--ink);box-shadow:0 0 0 1px var(--jade)}
+input[type=range]:focus-visible{box-shadow:0 0 0 3px rgba(77,155,255,.6)}
+
+.gauge{display:flex;align-items:flex-end;gap:6px;height:140px;margin:10px 0 8px}
+.gauge .bar{flex:1;background:linear-gradient(180deg,var(--jade),rgba(0,209,138,.25));
+  border-radius:4px 4px 0 0;transition:height .5s cubic-bezier(.4,0,.2,1)}
+.gauge .bar.self{background:linear-gradient(180deg,#5C7A99,rgba(92,122,153,.2))}
+.bigpct{font-size:clamp(48px,6vw,80px);font-weight:900;line-height:1;letter-spacing:-.035em;color:var(--jade)}
+
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:10px}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 16px;text-align:center}
+.node .t{font-size:16px;font-weight:700;margin-bottom:7px;color:#fff}
+.node .d{font-size:13.5px;color:var(--mute);line-height:1.7}
+.arw{color:var(--jade);font-size:24px;text-align:center;font-weight:700}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.06s}.rv:nth-child(3){transition-delay:.12s}
+.rv:nth-child(4){transition-delay:.18s}.rv:nth-child(5){transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none}
+  html{scroll-behavior:auto}.gauge .bar{transition:none}}
+
+#s0{background:
+  radial-gradient(1100px 620px at 78% 10%,rgba(0,209,138,.20),transparent 62%),
+  radial-gradient(880px 540px at 10% 90%,rgba(77,155,255,.17),transparent 62%),var(--ink)}
+.mesh{position:absolute;inset:0;opacity:.3;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 76% 60% at 50% 50%,#000,transparent);
+  mask-image:radial-gradient(ellipse 76% 60% at 50% 50%,#000,transparent)}
+.badge{display:inline-block;padding:6px 14px;border:1px solid var(--jade);border-radius:100px;
+  font-size:12px;letter-spacing:.18em;color:var(--jade);margin-bottom:24px;font-weight:700}
+.foot{position:absolute;bottom:22px;left:116px;right:72px;display:flex;justify-content:space-between;
+  font-size:11.5px;color:var(--dim);letter-spacing:.08em;gap:20px}
+.legend{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:var(--mute)}
+
+@media(max-width:1180px){
+  section{padding:44px 26px 44px 68px}
+  .g4,.g3{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:1fr}.arw{transform:rotate(90deg)}
+  .foot{left:68px;right:26px;flex-direction:column;gap:5px}
+  .grid[style*="1.2fr"],.grid[style*="1.25fr"]{grid-template-columns:1fr!important}
+}
+@media(max-width:720px){.g4,.g3,.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="rail" aria-label="章節導覽">
+  <a href="#s0" class="on"><span>封面</span></a>
+  <a href="#s1"><span>資金現況</span></a>
+  <a href="#s2"><span>定存的代價</span></a>
+  <a href="#s3"><span>商品結構</span></a>
+  <a href="#s4"><span>關鍵指標</span></a>
+  <a href="#s5"><span>需要多少錢</span></a>
+  <a href="#s6"><span>覆蓋率試算</span></a>
+  <a href="#s7"><span>質押加碼</span></a>
+  <a href="#s8"><span>稅務效益</span></a>
+  <a href="#s9"><span>風險</span></a>
+  <a href="#s10"><span>下一步</span></a>
+</nav>
+
+<!-- 0 -->
+<section id="s0">
+  <div class="mesh"></div>
+  <div class="wrap">
+    <div class="badge rv">PRIVATE BANKING ｜ 個案討論</div>
+    <h1 class="disp rv">讓保費的一部分<br>由市場來付。</h1>
+    <p class="lede rv" style="margin-top:24px">
+      每年 <b class="num">USD 500,000</b> 的保費，目前 100% 從口袋出。<br>
+      這份提案不是要取代它，是把自付的比例往下拉——同時把原本繳出去的稅，留一部分下來。
+    </p>
+    <div class="grid g3 rv" style="margin-top:40px;max-width:960px">
+      <div class="card"><div class="k">帳上可配置資金</div><div class="v num">840,370</div><div class="u">美元活存 470,000 ＋ 台幣 1,200 萬換匯</div></div>
+      <div class="card blue"><div class="k">既有債券年息</div><div class="v azure num">16,448</div><div class="u">票面 7.767%，2028 年到期</div></div>
+      <div class="card warn"><div class="k">帳上資金可達覆蓋率</div><div class="v amber num">約 20%</div><div class="u">每年自付由 50 萬降至 40 萬上下</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>SINGLE RANGE ACCRUAL NOTE ｜ USD ｜ 10Y NC12M</span><span>本文件僅供討論，非要約</span></div>
+</section>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="wrap">
+    <div class="eyebrow rv">01 ／ 資金現況</div>
+    <h2 class="disp rv">錢在哪裡，錢在做什麼</h2>
+    <p class="lede rv">目前資產幾乎全部停在存款。安全，但有兩個看不見的成本：<b>收益太低</b>，以及<b>稅率太高</b>。</p>
+    <div class="grid g4 rv" style="margin-top:32px">
+      <div class="card"><div class="k">美元活存</div><div class="v num">470,000</div><div class="u">USD｜活存利率極低</div></div>
+      <div class="card"><div class="k">台幣存款</div><div class="v num">12,000,000</div><div class="u">TWD ≈ USD 370,370（@32.4）</div></div>
+      <div class="card blue"><div class="k">既有債券</div><div class="v azure num">211,769</div><div class="u">2028 到期，年息 16,448</div></div>
+      <div class="card risk"><div class="k">年度保費</div><div class="v rose num">500,000</div><div class="u">USD／年，尚需 4 年</div></div>
+    </div>
+    <div class="card rv" style="margin-top:20px">
+      <div class="k">為什麼建議把台幣換成美元</div>
+      <p class="lede" style="margin-top:6px">
+        您的<b style="color:var(--jade)">支出是美元</b>（保費），資產卻是台幣。這中間的匯率變動，是一筆您沒有選擇卻必須承擔的風險。
+        把資產幣別對齊支出幣別，是先把這個風險關掉，而不是為了追求更高的利率。建議<b>分 2–3 批換匯</b>，避免壓在單一時點。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="wrap">
+    <div class="eyebrow rv">02 ／ 定存的代價</div>
+    <h2 class="disp rv">同一筆收益，<br>放在不同地方，稅差很多</h2>
+    <div class="grid g2 rv" style="margin-top:30px">
+      <div class="card risk">
+        <div class="k">存款利息（目前）</div>
+        <div class="v rose">30%–40%</div>
+        <div class="u">屬「利息所得」。扣除全戶合計 <b>27 萬</b>儲蓄投資特別扣除額後，<b>併入綜合所得總額</b>，依級距課稅。賺越多，越可能被推上更高級距。</div>
+      </div>
+      <div class="card">
+        <div class="k">境外結構型商品配息</div>
+        <div class="v jade">多半為 0%</div>
+        <div class="u">屬「<b>海外所得</b>」，不併入綜所總額，改依《所得基本稅額條例》計入基本所得額，享 <b>750 萬</b>免稅額。實際多數情況下不會產生額外稅負。</div>
+      </div>
+    </div>
+    <table class="rv" style="margin-top:26px">
+      <thead><tr><th>年收益 新台幣 272 萬（約 USD 84,000）</th><th class="n">應納稅額</th><th class="n">稅後留存</th></tr></thead>
+      <tbody>
+        <tr class="bad"><td>若為存款利息（30% 級距）</td><td class="n num">735,000</td><td class="n num">1,985,000</td></tr>
+        <tr class="hi"><td>境外結構型商品配息（海外所得）</td><td class="n num">0</td><td class="n num">2,720,000</td></tr>
+        <tr><td><b>差異</b></td><td class="n num" style="color:var(--jade)"><b>−735,000</b></td><td class="n num" style="color:var(--jade)"><b>+735,000</b></td></tr>
+      </tbody>
+    </table>
+    <p class="small rv" style="margin-top:14px">
+      存款利息情境：（272 萬 − 27 萬）× 30% ≈ 73.5 萬。海外所得情境：詳見第 08 頁計算過程。若適用 40% 級距，差距更大。實際稅負依個人整體所得狀況而定，請以會計師意見為準。
+    </p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="wrap">
+    <div class="eyebrow rv">03 ／ 商品結構</div>
+    <h2 class="disp rv">Single Range Accrual Note</h2>
+    <p class="lede rv">中文稱「單一區間累息票券」。規則只有一句：<b>觀察的利率待在約定區間內的那些日子，票息就累積；跑出去的日子，那幾天不累積。</b></p>
+    <div class="flow rv" style="margin-top:32px">
+      <div class="node"><div class="t">您投入本金</div><div class="d">美元計價<br>持有至到期<br>由發行機構返還本金</div></div>
+      <div class="arw">→</div>
+      <div class="node" style="border-color:rgba(0,209,138,.5)"><div class="t">每日觀察一次</div><div class="d">10 年期美元<br>換匯利率（CMS）<br>是否 ≤ 4.60%</div></div>
+      <div class="arw">→</div>
+      <div class="node"><div class="t">每季領息</div><div class="d">第 1 年固定 9%<br>第 2 年起 10%<br>按符合天數比例</div></div>
+    </div>
+    <div class="grid g4 rv" style="margin-top:26px">
+      <div class="card"><div class="k">幣別／年期</div><div class="v sm">USD ／ 10 年</div><div class="u">發行機構自第 13 個月起，可每季選擇提前贖回並全額返還本金</div></div>
+      <div class="card"><div class="k">第 1 年票息</div><div class="v jade num">9.00%</div><div class="u">固定，不受利率條件影響</div></div>
+      <div class="card"><div class="k">第 2 年起票息</div><div class="v jade num">10.00%</div><div class="u">符合條件之日累積計息</div></div>
+      <div class="card"><div class="k">配息頻率／本金</div><div class="v sm">每季 ／ 到期返還</div><div class="u">持有至到期由發行機構全額返還</div></div>
+    </div>
+    <p class="small rv" style="margin-top:16px">上述為交易室指示性報價（報價日 8/17–8/21），實際條件以承作當日確認之條款為準。到期返還本金係由發行機構依約履行，仍須承擔其信用風險，非存款、不受存款保險保障。</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="wrap">
+    <div class="eyebrow rv">04 ／ 關鍵指標</div>
+    <h2 class="disp rv">整個商品，只看這一條線</h2>
+    <p class="lede rv" style="margin-bottom:20px">10 年期美元換匯利率（10Y SOFR CMS）。它待在門檻以下，票息就持續累積。</p>
+    <div class="card rv" style="padding:22px 24px 14px">
+      <div id="chart"></div>
+      <div class="legend">
+        <span><b style="color:var(--azure)">━</b> 10Y SOFR CMS</span>
+        <span><b style="color:var(--jade)">╌</b> 門檻 4.60%（票息 10.00%）</span>
+        <span><b style="color:var(--amber)">╌</b> 門檻 4.70%（票息約 8.00%，指示性）</span>
+      </div>
+    </div>
+    <div class="grid g4 rv" style="margin-top:18px">
+      <div class="card blue"><div class="k">目前水準</div><div class="v azure num">4.28%</div><div class="u">距 4.60% 門檻 32 個基點</div></div>
+      <div class="card"><div class="k">近三年最高</div><div class="v jade num">4.56%</div><div class="u">2023 年 10 月，<b>未觸及 4.60%</b></div></div>
+      <div class="card"><div class="k">近三年最低</div><div class="v jade num">3.11%</div><div class="u">2024 年 9 月</div></div>
+      <div class="card warn"><div class="k">近一年變動</div><div class="v amber num">+53 bp</div><div class="u">52 週區間 3.49% – 4.33%</div></div>
+    </div>
+    <p class="small rv" style="margin-top:14px">
+      資料來源：Barchart「SOFR Swap 10-Year（SOFAPY10.RT）」。近三年最高 4.56%、最低 3.11%、52 週區間 3.49%–4.33% 均為實際紀錄；月頻線圖之中間點位為區間內平滑呈現。
+      <b style="color:var(--amber)">請注意：2023 年 10 月最高點與 4.60% 門檻僅相差約 4 個基點。</b>過去未觸及不代表未來不會觸及，利率為雙向波動。
+    </p>
+  </div>
+</section>
+
+<!-- 5 需要多少錢 -->
+<section id="s5">
+  <div class="wrap">
+    <div class="eyebrow rv">05 ／ 資金需求</div>
+    <h2 class="disp rv">要讓保費完全由市場支付，<br>需要多少錢？</h2>
+    <div class="grid g3 rv" style="margin-top:30px">
+      <div class="card"><div class="k">純 SRA（年息 10%）</div><div class="v jade num">500 萬</div><div class="u">USD 5,000,000 × 10% = 500,000／年</div></div>
+      <div class="card blue"><div class="k">SRA ＋ 五成質押加碼</div><div class="v azure num">403 萬</div><div class="u">實質年收益率提升至 12.4%（詳見第 07 頁）</div></div>
+      <div class="card risk"><div class="k">目前帳上可配置</div><div class="v rose num">84 萬</div><div class="u">缺口 USD 4,160,000</div></div>
+    </div>
+
+    <div class="grid rv" style="grid-template-columns:1fr 1.2fr;gap:32px;margin-top:34px;align-items:start">
+      <div>
+        <div class="ctrl">
+          <label>若額外投入資金（USD）<b class="num" id="lAdd">0</b></label>
+          <input type="range" id="sAdd" min="0" max="4200000" step="50000" value="0">
+        </div>
+        <div class="ctrl">
+          <label>是否啟用五成質押加碼<b class="num" id="lLev">否</b></label>
+          <input type="range" id="sLev" min="0" max="1" step="1" value="0">
+        </div>
+        <div class="card" style="margin-top:18px">
+          <div class="k">投入總額</div><div class="v num" id="oTotal">840,370</div>
+          <div class="u">帳上 840,370 ＋ 額外投入 <span class="num" id="oAdd">0</span></div>
+        </div>
+        <div class="card" style="margin-top:13px">
+          <div class="k">年度總收入（SRA ＋ 債息 ＋ 質押淨利差）</div>
+          <div class="v jade num" id="oInc5">100,448</div>
+          <div class="u">保費自付缺口 <span class="num" id="oGap5">399,552</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="k">保費覆蓋率</div>
+        <div class="bigpct num" id="oPct5">20.1%</div>
+        <div class="gauge" id="gauge5"><div class="bar self" style="height:80%"></div><div class="bar" style="height:20%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--mute)">
+          <span>客戶自付</span><span>市場配息支應</span>
+        </div>
+        <p class="lede" style="margin-top:24px;font-size:15px">
+          帳上這 84 萬，能做到的是<b style="color:var(--jade)">約兩成</b>。<br>
+          要做到<b>十成</b>，需要 <b class="num">500 萬</b>（純 SRA）或 <b class="num">403 萬</b>（含質押）。<br>
+          中間的每一段，都可以自己決定要走多遠。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 覆蓋率情境 -->
+<section id="s6">
+  <div class="wrap">
+    <div class="eyebrow rv">06 ／ 情境試算</div>
+    <h2 class="disp rv">好的年份、普通的年份、<br>壞的年份</h2>
+    <div class="grid rv" style="grid-template-columns:1fr 1.25fr;gap:32px;margin-top:28px;align-items:start">
+      <div>
+        <div class="ctrl">
+          <label>投入 SRA 金額（USD）<b class="num" id="lPri">840,000</b></label>
+          <input type="range" id="sPri" min="200000" max="840000" step="10000" value="840000">
+        </div>
+        <div class="ctrl">
+          <label>第 2 年起 全年累息比例<b class="num" id="lAcc">100%</b></label>
+          <input type="range" id="sAcc" min="0" max="100" step="5" value="100">
+        </div>
+        <div class="card" style="margin-top:18px">
+          <div class="k">當年度總配息</div><div class="v jade num" id="oInc">100,448</div>
+          <div class="u">SRA <span class="num" id="oSra">84,000</span> ＋ 債券 <span class="num">16,448</span></div>
+        </div>
+        <div class="card" style="margin-top:13px">
+          <div class="k">保費自付缺口</div><div class="v num" id="oGap">399,552</div>
+          <div class="u">原本每年須自付 500,000</div>
+        </div>
+      </div>
+      <div>
+        <div class="k">保費覆蓋率</div>
+        <div class="bigpct num" id="oPct">20.1%</div>
+        <div class="gauge" id="gauge"><div class="bar self" style="height:80%"></div><div class="bar" style="height:20%"></div></div>
+        <table style="margin-top:24px">
+          <thead><tr><th>情境</th><th class="n">年收入</th><th class="n">覆蓋率</th></tr></thead>
+          <tbody>
+            <tr><td>第 1 年（固定 9%）</td><td class="n num">92,048</td><td class="n num">18.4%</td></tr>
+            <tr class="hi"><td>第 2 年起 · 全年累息</td><td class="n num">100,448</td><td class="n num">20.1%</td></tr>
+            <tr><td>第 2 年起 · 半年累息</td><td class="n num">58,448</td><td class="n num">11.7%</td></tr>
+            <tr class="bad"><td>第 2 年起 · 全年未累息</td><td class="n num">16,448</td><td class="n num">3.3%</td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top:12px">最後一列是必須先看過的情境：整年利率站上 4.60% 之上，該年度 SRA 一毛息都沒有。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 質押 -->
+<section id="s7">
+  <div class="wrap">
+    <div class="eyebrow rv">07 ／ 進階選項</div>
+    <h2 class="disp rv">質押加碼：把同一筆錢再用一次</h2>
+    <p class="lede rv">票券可作為擔保品向銀行借款，約可貸出五成。借出的資金再投入配息型標的，賺的是<b>配息與借款利率之間的差額</b>——不是配息本身。目前質借利率 <b style="color:var(--jade)">2.20%</b>。</p>
+    <div class="grid rv" style="grid-template-columns:1fr 1.25fr;gap:32px;margin-top:26px;align-items:start">
+      <div>
+        <div class="ctrl"><label>質押成數<b class="num" id="lLtv">50%</b></label>
+          <input type="range" id="sLtv" min="0" max="50" step="5" value="50"></div>
+        <div class="ctrl"><label>質借年利率<b class="num" id="lBor">2.20%</b></label>
+          <input type="range" id="sBor" min="150" max="500" step="5" value="220"></div>
+        <div class="ctrl"><label>再投資標的年配息率<b class="num" id="lRe">7.00%</b></label>
+          <input type="range" id="sRe" min="400" max="900" step="10" value="700"></div>
+        <p class="small" style="margin-top:4px">質借利率隨市場浮動，非固定利率；再投資標的之配息率非保證，可能調整或停止配發。</p>
+      </div>
+      <div>
+        <div class="grid g2">
+          <div class="card blue"><div class="k">可貸出金額</div><div class="v azure num" id="oBorrow">420,000</div><div class="u">以 SRA 市值計算</div></div>
+          <div class="card"><div class="k">年度淨利差收益</div><div class="v jade num" id="oCarry">20,160</div><div class="u">再投資配息 − 質借利息</div></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <div class="k">加計質押後 · 保費覆蓋率</div>
+          <div class="v jade num" id="oTot" style="font-size:clamp(38px,4.4vw,54px)">24.1%</div>
+          <div class="u">較未質押的 20.1% 提高 <span class="num" id="oDelta">4.0</span> 個百分點</div>
+        </div>
+        <div class="card risk" style="margin-top:14px">
+          <div class="k">這 4 個百分點的代價</div>
+          <div class="u" style="margin-top:2px">
+            質借利率浮動，上升會直接壓縮利差，甚至轉為負值。<br>
+            若市場利率上升導致票券市值下跌、維持率不足，銀行可要求<b style="color:var(--rose)">補提擔保品或提前還款</b>。<br>
+            若再投資標的降低或停止配息，仍須支付質借利息 <span class="num" id="oIntCost">9,240</span> 美元／年。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 稅務 -->
+<section id="s8">
+  <div class="wrap">
+    <div class="eyebrow rv">08 ／ 稅務效益</div>
+    <h2 class="disp rv">除了配息，<br>還有一筆不用繳出去的錢</h2>
+    <table class="rv" style="margin-top:26px">
+      <thead><tr><th>項目</th><th>維持定存</th><th>境外結構型商品</th></tr></thead>
+      <tbody>
+        <tr><td>所得類別</td><td>利息所得（中華民國來源）</td><td><b style="color:var(--jade)">海外所得</b></td></tr>
+        <tr><td>併計綜合所得總額</td><td>是，可能推升級距</td><td><b style="color:var(--jade)">否</b></td></tr>
+        <tr><td>扣除額</td><td>全戶合計 27 萬（儲蓄投資特別扣除）</td><td><b style="color:var(--jade)">基本所得額免稅額 750 萬</b></td></tr>
+        <tr class="hi"><td>適用稅率</td><td>超過扣除額部分 <b>30%–40%</b></td><td>基本所得額超過 750 萬部分 20%，<br>並與一般所得稅額<b>取高者</b>課徵</td></tr>
+        <tr><td>申報門檻</td><td>—</td><td>全戶海外所得未達 <b>100 萬</b>免計入</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid g2 rv" style="margin-top:22px">
+      <div class="card">
+        <div class="k">實例試算：年配息 USD 84,000（≈ NT$272 萬）</div>
+        <div class="u" style="margin-top:4px;font-size:14px;line-height:2">
+          假設綜合所得淨額 400 萬（30% 級距）<br>
+          基本所得額 ＝ 400 萬 ＋ 272 萬 ＝ <b>672 萬</b><br>
+          672 萬 &lt; 750 萬免稅額 → 基本稅額 <b style="color:var(--jade)">0</b><br>
+          <b style="color:var(--jade)">本筆配息實質不產生額外稅負</b>
+        </div>
+      </div>
+      <div class="card blue">
+        <div class="k">若綜合所得淨額較高</div>
+        <div class="u" style="margin-top:4px;font-size:14px;line-height:2">
+          即使基本所得額超過 750 萬，基本稅額僅按<b>超過部分</b>課 20%，<br>
+          且需與一般所得稅額<b>比較取高</b>。<br>
+          對 30%–40% 級距者，一般所得稅額通常已高於基本稅額，<br>
+          <b style="color:var(--azure)">多數情況仍不會產生補繳</b>。
+        </div>
+      </div>
+    </div>
+    <p class="small rv" style="margin-top:16px">
+      依《所得基本稅額條例》第 12、13 條及財政部相關規定：個人透過金融機構投資境外金融商品（境外基金、股票、債券、結構型商品等）產生之所得屬海外所得，應自行計入個人基本所得額申報。
+      本頁為現行稅法下之一般性說明，非稅務意見；實際申報方式與稅負請以主管機關規定及您的會計師意見為準。稅法如有修正，依修正後規定辦理。
+    </p>
+  </div>
+</section>
+
+<!-- 9 風險 -->
+<section id="s9">
+  <div class="wrap">
+    <div class="eyebrow rv">09 ／ 風險揭露</div>
+    <h2 class="disp rv">在您決定之前，<br>這五件事請先看過</h2>
+    <div class="grid g2 rv" style="margin-top:28px">
+      <div class="card risk"><div class="k">01 ｜ 票息不保證</div><div class="u" style="margin-top:2px">第 2 年起的 10% 為條件式票息。若 10Y SOFR CMS 站上 4.60%，該期間不累積利息，<b style="color:var(--rose)">整年可能一毛都沒有</b>。目前 4.28%，距門檻 32 個基點；2023 年 10 月曾來到 4.56%。</div></div>
+      <div class="card risk"><div class="k">02 ｜ 提前贖回權在發行機構</div><div class="u" style="margin-top:2px">自第 13 個月起，發行機構可每季選擇提前贖回。通常會在對其有利時執行——也就是利率下行、您正順利領息的時候。屆時須面對<b>再投資風險</b>。</div></div>
+      <div class="card risk"><div class="k">03 ｜ 到期才返還本金</div><div class="u" style="margin-top:2px">中途若需資金而提前贖回，依當時市價結算，<b>可能低於本金</b>。市場利率上升時，票券市價通常下跌。</div></div>
+      <div class="card risk"><div class="k">04 ｜ 發行機構信用風險</div><div class="u" style="margin-top:2px">本金與利息之給付均仰賴發行機構履約。這是長達 10 年的信用曝險，<b>非存款、不受存款保險保障</b>。</div></div>
+      <div class="card risk" style="grid-column:1/-1"><div class="k">05 ｜ 資金流動性與槓桿</div><div class="u" style="margin-top:2px">本商品年期 10 年，投入金額建議以<b>未來 4 年不需動用</b>之資金為限，保費支付來源不應依賴本商品之票息或本金。若採質押加碼，須一併考量質借利率浮動與維持率不足時之補提義務。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <div class="wrap">
+    <div class="eyebrow rv">10 ／ 下一步</div>
+    <h2 class="disp rv">誠實的結論</h2>
+    <p class="lede rv" style="margin-top:18px;font-size:clamp(16px,1.35vw,19px)">
+      用帳上這 84 萬，這個配置能把您每年 <b class="num">500,000</b> 美元的自付保費，
+      降到 <b class="num" style="color:var(--jade)">400,000</b> 美元上下（含質押約 <b class="num" style="color:var(--jade)">379,000</b>）。<br><br>
+      順的年份可能再低一些，逆的年份可能只降一點點。<br>
+      <b>它是減壓工具，不是取代工具。</b>要往十成走，需要的是更多本金，不是更高的票息。
+    </p>
+    <div class="grid g3 rv" style="margin-top:36px">
+      <div class="card"><div class="k">第一步</div><div class="v sm">確認風險屬性</div><div class="u">完成 KYC 與商品適合度評估，確認可承受 10 年期、票息不保證之商品</div></div>
+      <div class="card"><div class="k">第二步</div><div class="v sm">分批換匯</div><div class="u">台幣部位分 2–3 批轉為美元，對齊保費支出幣別</div></div>
+      <div class="card"><div class="k">第三步</div><div class="v sm">取得正式報價</div><div class="u">交易室確認當日條件與門檻水準後，再決定投入金額</div></div>
+    </div>
+    <p class="small rv" style="margin-top:32px">
+      本文件由理財專員依客戶個別情況製作，僅供說明與討論，不構成要約、招攬或投資建議。所有數字為試算，非收益保證。商品條件以交易確認書及產品說明書為準。投資前請詳閱產品說明書及風險預告書。
+    </p>
+  </div>
+</section>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   10Y SOFR CMS ── 資料來源：Barchart SOFAPY10.RT
+   ★ = 實際查證值。其餘月份為區間內平滑呈現。
+   若要換成完整實際序列，直接改寫下方 SERIES 陣列即可。
+   ══════════════════════════════════════════════════════════════ */
+const SERIES=[
+ ["2023/08",4.05],["2023/09",4.35],["2023/10",4.56],/* ★3年高 */["2023/11",4.20],["2023/12",3.60],
+ ["2024/01",3.65],["2024/02",3.85],["2024/03",3.80],["2024/04",4.25],["2024/05",4.10],["2024/06",3.95],
+ ["2024/07",3.75],["2024/08",3.40],["2024/09",3.11],/* ★3年低 */["2024/10",3.45],["2024/11",3.70],["2024/12",3.80],
+ ["2025/01",3.90],["2025/02",3.80],["2025/03",3.65],["2025/04",3.72],["2025/05",3.85],["2025/06",3.75],
+ ["2025/07",3.80],["2025/08",3.75],/* ★8/25 */["2025/09",3.49],/* ★52週低 9/11 */["2025/10",3.60],["2025/11",3.70],["2025/12",3.78],
+ ["2026/01",3.85],["2026/02",3.90],["2026/03",3.98],["2026/04",4.05],["2026/05",4.14],/* ★5/25 */
+ ["2026/06",3.95],/* ★3個月低 6/29 */["2026/07",4.25],/* ★7/24 */["2026/08",4.28] /* ★最新 */
+];
+const KO1=4.60, KO2=4.70;
+const MARK={"2023/10":"3年高 4.56%","2024/09":"3年低 3.11%","2025/09":"52週低 3.49%"};
+
+(function chart(){
+  const W=1300,H=390,P={t:28,r:150,b:40,l:58};
+  const iw=W-P.l-P.r, ih=H-P.t-P.b, lo=2.90, hi=4.95;
+  const X=i=>P.l+i*iw/(SERIES.length-1), Y=v=>P.t+(hi-v)/(hi-lo)*ih;
+  let g=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block" role="img" aria-label="10 年期美元換匯利率三年走勢與門檻">`;
+  g+=`<defs>
+   <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1">
+     <stop offset="0%" stop-color="#4D9BFF" stop-opacity=".38"/><stop offset="100%" stop-color="#4D9BFF" stop-opacity="0"/></linearGradient>
+   <linearGradient id="sf" x1="0" y1="0" x2="0" y2="1">
+     <stop offset="0%" stop-color="#00D18A" stop-opacity=".13"/><stop offset="100%" stop-color="#00D18A" stop-opacity=".02"/></linearGradient></defs>`;
+  g+=`<rect x="${P.l}" y="${Y(KO1)}" width="${iw}" height="${P.t+ih-Y(KO1)}" fill="url(#sf)"/>`;
+  for(let v=3.0;v<=4.8;v+=0.2){const y=Y(v).toFixed(1);
+    g+=`<line x1="${P.l}" y1="${y}" x2="${P.l+iw}" y2="${y}" stroke="rgba(168,199,230,.13)"/>`;
+    g+=`<text x="${P.l-12}" y="${+y+5}" text-anchor="end" font-size="12.5" fill="#93AECA" font-family="monospace">${v.toFixed(1)}%</text>`;}
+  const pts=SERIES.map((d,i)=>`${X(i).toFixed(1)},${Y(d[1]).toFixed(1)}`);
+  g+=`<path d="M${P.l},${P.t+ih} L${pts.join(" L")} L${P.l+iw},${P.t+ih} Z" fill="url(#fl)" opacity="0" class="af"/>`;
+  g+=`<polyline points="${pts.join(" ")}" fill="none" stroke="#4D9BFF" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" class="al"/>`;
+  const rule=(v,c,lab,sub)=>`<line x1="${P.l}" y1="${Y(v)}" x2="${P.l+iw}" y2="${Y(v)}" stroke="${c}" stroke-width="2" stroke-dasharray="8 5"/>
+    <text x="${P.l+iw+13}" y="${Y(v)-2}" font-size="16" font-weight="700" fill="${c}" font-family="monospace">${lab}</text>
+    <text x="${P.l+iw+13}" y="${Y(v)+16}" font-size="12.5" fill="#B6CCE2">${sub}</text>`;
+  g+=rule(KO2,"#FFB84D","4.70%","票息約 8.00%");
+  g+=rule(KO1,"#00D18A","4.60%","票息 10.00%");
+  SERIES.forEach((d,i)=>{ if(MARK[d[0]]){
+    g+=`<circle cx="${X(i)}" cy="${Y(d[1])}" r="4.5" fill="#F2F7FC" stroke="#050D18" stroke-width="2"/>`;
+    const up=d[1]>4.0;
+    g+=`<text x="${X(i)}" y="${Y(d[1])+(up?-14:24)}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#F2F7FC" font-family="monospace">${MARK[d[0]]}</text>`;}});
+  const li=SERIES.length-1,lx=X(li),ly=Y(SERIES[li][1]);
+  g+=`<circle cx="${lx}" cy="${ly}" r="13" fill="#4D9BFF" opacity=".22"/><circle cx="${lx}" cy="${ly}" r="5.5" fill="#4D9BFF" stroke="#050D18" stroke-width="2.5"/>`;
+  g+=`<text x="${lx-8}" y="${ly+28}" text-anchor="end" font-size="15" font-weight="700" fill="#F2F7FC" font-family="monospace">目前 4.28%</text>`;
+  g+=`<line x1="${lx}" y1="${Y(4.28)}" x2="${lx}" y2="${Y(KO1)}" stroke="#00D18A" stroke-width="1.6"/>
+      <text x="${lx-8}" y="${(Y(4.28)+Y(KO1))/2+5}" text-anchor="end" font-size="13" font-weight="700" fill="#00D18A" font-family="monospace">32 bp</text>`;
+  SERIES.forEach((d,i)=>{ if(i%6===0||i===li)
+    g+=`<text x="${X(i)}" y="${P.t+ih+25}" text-anchor="middle" font-size="12" fill="#93AECA" font-family="monospace">${d[0]}</text>`;});
+  g+=`</svg>`;
+  document.getElementById("chart").innerHTML=g;
+  const ln=document.querySelector(".al"),f=document.querySelector(".af");
+  if(ln&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+    const L=ln.getTotalLength(); ln.style.strokeDasharray=L; ln.style.strokeDashoffset=L;
+    new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){
+      ln.style.transition="stroke-dashoffset 1.9s cubic-bezier(.35,0,.2,1)"; ln.style.strokeDashoffset=0;
+      f.style.transition="opacity 1.1s ease .8s"; f.style.opacity=1; o.disconnect();}}),{threshold:.35})
+      .observe(document.getElementById("chart"));
+    setTimeout(()=>{ln.style.strokeDashoffset=0;f.style.opacity=1;},4000);
+  } else { f.style.opacity=1; }
+})();
+
+/* ── 試算 ── */
+const BASE=840370, BOND=16448, PREM=500000;
+const fmt=n=>Math.round(n).toLocaleString("en-US"), $=id=>document.getElementById(id);
+
+function calcNeed(){
+  const add=+$("sAdd").value, lev=+$("sLev").value===1;
+  const total=BASE+add;
+  const sra=total*0.10;
+  const carry=lev?total*0.5*(0.07-0.022):0;
+  const inc=sra+BOND+carry, pct=inc/PREM*100;
+  $("lAdd").textContent=fmt(add); $("oAdd").textContent=fmt(add);
+  $("lLev").textContent=lev?"是":"否";
+  $("oTotal").textContent=fmt(total);
+  $("oInc5").textContent=fmt(inc);
+  $("oGap5").textContent=fmt(Math.max(0,PREM-inc));
+  $("oPct5").textContent=Math.min(pct,999).toFixed(1)+"%";
+  const b=$("gauge5").children, c=Math.min(pct,100);
+  b[0].style.height=Math.max(2,100-c)+"%"; b[1].style.height=Math.max(2,c)+"%";
+}
+
+function calcCover(){
+  const pri=+$("sPri").value, acc=+$("sAcc").value/100;
+  const sra=pri*0.10*acc, inc=sra+BOND, pct=inc/PREM*100;
+  $("lPri").textContent=fmt(pri); $("lAcc").textContent=Math.round(acc*100)+"%";
+  $("oSra").textContent=fmt(sra); $("oInc").textContent=fmt(inc);
+  $("oGap").textContent=fmt(Math.max(0,PREM-inc)); $("oPct").textContent=pct.toFixed(1)+"%";
+  const b=$("gauge").children;
+  b[0].style.height=Math.max(2,100-pct)+"%"; b[1].style.height=Math.max(2,pct)+"%";
+  return {pri,inc,pct};
+}
+
+function calcLev(){
+  const {pri,inc,pct}=calcCover();
+  const ltv=+$("sLtv").value/100, bor=+$("sBor").value/100, re=+$("sRe").value/100;
+  const borrowed=pri*ltv, carry=borrowed*(re-bor)/100, cost=borrowed*bor/100;
+  $("lLtv").textContent=Math.round(ltv*100)+"%";
+  $("lBor").textContent=bor.toFixed(2)+"%"; $("lRe").textContent=re.toFixed(2)+"%";
+  $("oBorrow").textContent=fmt(borrowed);
+  $("oCarry").textContent=(carry<0?"−":"")+fmt(Math.abs(carry));
+  $("oCarry").style.color=carry<0?"var(--rose)":"var(--jade)";
+  $("oIntCost").textContent=fmt(cost);
+  const tot=(inc+carry)/PREM*100;
+  $("oTot").textContent=tot.toFixed(1)+"%";
+  $("oDelta").textContent=(tot-pct<0?"−":"")+Math.abs(tot-pct).toFixed(1);
+}
+["sAdd","sLev"].forEach(id=>$(id).addEventListener("input",calcNeed));
+["sPri","sAcc","sLtv","sBor","sRe"].forEach(id=>$(id).addEventListener("input",calcLev));
+calcNeed(); calcLev();
+
+/* ── 動效與導覽（含顯示保險絲）── */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.08});
+const rvs=[...document.querySelectorAll(".rv")]; rvs.forEach(el=>io.observe(el));
+setTimeout(()=>rvs.forEach(el=>el.classList.add("in")),3000);
+addEventListener("load",()=>setTimeout(()=>rvs.forEach(el=>el.classList.add("in")),1200));
+
+const secs=[...document.querySelectorAll("section")], dots=[...document.querySelectorAll("#rail a")];
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  const i=secs.indexOf(e.target); dots.forEach((d,j)=>d.classList.toggle("on",i===j));}}),{threshold:.5})
+  .observe&&secs.forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  const i=secs.indexOf(e.target); dots.forEach((d,j)=>d.classList.toggle("on",i===j));}}),{threshold:.5}).observe(s));
+
+let cur=0;
+addEventListener("keydown",e=>{
+  if(["ArrowDown","PageDown"," "].includes(e.key)){e.preventDefault();cur=Math.min(secs.length-1,++cur);secs[cur].scrollIntoView();}
+  if(["ArrowUp","PageUp"].includes(e.key)){e.preventDefault();cur=Math.max(0,--cur);secs[cur].scrollIntoView();}
+  if(e.key==="Home"){cur=0;secs[0].scrollIntoView();}
+});
+addEventListener("scroll",()=>{const y=scrollY+innerHeight/2;
+  secs.forEach((s,i)=>{if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)cur=i;});},{passive:true});
+</script>
+</body>
+</html>
