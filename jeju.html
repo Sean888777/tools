@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>濟州島 6夜7日 · 09/19–09/25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211D17; --ink-soft:#5C5546; --paper:#ECE7DA; --card:#FFFFFF;
+    --tangerine:#C1600E; --tangerine-deep:#8F440A; --tangerine-soft:#F2D6AF;
+    --teal:#1B4F49; --teal-soft:#DCE6E1; --amber-soft:#FBEFD9; --amber-deep:#9A6A12;
+    --line:#D8D0BE;
+    --font-display:'Noto Serif TC', serif; --font-body:'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--tangerine-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+  .wrap{max-width:520px;margin:0 auto;padding:0 0 64px;}
+  .ticket{margin:18px 16px 0;background:var(--ink);color:var(--paper);border-radius:18px;padding:22px 20px 18px;position:relative;overflow:hidden;}
+  .ticket::after{content:"";position:absolute;left:0;right:0;bottom:54px;border-top:1.5px dashed rgba(236,231,218,.35);}
+  .ticket .eyebrow{font-size:13px;color:var(--tangerine-soft);margin:0 0 6px;}
+  .ticket h1{font-family:var(--font-display);font-weight:700;font-size:28px;margin:0 0 14px;line-height:1.3;}
+  .route{display:flex;align-items:center;gap:10px;font-size:15px;}
+  .route .code{font-family:var(--font-display);font-weight:700;font-size:20px;}
+  .route .arrow{color:var(--tangerine-soft);font-size:18px;}
+  .ticket .meta{display:flex;justify-content:space-between;margin-top:16px;font-size:12.5px;color:rgba(236,231,218,.75);}
+  .ticket .meta b{color:var(--paper);font-weight:500;}
+  section{margin:26px 16px 0;}
+  h2{font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 12px;color:var(--ink);}
+  p{margin:0 0 10px;font-size:15px;color:var(--ink-soft);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .routebar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;}
+  .routebar .seg{background:var(--teal-soft);color:var(--teal);padding:4px 10px;border-radius:20px;}
+  .routebar .arrow{color:var(--ink-soft);font-weight:400;}
+  .toolcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px;}
+  .toolcard h4{margin:0 0 6px;font-size:15px;color:var(--ink);}
+  .toolcard p{font-size:13.5px;margin:0 0 6px;}
+  .toolcard .links{font-size:13px;}
+  .toolcard .links a{margin-right:14px;}
+  .warn{background:var(--amber-soft);border-left:4px solid var(--amber-deep);border-radius:4px 12px 12px 4px;padding:12px 16px;font-size:13.5px;color:var(--amber-deep);margin-bottom:10px;}
+  .hotel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px;}
+  .hotel .tag{display:inline-block;background:var(--tangerine);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+  .hotel .tag.alt{background:var(--teal);}
+  .hotel h3{font-family:var(--font-display);font-size:18px;margin:0 0 4px;}
+  .hotel .loc{font-size:13px;color:var(--ink-soft);margin-bottom:6px;}
+  .hotel .price{font-size:13.5px;font-weight:700;color:var(--tangerine-deep);margin-bottom:8px;}
+  .hotel .booklinks{font-size:13px;margin-top:8px;}
+  .hotel .booklinks a{margin-right:14px;}
+  .daynav{display:flex;gap:8px;overflow-x:auto;padding:2px 16px 4px;margin:22px 0 0;scrollbar-width:none;}
+  .daynav::-webkit-scrollbar{display:none;}
+  .daynav button{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px 15px;font-size:13px;color:var(--ink);font-family:inherit;cursor:pointer;}
+  .daynav button:active{background:var(--tangerine);color:#fff;border-color:var(--tangerine);}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;scroll-margin-top:12px;}
+  .day summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+  .day summary::-webkit-details-marker{display:none;}
+  .day .d-num{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--tangerine);min-width:30px;}
+  .day .d-head{flex:1;}
+  .day .d-date{font-size:12px;color:var(--ink-soft);}
+  .day .d-title{font-size:15.5px;font-weight:700;color:var(--ink);}
+  .day .d-chevron{font-size:13px;color:var(--ink-soft);transition:transform .2s;}
+  .day[open] .d-chevron{transform:rotate(180deg);}
+  .pathbox{margin:0 16px 12px;background:var(--teal-soft);border-radius:10px;padding:10px 12px;}
+  .pathbox .plabel{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.05em;margin-bottom:4px;}
+  .pathbox .pline{font-size:12.5px;color:var(--teal);line-height:1.7;}
+  .pathbox .pverdict{font-size:11.5px;color:var(--ink-soft);margin-top:6px;}
+  .day .d-body{padding:0 18px 16px 18px;}
+  .stop{display:flex;gap:10px;margin-bottom:11px;font-size:14px;color:var(--ink-soft);}
+  .stop .time{min-width:56px;flex-shrink:0;color:var(--ink);font-weight:700;font-size:13px;}
+  .stop .txt{flex:1;}
+  .stop .geo{display:block;font-size:11px;color:var(--teal);margin-top:2px;}
+  .stop .map{font-size:12px;font-weight:700;white-space:nowrap;margin-left:6px;}
+  .hop{font-size:11.5px;color:var(--teal);margin:-6px 0 11px 66px;}
+  .flag{color:var(--amber-deep);font-size:11.5px;font-weight:700;}
+  .note{margin-top:10px;background:var(--tangerine-soft);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--tangerine-deep);}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table td{padding:9px 4px;border-bottom:1px solid var(--line);color:var(--ink-soft);vertical-align:top;}
+  table tr td:first-child{color:var(--ink);font-weight:500;}
+  table tr td:last-child{text-align:right;color:var(--ink);font-weight:700;white-space:nowrap;}
+  table tfoot td{border-bottom:none;border-top:2px solid var(--ink);padding-top:12px;font-weight:700;color:var(--ink);font-size:15px;}
+  .think{background:var(--ink);color:var(--paper);border-radius:16px;padding:20px 20px 18px;}
+  .think h2{color:var(--paper);}
+  .think ol{margin:0;padding-left:20px;}
+  .think li{margin-bottom:12px;font-size:14px;color:rgba(236,231,218,.9);}
+  .think li:last-child{margin-bottom:0;}
+  .think b{color:#fff;}
+  .foot{margin:26px 16px 0;font-size:12px;color:var(--ink-soft);text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="ticket">
+    <p class="eyebrow">발재 × 女友 · 自駕版</p>
+    <h1>濟州島<br>6夜7日</h1>
+    <div class="route">
+      <span class="code">TPE</span><span class="arrow">✈︎</span><span class="code">CJU</span>
+      <span class="arrow">···自駕···</span><span class="code">CJU</span><span class="arrow">✈︎</span><span class="code">TPE</span>
+    </div>
+    <div class="meta">
+      <span>去程 IT654<br><b>09/19（六）06:40→09:35</b></span>
+      <span style="text-align:right;">回程 LJ763<br><b>09/25（五）22:15→09/26 00:15</b></span>
+    </div>
+  </div>
+
+  <section>
+    <div class="routebar">
+      <span>機場</span><span class="arrow">›</span>
+      <span class="seg">東部 海비치 ×2</span><span class="arrow">›</span>
+      <span class="seg">南部 Grand Josun ×2</span><span class="arrow">›</span>
+      <span class="seg">市區 樂天City ×2</span><span class="arrow">›</span>
+      <span>機場</span>
+    </div>
+    <p style="font-size:12.5px;margin-top:8px;">整趟是順時針一圈：<b>機場 → 東 → 南 → 西海岸 → 市區 → 機場</b>，方向單一。每一天下面都有「路線檢查」欄，我把當天各點的經度依序列出來，你可以自己驗證有沒有折返。</p>
+  </section>
+
+  <section>
+    <h2>租車：這兩件事要先辦</h2>
+    <div class="warn">
+      <b>國際駕照現在就去辦。</b>今天9/1，出發9/19，建議這週內、最晚9/12前跑監理站。帶身分證正本、台灣駕照正本、護照影本、兩年內兩吋照片2張、規費NT$250。租車現場要：台灣駕照正本＋國際駕照＋護照＋你本人的海外信用卡。
+    </div>
+    <div class="toolcard">
+      <h4>🚗 租車公司</h4>
+      <p><b>首選：樂天租車</b>——濟州少數提供真全險（含NOC營業損失費）的車行，機場店營業到23:00，24小時道路救援。<b>較便宜：SK租車</b>（與AVIS合作）。建議上Klook或KKday比價頁一次比三家，中文介面，多數可免費取消。濟州沒有收費高速公路，不用加購Hi-Pass。</p>
+      <div class="links">
+        <a href="https://www.lotterentacar.net/" target="_blank" rel="noopener">樂天租車官網</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=33.5040084,126.4936734&query_place_id=ChIJHW1IK6nkDDUR1NhMwFeFBM4" target="_blank" rel="noopener">機場租車區 Map</a>
+      </div>
+    </div>
+    <div class="toolcard">
+      <h4>📱 導航 &amp; 網路</h4>
+      <p>Google Maps在韓國不能做路徑導航，一定要裝 <b>Naver Map</b> 或 <b>Kakao Map</b>，用店名或電話號碼搜尋最準。網路買SKT訊號的eSIM，東部海岸收訊最穩。</p>
+      <div class="links">
+        <a href="https://www.klook.com/zh-TW/blog/korea-sim-card/" target="_blank" rel="noopener">Klook 韓國eSIM</a>
+        <a href="https://web.creatrip.com/" target="_blank" rel="noopener">Creatrip（原生SKT）</a>
+      </div>
+    </div>
+    <p style="font-size:13px;">酒駕標準0.03%比台灣嚴，整趟自駕基本上你不能喝。</p>
+  </section>
+
+  <section>
+    <h2>住宿（已定案）</h2>
+
+    <div class="hotel">
+      <span class="tag">Day1–3・東部</span>
+      <h3>海비치 Haevichi Hotel &amp; Resort</h3>
+      <div class="loc">서귀포시 표선면 민속해안로 537（東南海岸・表善海灘前）</div>
+      <div class="price">約 NT$7,000–9,000／晚 · 09/19–09/21（2晚）</div>
+      <p style="font-size:13px;margin:0;">現代汽車集團 · 503房5星 · 70%海景房 · 室內外泳池</p>
+      <div class="booklinks">
+        <a href="https://www.booking.com/hotel/kr/haevichi.html" target="_blank" rel="noopener">Booking</a>
+        <a href="https://www.haevichi.com/jeju/ko/" target="_blank" rel="noopener">官網</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=33.323125,126.8447251&query_place_id=ChIJLyua3MoODTUR-rB0bCb_jlo" target="_blank" rel="noopener">Map</a>
+      </div>
+    </div>
+
+    <div class="hotel">
+      <span class="tag">Day3–5・南部</span>
+      <h3>Grand Josun Jeju 朝鮮大飯店</h3>
+      <div class="loc">서귀포시 중문관광로72번길 60（中文觀光區）</div>
+      <div class="price">約 NT$9,300起／晚 · 09/21–09/23（2晚）</div>
+      <p style="font-size:13px;margin:0;">三座泳池 · 頂樓Starbucks · 全程唯一純度假放空段</p>
+      <div class="booklinks">
+        <a href="https://www.booking.com/hotel/kr/grand-josun-jeju.html" target="_blank" rel="noopener">Booking</a>
+        <a href="https://gjj.josunhotel.com/main.do" target="_blank" rel="noopener">官網</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=33.2524795,126.4080501&query_place_id=ChIJ-dxfkzFbDDURPWN_8DqfkrQ" target="_blank" rel="noopener">Map</a>
+      </div>
+    </div>
+
+    <div class="hotel">
+      <span class="tag">Day5–7・市區</span>
+      <h3>Lotte City Hotel Jeju 樂天城市飯店</h3>
+      <div class="loc">제주시 도령로 83（노형·연동商圈，走路到新羅免稅店）</div>
+      <div class="price">約 NT$3,000–4,500／晚 · 09/23–09/25（2晚）</div>
+      <p style="font-size:13px;margin:0;">4.3分／2,762則 · 樂天集團商務線 · 位置好、房間乾淨寬敞、樓下便利商店</p>
+      <div class="booklinks">
+        <a href="https://www.google.com/maps/search/?api=1&query=33.4905955,126.4864277&query_place_id=ChIJM6YF9QT7DDURHys0PtT4HZM" target="_blank" rel="noopener">Map</a>
+      </div>
+    </div>
+
+    <div class="hotel">
+      <span class="tag alt">市區・升級備案</span>
+      <h3>Grand Hyatt Jeju 君悅</h3>
+      <div class="loc">제주시 노연로 12（夢想塔內，離樂天City約500公尺）</div>
+      <div class="price">約 NT$7,000–9,500／晚（兩晚多約NT$8,000，每人多NT$4,000）</div>
+      <p style="font-size:13px;margin:0;">4.6分／3,231則。先訂樂天City的免費取消方案，把君悅掛在訂房網追價，遇促銷再換——兩間走路幾百公尺，換掉沒有動線成本。</p>
+      <div class="booklinks">
+        <a href="https://www.google.com/maps/search/?api=1&query=33.4853137,126.4815585&query_place_id=ChIJ5wmgNwb7DDUR0rlX0SDzBrk" target="_blank" rel="noopener">Map</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="daynav" id="daynav">
+    <button data-target="d1">Day1・19</button><button data-target="d2">Day2・20</button>
+    <button data-target="d3">Day3・21</button><button data-target="d4">Day4・22</button>
+    <button data-target="d5">Day5・23</button><button data-target="d6">Day6・24</button>
+    <button data-target="d7">Day7・25</button>
+  </nav>
+
+  <section style="margin-top:12px;">
+    <h2>六天怎麼跑</h2>
+
+    <details class="day" id="d1" open>
+      <summary><span class="d-num">01</span><div class="d-head"><div class="d-date">09/19（六）</div><div class="d-title">抵達 → 함덕吃兩攤 → 海비치</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度由西往東</div>
+        <div class="pline">機場 126.49 › 함덕 126.67 › 海비치 126.84</div>
+        <div class="pverdict">✅ 全程單向往東再往南，零折返</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">09:35</span><span class="txt">降落，領車<span class="geo">📍제주국제공항</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5040084,126.4936734&query_place_id=ChIJHW1IK6nkDDUR1NhMwFeFBM4" target="_blank">Map</a></div>
+        <div class="hop">↓ 約35分鐘・往東</div>
+        <div class="stop"><span class="time">午餐</span><span class="txt">海女飯捲（炸蝦口味）——<b>15:30打烊、週日公休</b>，今天週六OK<span class="geo">📍조천읍 함덕로 40</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.542393,126.6712480&query_place_id=ChIJ63resCAcDTUR444xcyMf860" target="_blank">Map</a></div>
+        <div class="hop">↓ 走路100公尺</div>
+        <div class="stop"><span class="time">飯後</span><span class="txt">Audrant Bakery 大蒜麵包，07:00–22:00<span class="geo">📍조천읍 조함해안로 552-3</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5420828,126.6715510&query_place_id=ChIJVVVVVZ4eDTURKsz91As_rx0" target="_blank">Map</a></div>
+        <div class="hop">↓ 約50分鐘・往東南</div>
+        <div class="stop"><span class="time">下午</span><span class="txt">Check-in 海비치，泳池放空<span class="geo">📍표선면 민속해안로 537</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.323125,126.8447251&query_place_id=ChIJLyua3MoODTUR-rB0bCb_jlo" target="_blank">Map</a></div>
+      </div>
+    </details>
+
+    <details class="day" id="d2">
+      <summary><span class="d-num">02</span><div class="d-head"><div class="d-date">09/20（日）</div><div class="d-title">구좌一日：貝果、熔岩洞、鮑魚、榧子林</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度</div>
+        <div class="pline">海비치 126.84 › 貝果 126.71 › 만장굴 126.77 › 명진전복 126.85 › 비자림 126.80 › 海비치 126.84</div>
+        <div class="pverdict">⚠️ 出發時先往西北到貝果（約40分），之後一路往東；末段비자림往南回飯店。<b>唯一「折返」是最開始那段北上</b>——不可免，因為飯店在南、구좌在北。實際多開的路約15分鐘。</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">08:00</span><span class="txt">出發，先用CatchTable App登記排隊號再上路</span></div>
+        <div class="stop"><span class="time">08:40</span><span class="txt">London Bagel Museum，08:00開門，早到可以避開整條排隊人龍<span class="geo">📍구좌읍 동복로 85</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5535978,126.7155939&query_place_id=ChIJOxygt3AZDTURQxzvcXjVIpU" target="_blank">Map</a></div>
+        <div class="hop">↓ 約10分鐘・往東</div>
+        <div class="stop"><span class="time">10:30</span><span class="txt"><b>萬丈窟 만장굴</b>——世界遺產熔岩洞，2026年5月重新開放。門票4,000₩，洞內平路約1公里，13–15°C要帶外套，約1小時。<b>週三公休</b>，今天週日OK<span class="geo">📍구좌읍 만장굴길 182</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5281972,126.7717618&query_place_id=ChIJmWohlsQZDTURppUrDPCrZrs" target="_blank">Map</a></div>
+        <div class="hop">↓ 約20分鐘・往東</div>
+        <div class="stop"><span class="time">12:30</span><span class="txt">명진전복 鮑魚粥／烤鮑魚——<b>週二公休</b>，今天週日OK<span class="geo">📍구좌읍 해맞이해안로 1282</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5324891,126.8502082&query_place_id=ChIJh7c-I2sWDTURQsRuFnqaYvM" target="_blank">Map</a></div>
+        <div class="hop">↓ 約15分鐘・往西南（內陸）</div>
+        <div class="stop"><span class="time">14:30</span><span class="txt"><b>榧子林 비자림</b>——4.6分／4,471則，500–800年樹齡榧木林，門票3,000₩，2–3公里全平路。有一棵兩樹合生的「連理木」<span class="geo">📍구좌읍 비자숲길 55</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.484272,126.8064793&query_place_id=ChIJF50tCzMXDTURJM1q9jLS7Xs" target="_blank">Map</a></div>
+        <div class="hop">↓ 約35分鐘・往南回飯店</div>
+        <div class="stop"><span class="time">傍晚</span><span class="txt">回海비치，泳池／晚餐</span></div>
+        <div class="note">牛島跟Snoopy Garden都砍了。這天四個點：一個排隊名店、一個地底、一個海鮮、一個森林，調性不重複，但都是平路、都在구좌읍，跑完還有半個下午可以泡泳池。<br><b>順帶：세화民俗五日市場逢五逢十開市，9/20正好開市</b>（06:00–15:30），就在명진전복往비자림的路上，想晃十分鐘可以順路插進去。</div>
+      </div>
+    </details>
+
+    <details class="day" id="d3">
+      <summary><span class="d-num">03</span><div class="d-head"><div class="d-date">09/21（一）</div><div class="d-title">騎馬（不用爬山） → 西進中文</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度由東往西</div>
+        <div class="pline">海비치 126.84 › Jeju Horse Park 126.73 › Grand Josun 126.41</div>
+        <div class="pverdict">✅ 完全單向往西。馬場在녹산로上，녹산로往西北接산록남로直通中文——它本來就在你要走的那條線上，零繞路</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">上午</span><span class="txt">飯店早餐，慢慢退房</span></div>
+        <div class="hop">↓ 約25分鐘・往西北</div>
+        <div class="stop"><span class="time">10:30</span><span class="txt"><b>Jeju Horse Park 제주호스파크</b>——4.3分／990則，10:00–18:00。教練牽馬帶隊穿過草原、繞到巨型風車底下，全平地不用爬。分A短程／B長程，有評價說B沒比A精彩多少，選A即可<span class="geo">📍표선면 녹산로 381-15</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.3831271,126.7362573&query_place_id=ChIJcW6qq3oEDTURwiE8bLJsZFc" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">午餐</span><span class="txt">路上解決，或帶前一天的麵包在車上吃，把時間留給下午</span></div>
+        <div class="hop">↓ 約1小時10分・往西（산록남로）</div>
+        <div class="stop"><span class="time">15:00</span><span class="txt">Check-in Grand Josun Jeju<span class="geo">📍중문관광로72번길 60</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.2524795,126.4080501&query_place_id=ChIJ-dxfkzFbDDURPWN_8DqfkrQ" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">傍晚</span><span class="txt">泳池，晚餐中文黑豬肉一條街</span></div>
+        <div class="note">9月沒有油菜花（那是春天招牌），但녹산로秋天是芒草季。另有評價抱怨餵馬時不能摸馬——期待值放在「順路的輕鬆體驗」，不要當大景點。</div>
+      </div>
+    </details>
+
+    <details class="day" id="d4">
+      <summary><span class="d-num">04</span><div class="d-head"><div class="d-date">09/22（二）</div><div class="d-title">西歸浦海岸線 → 傍晚遊艇看日落</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度</div>
+        <div class="pline">飯店 126.41 › 주상절리대 126.43 › 외돌개 126.54 › 偶來市場 126.56 › 정방폭포 126.57 › 遊艇碼頭 126.44 › 飯店 126.41</div>
+        <div class="pverdict">⚠️ 這天是一個「出去再回來」的來回，不是折返亂跑。西歸浦的景點全在中文以東約25分鐘，去了必須回來——但只有一趟，中間五個點都在彼此15分鐘內。</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">上午</span><span class="txt">大浦柱狀節理帶，離飯店約5分鐘<span class="geo">📍중문동 대포주상절리대</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=대포주상절리대" target="_blank">Map</a></div>
+        <div class="hop">↓ 約25分鐘・往東</div>
+        <div class="stop"><span class="time">11:00</span><span class="txt">외돌개海岸奇石<span class="geo">📍서귀동 외돌개</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=외돌개" target="_blank">Map</a></div>
+        <div class="hop">↓ 約8分鐘</div>
+        <div class="stop"><span class="time">中午</span><span class="txt">西歸浦每日偶來市場——午餐＋逛市場一次解決（黑豬肉捲、橘子大福、白帶魚都在裡面）<span class="geo">📍서귀동 서귀포매일올레시장</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=서귀포매일올레시장" target="_blank">Map</a></div>
+        <div class="hop">↓ 約7分鐘</div>
+        <div class="stop"><span class="time">14:30</span><span class="txt">정방폭포，亞洲少見的入海瀑布<span class="geo">📍동홍동 정방폭포</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=정방폭포" target="_blank">Map</a></div>
+        <div class="hop">↓ 約30分鐘・往西回中文</div>
+        <div class="stop"><span class="time">傍晚</span><span class="txt"><b>그랑블루요트 Grande Bleu Yacht</b>——4.6分／122則，日落遊艇，船上可釣魚（約10分鐘），船長會唱歌、有人幫拍照。離飯店只要10分鐘。<b>務必提前電話或線上預約</b>（+82 64-739-7776），日落時段最搶手；船班會因風浪取消，訂前先問當日海況<span class="geo">📍중문 대포동 이어도로 172-7</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.2386126,126.4393170&query_place_id=ChIJb1cjdelRDDUR-FPocwCFFEs" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">晚上</span><span class="txt">回飯店，或中文區晚餐</span></div>
+        <div class="note">遊艇碼頭跟柱狀節理帶只差5分鐘車程，都在中文西南側。原本Day4結尾是외돌개看日落，現在日落交給遊艇——同一個時段只能有一個日落，外돌개改成中午前去。</div>
+      </div>
+    </details>
+
+    <details class="day" id="d5">
+      <summary><span class="d-num">05</span><div class="d-head"><div class="d-date">09/23（三）</div><div class="d-title">西海岸繞道：涯月香水＋鮑魚 → 進市區</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度</div>
+        <div class="pline">Grand Josun 126.41 › 은혜전복 126.310 › Haejigae 126.309 › Asisi 126.355 › 樂天City 126.486</div>
+        <div class="pverdict">✅ 先往西北到涯月最西端，之後一路往東進市區，單向無折返。涯月本來就在中文往市區的西海岸路線上，繞進去等於零額外車程</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">上午</span><span class="txt">泳池慢慢用完再退房，不趕</span></div>
+        <div class="hop">↓ 約1小時・往西北（西海岸線）</div>
+        <div class="stop"><span class="time">午餐</span><span class="txt"><b>은혜전복</b>——鮑魚粥／鮑魚海鮮拉麵，10:00–20:00<span class="geo">📍애월읍 애월로1길 24-3</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4629015,126.3101289&query_place_id=ChIJXT033vL1DDURMpAdVBE6dxY" target="_blank">Map</a></div>
+        <div class="hop">↓ 走路2分鐘</div>
+        <div class="stop"><span class="time">下午</span><span class="txt"><b>Haejigae Cafe 해지개</b>——4.8分，涯月最經典的海景咖啡廳，甜點常提早賣完<span class="geo">📍애월읍 애월북서길 52</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4642136,126.3089572&query_place_id=ChIJkT_5s231DDURAxxjUhkTY8E" target="_blank">Map</a></div>
+        <div class="hop">↓ 約12分鐘・往東沿海岸</div>
+        <div class="stop"><span class="time">傍晚</span><span class="txt"><b>Aewol Asisi</b> 選香水 ＋ 한담海岸散步道<span class="geo">📍애월읍 애월해안로 474 지하1층</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4778079,126.3550408&query_place_id=ChIJw2Z2jsH3DDURfyY_5LRnXnE" target="_blank">Map</a></div>
+        <div class="hop">↓ 約30分鐘・往東</div>
+        <div class="stop"><span class="time">晚上</span><span class="txt">Check-in 樂天City Hotel，市區晚餐<span class="geo">📍제주시 도령로 83</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4905955,126.4864277&query_place_id=ChIJM6YF9QT7DDURHys0PtT4HZM" target="_blank">Map</a></div>
+        <div class="note">Mandarin Island跟Asisi性質重複，二選一即可。</div>
+      </div>
+    </details>
+
+    <details class="day" id="d6">
+      <summary><span class="d-num">06</span><div class="d-head"><div class="d-date">09/24（四）</div><div class="d-title">市區清倉日：Malbon＋醫美＋免稅＋地下街</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度由西往東</div>
+        <div class="pline">飯店/Malbon/醫美/免稅 126.48–126.49（同一群，走路或5分鐘） › 中央地下街 126.525 › 동문 126.526</div>
+        <div class="pverdict">✅ 兩群之間只開一趟車（約15分鐘），群內全部走路，零折返</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">上午</span><span class="txt">Malbon Golf 旗艦店<span class="geo">📍제주시 연북로 269, 1층</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=제주시 연북로 269" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">同一群</span><span class="txt">老衡洞醫美 Toxnfill／PPEUM（<b>務必提前預約並確認中文時段、先問到報價</b>）<span class="geo">📍제주시 노형동</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4484672,126.4850992&query_place_id=ChIJXcVOgnf5DDURIADY0nehDvs" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">午餐</span><span class="txt"><b>숙성도</b>（熟成到）黑豬肉 或 <b>삼성혈해물탕</b> 海鮮鍋，都在飯店周邊5–10分鐘<span class="geo">📍제주시 제원길 30 ／ 선덕로5길 20</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4873082,126.4891975&query_place_id=ChIJDa6TBQD7DDUREkHoq_wpPlE" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">下午A</span><span class="txt">延洞新羅免稅店——美妝主戰場，走路可達<span class="geo">📍제주시 연동</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=신라면세점+제주점" target="_blank">Map</a></div>
+        <div class="hop">↓ 約15分鐘・往東</div>
+        <div class="stop"><span class="time">下午B</span><span class="txt">中央地下街：Akkomi零食、Olive Young、伴手禮吊飾，全在同一條地下動線<span class="geo">📍제주시 일도1동 중앙지하상가</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5131743,126.5246997&query_place_id=ChIJ812vxlXjDDURhG-aKOdgtuU" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">晚餐</span><span class="txt"><b>돈향기</b>（豚香氣）或 <b>제주조개칼국수</b>（4.8分，<b>週二公休</b>）——都在地下街1號出口旁，走路到<span class="geo">📍관덕로15길 30 ／ 관덕로15길 11-1</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5158029,126.5270908&query_place_id=ChIJYc84IFfjDDUR7emiljcSDp0" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">飯後</span><span class="txt">東門市場逛完收工<span class="geo">📍제주시 관덕로14길 20</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.5115133,126.5262564&query_place_id=ChIJBdEw_1PjDDUR9XxfgFpYmjw" target="_blank">Map</a></div>
+      </div>
+    </details>
+
+    <details class="day" id="d7">
+      <summary><span class="d-num">07</span><div class="d-head"><div class="d-date">09/25（五）</div><div class="d-title">輕鬆收尾 → 22:15登機</div></div><span class="d-chevron">⌄</span></summary>
+      <div class="pathbox">
+        <div class="plabel">路線檢查・經度</div>
+        <div class="pline">飯店 126.486 › 梨湖 126.453 › 자매국수 126.459 › 機場 126.493</div>
+        <div class="pverdict">✅ 往西一小段再往東回機場，全部在12分鐘車程內</div>
+      </div>
+      <div class="d-body">
+        <div class="stop"><span class="time">上午</span><span class="txt">睡飽再退房。梨湖海邊小馬燈塔拍照，離飯店約12分鐘<span class="geo">📍제주시 이호일동</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4979363,126.4531587&query_place_id=ChIJF2wgtzz7DDURDzj9E87gjLI" target="_blank">Map</a></div>
+        <div class="hop">↓ 約5分鐘</div>
+        <div class="stop"><span class="time">午餐</span><span class="txt"><b>자매국수</b>（姐妹麵條）豬肉湯麵——<b>週三公休</b>，今天週五OK；<b>14:20–16:10午休</b>，12點前到最保險<span class="geo">📍제주시 항골남길 46</span></span><a class="map" href="https://www.google.com/maps/search/?api=1&query=33.4986210,126.4587659&query_place_id=ChIJywNUk1LjDDURflXUtmnWhIo" target="_blank">Map</a></div>
+        <div class="stop"><span class="time">下午</span><span class="txt">留白——沒買完的回市區補、想看海就往梨湖或涯月開一趟。這天刻意不排硬行程</span></div>
+        <div class="stop"><span class="time">19:30</span><span class="txt">還車（樂天機場店營業到23:00），退稅、check-in</span></div>
+        <div class="stop"><span class="time">22:15</span><span class="txt">LJ763 起飛，隔日00:15抵桃園</span></div>
+        <div class="note">這天是緩衝日。前面哪個點被天氣或排隊打亂，都能挪到今天補。</div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>費用粗估（每人）</h2>
+    <div class="card">
+      <table>
+        <tr><td>住宿 6晚<br><span style="font-size:11.5px;">海비치2＋Grand Josun2＋樂天City2，2人分攤</span></td><td>NT$ 20,000<br>–24,000</td></tr>
+        <tr><td>租車 7天<br><span style="font-size:11.5px;">含全險＋油錢，2人分攤</span></td><td>NT$ 7,000<br>–9,000</td></tr>
+        <tr><td>餐飲<br><span style="font-size:11.5px;">每人每天約NT$1,500–2,000</span></td><td>NT$ 11,000<br>–14,000</td></tr>
+        <tr><td>體驗＋門票<br><span style="font-size:11.5px;">騎馬、日落遊艇、萬丈窟、비자림</span></td><td>NT$ 4,000<br>–6,000</td></tr>
+        <tr><td>eSIM＋雜支</td><td>NT$ 1,000</td></tr>
+        <tfoot>
+        <tr><td>小計／人<br><span style="font-size:11.5px;font-weight:400;">不含機票、購物、醫美</span></td><td>NT$ 43,000<br>–54,000</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p style="font-size:12.5px;margin-top:10px;"><b>另計、變異最大的三項：</b><br>
+    · <b>Malbon＋美妝＋免稅＋伴手禮</b>——完全看你們手滑幾件<br>
+    · <b>醫美療程</b>——基礎保養到雷射差距可到10倍，<b>出發前先線上問到報價</b>，這是預算表裡最可能爆掉的一項<br>
+    · <b>升級君悅</b>——每人多約NT$4,000</p>
+    <p style="font-size:12.5px;">遊艇價格我還沒查證，訂位時一併問。匯率近期約 1 TWD ≈ 46–47 KRW。這是規劃用的量級，不是報價。</p>
+  </section>
+
+  <section>
+    <div class="think">
+      <h2>還沒解決的</h2>
+      <ol>
+        <li><b>遊艇要先訂。</b>4.6分／122則，日落時段最搶手，而且風浪大會取消。電話 +82 64-739-7776，訂之前問清楚價格、是否含釣魚、當日海況政策。</li>
+        <li><b>醫美先問報價再去。</b>這是唯一可能把預算打亂的項目，也最容易在現場被追加療程。</li>
+        <li><b>Day4是唯一有「來回」的一天。</b>西歸浦景點全在中文以東25分鐘，去了必回。這不是排得不好，是地理事實——除非放棄정방폭포跟偶來市場。</li>
+        <li><b>還沒查證的店</b>（Gomimi、橘花閣樓、Mandarin Island、線條小狗、UQ濟州T）——照你說的先不管，要查再說。</li>
+        <li><b>颱風。</b>9月底仍是颱風季尾聲，出發前一週開始盯預報。Day7的留白就是你們的天然備案。</li>
+      </ol>
+    </div>
+  </section>
+
+  <p class="foot">地圖連結是Google Maps，供先看位置；行程定案後可換成Naver／Kakao Map導航連結。營業時間、公休日、房價、船班請於出發前再核實。</p>
+
+</div>
+
+<script>
+(function(){
+  var nav = document.getElementById('daynav');
+  if(!nav) return;
+  nav.addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-target]');
+    if(!btn) return;
+    var el = document.getElementById(btn.getAttribute('data-target'));
+    if(!el) return;
+    el.open = true;
+    // 等 details 展開後再捲動，避免位置算錯
+    requestAnimationFrame(function(){
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
