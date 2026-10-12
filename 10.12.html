@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>黃金收益配置建議</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#f4f6f9;--card:#fff;--ink:#0f1a2e;--body:#2f3b4d;--sub:#5f6b7d;--line:#dfe4ea;
+--blue:#0473ea;--navy:#0f1a2e;--bluebg:#eef5fd;--blueline:#c7defa;
+--gold:#8a6a1c;--goldbg:#fcf7ea;--goldline:#e8d9ad;
+--up:#0a6b4a;--dn:#a52f28;--dnbg:#fdf4f3;
+}
+body{background:var(--bg);color:var(--body);
+font:17px/1.75 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+padding:26px 18px 64px;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto}
+
+header{border-top:5px solid var(--blue);padding-top:20px;margin-bottom:30px}
+.eyebrow{font-size:13px;letter-spacing:3px;color:var(--blue);font-weight:700}
+h1{font-size:30px;line-height:1.32;margin:10px 0 12px;color:var(--navy);
+letter-spacing:-.5px;font-weight:700}
+.lede{font-size:18px;color:var(--sub);line-height:1.7}
+
+.sec{margin-top:36px}
+h2{font-size:21px;color:var(--navy);font-weight:700;letter-spacing:-.2px;
+padding-bottom:11px;border-bottom:2px solid var(--line);margin-bottom:16px}
+h2 .n{color:var(--blue);margin-right:9px}
+h3{font-size:17px;color:var(--navy);font-weight:700;margin:18px 0 8px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+padding:20px;margin-bottom:12px}
+.now{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.now .card{margin:0}
+.lbl{font-size:14px;color:var(--sub);font-weight:600}
+.big{font-size:34px;font-weight:700;color:var(--navy);letter-spacing:-1px;
+margin:5px 0 7px;font-variant-numeric:tabular-nums}
+.big small{font-size:16px;font-weight:600;color:var(--sub);margin-left:5px}
+.tag{display:inline-block;font-size:14px;padding:4px 12px;border-radius:14px;font-weight:700}
+.tag.d{background:var(--dnbg);color:var(--dn)}
+.tag.k{background:#eaf4ef;color:var(--up)}
+
+.flow{display:flex;gap:12px;flex-wrap:wrap}
+.step{flex:1 1 220px;background:var(--card);border:1px solid var(--line);
+border-radius:14px;padding:18px}
+.step.g{background:var(--goldbg);border-color:var(--goldline)}
+.step.b{background:var(--bluebg);border-color:var(--blueline)}
+.step .sn{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:2px}
+.step b{display:block;font-size:18px;color:var(--navy);margin:5px 0 6px}
+.step span{font-size:15px;color:var(--sub);line-height:1.65}
+
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.feat b{display:block;font-size:17px;color:var(--navy);margin-bottom:6px}
+.feat span{font-size:15px;color:var(--sub);line-height:1.65}
+
+.specs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.spec{flex:1 1 150px;background:var(--navy);color:#fff;border-radius:12px;padding:15px 17px}
+.spec em{font-style:normal;display:block;font-size:13px;color:#9db2cd;letter-spacing:1px}
+.spec b{font-size:24px;font-variant-numeric:tabular-nums}
+
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+background:var(--card);border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:14px 16px;text-align:right;font-size:17px;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;font-size:16px}
+thead th{font-size:15px;color:#fff;background:var(--navy);font-weight:700;letter-spacing:.5px}
+thead th:first-child{font-size:15px}
+tbody tr+tr td{border-top:1px solid #eef1f5}
+tr.hl td{background:var(--goldbg);font-weight:700;color:var(--navy)}
+tr.tot td{border-top:2px solid var(--line);font-weight:700;font-size:19px;color:var(--navy)}
+
+.kv{background:var(--bluebg);border:1px solid var(--blueline);border-radius:14px;
+padding:18px;margin-bottom:14px;font-size:16px;line-height:1.75;color:#1d3c62}
+.kv b{color:var(--navy)}
+
+.br{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+padding:13px 0;border-bottom:1px solid #eef1f5;font-size:17px}
+.br:last-child{border:0}
+.br em{font-style:normal;color:var(--sub);font-size:16px}
+.br b{font-variant-numeric:tabular-nums;color:var(--navy);font-size:19px}
+
+.bar{margin-bottom:17px}
+.bh{display:flex;justify-content:space-between;font-size:17px;margin-bottom:7px;color:var(--navy)}
+.bh b{font-variant-numeric:tabular-nums}
+.track{height:14px;background:#e7ebf0;border-radius:7px;overflow:hidden}
+.fill{display:block;height:100%;border-radius:7px}
+.f75{width:29%;background:#c0564e}
+.f70{width:44%;background:#c99433}
+.f60{width:74%;background:#2f7d60}
+
+.risk{background:var(--card);border:1px solid var(--line);
+border-left:5px solid var(--dn);border-radius:12px;padding:18px;margin-bottom:11px}
+.risk b{display:block;font-size:17px;margin-bottom:6px;color:var(--dn)}
+.risk span{font-size:16px;color:var(--body);line-height:1.75}
+
+.note{font-size:15px;color:var(--sub);line-height:1.7;margin-top:11px}
+.u{color:var(--up)}.d{color:var(--dn)}
+footer{margin-top:40px;padding-top:18px;border-top:2px solid var(--line);
+font-size:14px;color:#77818f;line-height:1.85}
+@media(max-width:520px){
+ body{font-size:16px;padding:20px 14px 52px}
+ h1{font-size:25px}h2{font-size:19px}.big{font-size:29px}
+ .now{grid-template-columns:1fr}
+ th,td{padding:12px 13px;font-size:16px}
+ tr.tot td{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">投資組合調整建議</div>
+  <h1>以黃金收益策略為基底<br>重建投資組合現金流</h1>
+  <p class="lede">在 SRA 結構債暫停計息期間，讓整體年化配息率回到 8%</p>
+</header>
+
+<section class="sec">
+  <h2><span class="n">01</span>您目前的持倉</h2>
+  <div class="now">
+    <div class="card">
+      <div class="lbl">SRA 結構債</div>
+      <div class="big">52<small>萬美元</small></div>
+      <span class="tag d">暫停計息</span>
+      <p class="note">連結美國 10 年期公債殖利率（CMT 10Y），計息門檻為 4.60% 以下。目前市場利率高於此門檻，本期未累積配息。<b>本金維持 100% 保本</b>（持有至到期），未受影響。</p>
+    </div>
+    <div class="card">
+      <div class="lbl">FCN 結構債</div>
+      <div class="big">20<small>萬美元</small></div>
+      <span class="tag k">正常配息 15%</span>
+      <p class="note">年配息約 3.0 萬美元，運作正常。</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <div class="br"><em>現有本金合計</em><b>72 萬美元</b></div>
+    <div class="br"><em>目前年現金流</em><b>3.0 萬美元</b></div>
+    <div class="br"><em>目前整體年化配息率</em><b class="d">4.2%</b></div>
+  </div>
+  <p class="note">SRA 的配息與美國長期利率連動，利率回到 4.60% 以下即恢復計息。但在等待期間，整體投資組合的現金流明顯低於原本的規劃水準，這是本次調整要解決的問題。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">02</span>關於這檔黃金收益策略</h2>
+  <div class="specs">
+    <div class="spec"><em>目標配息</em><b>8%</b></div>
+    <div class="spec"><em>質借成數上限</em><b>75%</b></div>
+    <div class="spec"><em>投資屬性</em><b>CIP 4</b></div>
+  </div>
+
+  <div class="card">
+    <h3>商品架構</h3>
+    <p style="font-size:16px">持有黃金現貨 ETF（GLD、GLDM）的多頭部位，同時賣出 GLD 認購期權收取權利金。黃金本身不孳息，透過期權操作為原本不配息的黃金部位創造現金流。投資範圍包含上述 ETF、交易所上市之 GLD 認購期權與現金（不超過 10%）。由專業機構管理，每週分批展期期權，依市場波動率、履約價、到期日與流動性動態調整部位。</p>
+  </div>
+
+  <h3 style="margin-top:20px">三大特色</h3>
+  <div class="feat">
+    <div><b>讓黃金也能創造現金流</b><span>持有黃金的同時，透過專業賣出認購期權，為原本不孳息的部位增加收益來源。</span></div>
+    <div><b>把波動轉化為收益</b><span>市場波動升高時，期權權利金通常更具吸引力；透過動態調整部位，將波動轉為收益動能。</span></div>
+    <div><b>漲時參與、盤整收息</b><span>保留金價上漲的參與機會；盤整期間累積權利金，溫和下跌時提供部分緩衝。</span></div>
+  </div>
+
+  <div class="kv" style="margin-top:16px">
+    <b>為什麼用黃金當基底？</b><br>
+    您現有的結構型商品多以股票為連結標的，最大的風險往往不是選錯公司，而是所有部位都受同一組因素影響——利率、估值與市場情緒。黃金不依賴企業盈餘、不靠配息承諾，也不承擔發行公司的信用風險；歷史上與股票、債券的相關性偏低，在股市出現較大幅度回檔的期間，黃金多數時候表現相對抗跌。以黃金作為基底再承作股票連結商品，分散效果優於再增加一檔股票連結部位。
+  </div>
+  <p class="note">以上為商品結構說明，正式條件、費用與風險請以產品公開說明書及產品說明文件為準。目標收益及配息並不保證，配息可能來自本金。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">03</span>策略架構</h2>
+  <div class="flow">
+    <div class="step g"><span class="sn">STEP 1</span><b>新資金買進黃金基金</b><span>黃金現貨 ETF ＋ 動態認購期權策略，目標配息 8%</span></div>
+    <div class="step b"><span class="sn">STEP 2</span><b>以基金部位質借</b><span>成數可選 60–75%，借款利率 2%</span></div>
+    <div class="step"><span class="sn">STEP 3</span><b>借款投入 FCN</b><span>coupon 12–15%，與黃金相關性低，分散風險</span></div>
+  </div>
+  <p class="note">兩個收益引擎並行：黃金部位以期權創造現金流，FCN 以股票波動創造票息；同時黃金又回過頭為股票連結部位提供分散效果。SRA 本金完全不需動用，保本條件不受任何影響。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">04</span>需要投入多少資金</h2>
+  <p style="font-size:16px;margin-bottom:14px">以下以質借成數 75% 試算，呈現三種 FCN 條件下的資金需求與現金流結構。</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr>
+      <th>項目</th><th>FCN 12%</th><th>FCN 13.5%</th><th>FCN 15%</th>
+    </tr></thead>
+    <tbody>
+      <tr class="hl"><td>新投入資金（買黃金基金）</td><td>36.8</td><td>32.0</td><td>28.3</td></tr>
+      <tr><td>質借金額</td><td>27.6</td><td>24.0</td><td>21.2</td></tr>
+      <tr><td>新作 FCN 金額</td><td>27.6</td><td>24.0</td><td>21.2</td></tr>
+      <tr><td>黃金基金配息 8%</td><td class="u">+2.94</td><td class="u">+2.56</td><td class="u">+2.27</td></tr>
+      <tr><td>新 FCN 配息</td><td class="u">+3.31</td><td class="u">+3.24</td><td class="u">+3.19</td></tr>
+      <tr><td>既有 FCN 配息 15%</td><td class="u">+3.00</td><td class="u">+3.00</td><td class="u">+3.00</td></tr>
+      <tr><td>借款利息 2%</td><td class="d">−0.55</td><td class="d">−0.48</td><td class="d">−0.42</td></tr>
+      <tr><td>SRA 配息（假設全年停息）</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr class="tot"><td>年現金流合計</td><td>8.70</td><td>8.32</td><td>8.03</td></tr>
+      <tr><td>自有本金合計</td><td>108.8</td><td>104.0</td><td>100.3</td></tr>
+      <tr class="tot"><td>整體年化配息率</td><td>8.0%</td><td>8.0%</td><td>8.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">單位：萬美元。自有本金 ＝ SRA 52 ＋ 既有 FCN 20 ＋ 新投入資金，不含借款金額。借款所產生的配息與利息已分別計入現金流。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">05</span>質借成數的選擇</h2>
+  <div class="kv">
+    補足現金流所需的 <b>借款金額是固定的</b>——收益來自 FCN 票息與借款利率之間的利差，缺口固定，需要借的錢就固定。<br><br>
+    質借成數改變的只有一件事：<b>要放多大的基金部位，才撐得起這筆借款</b>。成數越低，投入的資金越多，但抗跌的緩衝越厚，而整體配息率完全不變。
+  </div>
+  <div class="tblwrap">
+  <table>
+    <thead><tr>
+      <th>質借成數</th><th>FCN 12%</th><th>FCN 13.5%</th><th>FCN 15%</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>75%</b>　新投入資金</td><td>36.8</td><td>32.0</td><td>28.3</td></tr>
+      <tr><td><b>70%</b>　新投入資金</td><td>39.4</td><td>34.3</td><td>30.3</td></tr>
+      <tr class="hl"><td><b>60%</b>　新投入資金</td><td>46.0</td><td>40.0</td><td>35.4</td></tr>
+      <tr class="tot"><td>借款金額（三者相同）</td><td>27.6</td><td>24.0</td><td>21.2</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">單位：萬美元。三種成數下的年現金流與整體年化配息率均為 8.0%。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">06</span>緩衝有多厚</h2>
+  <div class="card">
+    <p style="font-size:16px;margin-bottom:18px">基金淨值需要下跌多少，質借成數才會升至 <b>85%</b>（示意追繳水準）：</p>
+    <div class="bar">
+      <div class="bh"><span>成數 60% 起算</span><b class="u">可承受下跌 29.4%</b></div>
+      <div class="track"><i class="fill f60"></i></div>
+    </div>
+    <div class="bar">
+      <div class="bh"><span>成數 70% 起算</span><b>可承受下跌 17.6%</b></div>
+      <div class="track"><i class="fill f70"></i></div>
+    </div>
+    <div class="bar" style="margin-bottom:0">
+      <div class="bh"><span>成數 75% 起算</span><b class="d">可承受下跌 11.8%</b></div>
+      <div class="track"><i class="fill f75"></i></div>
+    </div>
+  </div>
+
+  <div class="tblwrap">
+  <table>
+    <thead><tr>
+      <th>淨值下跌至</th><th>成數 60%</th><th>成數 70%</th><th>成數 75%</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>成數升至 85%</td><td class="u">−29.4%</td><td>−17.6%</td><td class="d">−11.8%</td></tr>
+      <tr><td>成數升至 90%</td><td class="u">−33.3%</td><td>−22.2%</td><td class="d">−16.7%</td></tr>
+      <tr><td>成數升至 100%</td><td>−40.0%</td><td>−30.0%</td><td>−25.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">實際追繳線與強制平倉線以銀行規定為準，上表為成數變動的數學推演。另需留意：若配息部分來自本金，淨值會因配息而逐步下滑，質借成數在金價未下跌的情況下也會自行上升，採用較低成數可同時緩和此一效應。</p>
+
+  <div class="kv" style="margin-top:14px">
+    以 FCN 15% 為例：多投入 <b>7.1 萬美元</b>（28.3 → 35.4 萬），將成數由 75% 降至 60%，可承受的跌幅從 <b>11.8% 放大至 29.4%</b>，接近三倍，而整體年化配息率仍維持 <b>8.0%</b>。
+  </div>
+</section>
+
+<section class="sec">
+  <h2><span class="n">07</span>建議方案</h2>
+  <div class="card">
+    <div class="br"><em>新投入資金</em><b>35.4 萬美元</b></div>
+    <div class="br"><em>黃金基金持有部位</em><b>35.4 萬美元</b></div>
+    <div class="br"><em>質借金額（成數 60%）</em><b>21.2 萬美元</b></div>
+    <div class="br"><em>新作 FCN（coupon 15%）</em><b>21.2 萬美元</b></div>
+    <div class="br"><em>調整後自有本金總額</em><b>107.4 萬美元</b></div>
+    <div class="br"><em>年現金流</em><b class="u">8.59 萬美元</b></div>
+    <div class="br"><em>整體年化配息率</em><b class="u">8.0%</b></div>
+    <div class="br"><em>可承受基金淨值跌幅</em><b class="u">29.4%</b></div>
+  </div>
+  <p class="note">SRA 本金未被動用，保本條件完全不受影響；整體年化配息率由目前的 4.2% 回到 8.0%。若希望降低投入金額，可採成數 70%（新投入 30.3 萬，緩衝 17.6%）；成數 75% 的緩衝僅 11.8%，建議視為上限而非預設選項。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">08</span>SRA 恢復計息後</h2>
+  <div class="tblwrap">
+  <table>
+    <thead><tr>
+      <th>SRA 情境</th><th>SRA 年配息</th><th>年現金流</th><th>整體年化</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>未來一年全年停息</td><td>0</td><td>8.59</td><td>8.0%</td></tr>
+      <tr><td>約半年恢復計息</td><td class="u">+2.73</td><td>11.32</td><td class="u">10.5%</td></tr>
+      <tr class="hl"><td>全年恢復計息</td><td class="u">+5.46</td><td>14.05</td><td class="u">13.1%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">單位：萬美元，以建議方案試算。SRA 滿額計息為本金 52 萬 × 票面 10.5%。<b>本方案以「全年停息」為設計基準</b>，因此 SRA 一旦恢復計息，整體配息率即在 8% 之上，屬於向上的空間，而非方案能否成立的前提。</p>
+</section>
+
+<section class="sec">
+  <h2><span class="n">09</span>必須理解的風險</h2>
+
+  <div class="risk"><b>配息可能來自本金，8% 是目標而非保證</b>
+  <span>黃金基金的目標收益及配息並不保證，配息來源可能包含本金。若配息高於基金實際收益，淨值將逐步下滑，不僅影響長期本金，也會使質借成數在金價未下跌的情況下自行上升。「年化配息 8%」是現金流目標，不等於投資報酬率 8%。</span></div>
+
+  <div class="risk"><b>質借的追繳風險</b>
+  <span>質押借款具槓桿效果，會同時放大獲利與虧損。觸及追繳線時需補繳保證金或被迫減碼，可能在低點實現虧損。成數越高、緩衝越薄，詳見第 06 節。承作前應預留可支應追繳的現金，不宜將全部流動性投入本方案。</span></div>
+
+  <div class="risk"><b>賣出認購期權會限制上漲參與</b>
+  <span>此策略在收取權利金的同時，也限制了金價大幅上漲時的參與程度。金價下跌時，權利金僅提供部分緩衝，大幅下跌仍可能造成損失；一旦下跌後反彈，部位的回復速度會慢於金價本身。這在質借架構下特別需要留意。</span></div>
+
+  <div class="risk"><b>金價本身的波動</b>
+  <span>黃金並非低波動資產。歷史上曾出現長達數年、幅度達四成以上的回檔期間。本方案的緩衝設計是為了讓一般幅度的回檔不致觸發追繳，但無法排除極端行情下的風險。</span></div>
+
+  <div class="risk"><b>FCN 的下檔風險</b>
+  <span>較高的 coupon 反映的是市場對接股機率的定價。若連結標的於最終評價日跌破下限價，將以轉換價接股，帳面損失可能大於全年配息。以借款承作的 FCN 若發生接股，借款本金仍須償還。建議分散連結標的與天期。</span></div>
+
+  <div class="risk"><b>兩項風險同時發生的可能</b>
+  <span>最不利的情境是金價下跌（觸及追繳）與 FCN 接股同時出現。黃金與股票的歷史相關性偏低，可降低同時發生的機率，但並非為零。這也是建議採用較低質借成數的主要理由。</span></div>
+</section>
+
+<footer>
+本試算依據現有持倉與假設條件製作，所有金額均為理論值，未計入稅負、匯率換算、申購費用、遞延手續費及發行機構實際交割慣例。黃金基金之目標收益及配息並不保證，配息可能來自本金，本金成長幅度可能縮減，高配息不代表總投資為正報酬或高報酬；賣出認購期權僅提供部分下行緩衝，金價大幅下跌仍可能造成損失。結構型商品非存款，不受存款保險保障，最大可能損失為全部本金。質押借款具槓桿效果，可能擴大損益並產生追繳義務；核貸成數、借款利率、追繳線與強制平倉線均以銀行實際規定為準。本商品之投資屬性等級為 CIP 4，承作前須完成投資人適合度評估。基金配息率、報酬率與相關條件請以產品公開說明書、投資人須知及產品說明文件為準。本文件僅供說明討論之用，不構成投資建議、要約或任何金融商品之銷售文件。投資前請詳閱相關文件並自行審慎評估。
+</footer>
+
+</div>
+</body>
+</html>
